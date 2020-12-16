@@ -1,11 +1,8 @@
 "use strict";
 
-let numberOfFilms = +prompt('Сколько фильмов вы посмотрели', 'Укажите количество'),
-    movies1 = prompt('Один из последних просмотренных фильмов?', ''),
-    answer1 = prompt('На сколько оцените его?', ''),
-    movies2 = prompt('Один из последних просмотренных фильмов?', ''),
-    answer2 = prompt('На сколько оцените его?', ''),
-    personalMovieDB = {
+let numberOfFilms = +prompt('Сколько фильмов вы посмотрели', 'Укажите количество');
+
+    let personalMovieDB = {
         count: numberOfFilms,
         movies: {},
         actors: {},
@@ -13,8 +10,28 @@ let numberOfFilms = +prompt('Сколько фильмов вы посмотре
         privat: false
     };
 
-    personalMovieDB.movies[movies1] = answer1;
-    personalMovieDB.movies[movies2] = answer2;
+    for (let i = 0; i < 2; i++){
+        var question = prompt('Один из последних просмотренных фильмов?', ''),
+            answer = prompt('На сколько оцените его?', '');
+
+        if(question != "" && answer != "" && question != null && answer != null && question.length < 50 ){
+            personalMovieDB.movies[question] = answer;
+        } else {
+            i--;
+        }
+        
+    }
+
+    if(personalMovieDB.count < 10) {
+        document.write("Мало");
+    } else if (personalMovieDB.count == 10 || personalMovieDB.count < 30) {
+        document.write("Классика");
+    } else if (personalMovieDB.count > 30) {
+        document.write("Киноман");
+    } else {
+        document.write("Ошибка");
+    }
+
 
     console.log(personalMovieDB);
 
