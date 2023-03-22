@@ -1,0 +1,14 @@
+body {
+    font-family: $userfont;
+	font-size: $fontsize;
+	line-height: $lineheight;
+	color: $color-dark-l;
+	min-width: 320px;
+	background-color: #E5E5E5;
+	position: relative;
+	overflow-x: hidden;
+}
+
+.container {
+	@include container;
+}

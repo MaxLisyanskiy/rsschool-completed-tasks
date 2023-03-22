@@ -1,1 +1,20 @@
-/*# sourceMappingURL=style.css.map */
+body {
+  font-family: roboto-oh5, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #545454;
+  min-width: 320px;
+  background-color: #E5E5E5;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.about {
+  background: #FFFFFF;
+}/*# sourceMappingURL=style.css.map */
