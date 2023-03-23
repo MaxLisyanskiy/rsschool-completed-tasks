@@ -72,22 +72,12 @@ body {
   line-height: 57px;
 }
 
-.h3 {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 35px;
-  line-height: 45px;
-  letter-spacing: 0.06em;
-}
-
 .about {
   padding: 80px 40px 100px;
   background: #FFFFFF;
 }
 .about__title {
   width: 370px;
-  color: #545454;
 }
 .about__img {
   margin-right: 120px;
@@ -97,6 +87,53 @@ body {
 }
 .about__text {
   margin-top: 25px;
+}
+
+.help {
+  background: #FFFFFF;
+}
+.help__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 45px;
+}
+.help__title {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  width: 310px;
+  text-align: center;
+}
+.help__list {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.help__item {
+  margin: 0 60px 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.help__item span {
+  margin-top: 30px;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
 }
 
 .footer {

@@ -1,5 +1,28 @@
-// @mixin container {
-//     max-width: 1280px;
-//     margin: 0 auto;
-//     overflow: hidden;
-// }
+@mixin df-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin text-h3 {
+	font-family: 'Georgia';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 35px;
+	line-height: 45px;
+	letter-spacing: 0.06em;
+	color: $color-dark-l
+}
+
+@mixin text-h4 {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+}
