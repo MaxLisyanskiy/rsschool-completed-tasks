@@ -69,7 +69,8 @@ body {
   line-height: 45px;
   letter-spacing: 0.06em;
   color: #545454;
-  width: 370px;
+  text-align: center;
+  text-align: left;
 }
 .about__img {
   margin-right: 120px;
@@ -78,7 +79,52 @@ body {
   width: 430px;
 }
 .about__text {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #4C4C4C;
   margin-top: 25px;
+}
+
+.our-friends {
+  padding: 80px 40px 100px;
+  background: #F6F6F6;
+}
+.our-friends__wrapp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.our-friends__title {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.our-friends__btn {
+  padding: 15px 45px;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: #292929;
+  background: #F1CDB3;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+}
+.our-friends__btn:hover {
+  background: #FDDCC4;
 }
 
 .help {
@@ -99,7 +145,6 @@ body {
   line-height: 45px;
   letter-spacing: 0.06em;
   color: #545454;
-  width: 310px;
   text-align: center;
 }
 .help__list {
@@ -149,8 +194,9 @@ body {
   line-height: 45px;
   letter-spacing: 0.06em;
   color: #545454;
+  text-align: center;
   margin-bottom: 20px;
-  width: 300px;
+  text-align: left;
 }
 .donation__subtitle {
   font-family: "Georgia";
@@ -226,6 +272,7 @@ body {
   line-height: 45px;
   letter-spacing: 0.06em;
   color: #545454;
+  text-align: center;
   color: #FFFFFF;
 }
 .footer__link {

@@ -8,7 +8,7 @@
 
     &__title {
         @include text-h3;
-        width: 370px;
+        text-align: left;
     }
 
     &__img {
@@ -20,6 +20,7 @@
     }
 
     &__text {
+        @include paragraph-l;
         margin-top: 25px;
     }
 }

@@ -1,0 +1,17 @@
+.our-friends {
+    padding: 80px 40px 100px;
+    background: $color-light-l;
+
+    &__wrapp {
+        @include df-column;
+    }
+
+    &__title {
+        @include text-h3;
+        margin-bottom: 60px;
+    }
+
+    &__btn {
+        @include btn;
+    }
+}
