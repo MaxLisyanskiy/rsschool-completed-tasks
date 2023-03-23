@@ -31,7 +31,8 @@
 
     &__title {
         @include text-h3;
-        color: $color-light-xl
+        color: $color-light-xl;
+        text-align: left;
     }
 
     &__link {
