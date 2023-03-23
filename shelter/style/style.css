@@ -1,8 +1,45 @@
+@font-face {
+  font-family: "Arial";
+  src: url("../../assets/fonts/Arial/Arial-Italic.woff2") format("woff2"), url("../../assets/fonts/Arial/Arial-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../../assets/fonts/Arial/Arial.woff2") format("woff2"), url("../../assets/fonts/Arial/Arial.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/Georgia/Georgia.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/Georgia/Georgia-Bold.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/Georgia/Georgia-Italic.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
 body {
-  font-family: roboto-oh5, sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
-  color: #545454;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+  color: #4C4C4C;
   min-width: 320px;
   background-color: #E5E5E5;
   position: relative;
@@ -15,6 +52,43 @@ body {
   overflow: hidden;
 }
 
+.df-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h2 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 57px;
+}
+
+.h3 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+}
+
 .about {
+  padding: 80px 40px 100px;
   background: #FFFFFF;
+}
+.about__title {
+  width: 370px;
+  color: #545454;
+}
+.about__img {
+  margin-right: 120px;
+}
+.about__content {
+  width: 430px;
+}
+.about__text {
+  margin-top: 25px;
 }/*# sourceMappingURL=style.css.map */

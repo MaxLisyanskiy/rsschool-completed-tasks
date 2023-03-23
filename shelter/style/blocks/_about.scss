@@ -1,3 +1,21 @@
 .about {
+    padding: 80px 40px 100px;
     background: #FFFFFF;
+
+    &__title {
+        width: 370px;
+        color: $color-dark-l
+    }
+
+    &__img {
+        margin-right: 120px;
+    }
+
+    &__content {
+        width: 430px;
+    }
+
+    &__text {
+        margin-top: 25px;
+    }
 }
