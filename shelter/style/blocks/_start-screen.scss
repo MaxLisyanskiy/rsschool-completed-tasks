@@ -1,0 +1,35 @@
+.start-screen {
+    padding: 30px 40px 0;
+    background: $bg-gradient;
+
+    &__wrapp {
+        margin-top: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__content {
+        width: 38.3%;
+        margin-right: 42px;
+    }
+
+    &__title {
+        @include text-h2;
+        margin-bottom: 42px;
+    }
+
+    &__descr {
+        @include paragraph-l;
+        color: $color-dark-s;
+        margin-bottom: 42px;
+    }
+
+    &__btn {
+        @include btn;
+    }
+
+    &__img {
+        width: 58.16%;
+    }
+}
