@@ -1,0 +1,55 @@
+.footer {
+    padding: 40px 40px 0;
+    background: $bg-gradient;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__contacts {
+        margin-top: 16px;
+        width: 279px;
+
+        & a {
+            margin-top: 40px;
+        }
+    }
+
+    &__locations {
+        margin-top: 16px;
+        width: 302px;
+
+        & a{
+            margin-top: 34px;
+        }
+
+        & a:last-child {
+            margin-top: 32px;
+        }
+    }
+
+    &__title {
+        color: $color-light-xl
+    }
+
+    &__link {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        color: $color-primary;
+
+        & img {
+            margin-right: 20px;
+        }
+
+        & p {
+            font-family: 'Georgia';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 23px;
+            letter-spacing: 0.06em;
+        }
+    }
+}

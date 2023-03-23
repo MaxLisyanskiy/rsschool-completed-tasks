@@ -17,6 +17,12 @@ body {
     overflow: hidden;
 }
 
+.df {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .df-center {
 	display: flex;
 	align-items: center;
@@ -39,11 +45,3 @@ body {
 	line-height: 45px;
 	letter-spacing: 0.06em;
 }
-
-// .paragraph-l {
-// 	font-family: 'Arial';
-// 	font-style: normal;
-// 	font-weight: 400;
-// 	font-size: 15px;
-// 	line-height: 24px;
-// }
