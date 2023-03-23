@@ -2,7 +2,12 @@
     padding: 80px 40px 100px;
     background: #FFFFFF;
 
+    &__wrapp {
+        @include df-center
+    }
+
     &__title {
+        @include text-h3;
         width: 370px;
     }
 

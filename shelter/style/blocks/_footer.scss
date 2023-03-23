@@ -2,7 +2,7 @@
     padding: 40px 40px 0;
     background: $bg-gradient;
 
-    &__content {
+    &__wrapp {
         display: flex;
         justify-content: space-between;
     }
@@ -30,6 +30,7 @@
     }
 
     &__title {
+        @include text-h3;
         color: $color-light-xl
     }
 
@@ -37,19 +38,14 @@
         width: fit-content;
         display: flex;
         align-items: center;
-        color: $color-primary;
 
         & img {
             margin-right: 20px;
         }
 
         & p {
-            font-family: 'Georgia';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 23px;
-            letter-spacing: 0.06em;
+            @include text-h4;
+            color: $color-primary;
         }
     }
 }

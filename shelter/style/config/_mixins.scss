@@ -4,6 +4,11 @@
     align-items: center;
     justify-content: center;
 }
+@mixin df-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @mixin text-h3 {
 	font-family: 'Georgia';
@@ -12,7 +17,7 @@
 	font-size: 35px;
 	line-height: 45px;
 	letter-spacing: 0.06em;
-	color: $color-dark-l
+	color: $color-dark-l;
 }
 
 @mixin text-h4 {
@@ -21,8 +26,35 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
-    display: flex;
-    align-items: center;
-    text-align: center;
     letter-spacing: 0.06em;
+    color: $color-dark-l
+}
+
+@mixin text-h5 {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    color: $color-dark-l
+}
+
+@mixin btn {
+    padding: 15px 45px;
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: $color-dark-3xl;
+    background: $color-primary;
+    border-radius: 100px;
+    transition: all .3s ease;
+
+    &:hover {
+        background: $color-primary-light
+    }
 }
