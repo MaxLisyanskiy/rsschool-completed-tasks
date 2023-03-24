@@ -1,0 +1,56 @@
+.paginations {
+    display: flex;
+
+    &__btn {
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        background: inherit;
+        border: 2px solid $color-primary;
+        border-radius: 100px;
+        transition: all .15s ease;
+
+        &:hover {
+            background: $color-primary-light;
+            border: 2px solid $color-primary-light;
+        }
+
+        & svg {
+            fill: $color-dark-3xl
+        }
+
+        &:disabled {
+            cursor: default;
+            border: 2px solid $color-dark-s;
+
+            & svg {
+                fill: $color-dark-s
+            }
+
+            &:hover {
+                background: inherit;
+                border: 2px solid $color-dark-s;
+            }
+        }
+    }
+
+    &__page {
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        background: $color-primary;
+        border-radius: 100px;
+        @include text-h4;
+        text-align: center;
+        color: $color-dark-3xl;
+        outline: none;
+        caret-color: transparent;
+        cursor: default;
+    }
+}
