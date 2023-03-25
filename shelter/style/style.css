@@ -147,11 +147,16 @@ body {
   font-size: 15px;
   line-height: 24px;
   color: #CDCDCD;
+  transition: all 0.2s ease;
 }
 .head-menu__link.active {
+  cursor: default;
   color: #FAFAFA;
   padding-bottom: 4px;
   border-bottom: 3px solid #F1CDB3;
+}
+.head-menu__link:hover {
+  color: #FAFAFA;
 }
 
 .about {
@@ -191,7 +196,7 @@ body {
 }
 
 .our-friends {
-  padding: 80px 40px 100px;
+  padding: 80px 0 100px;
   background: #F6F6F6;
 }
 .our-friends__wrapp {
@@ -227,6 +232,48 @@ body {
 }
 .our-friends__btn:hover {
   background: #FDDCC4;
+}
+
+.slider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+.slider__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: inherit;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  transition: all 0.15s ease;
+}
+.slider__btn:hover {
+  background: #FDDCC4;
+  border: 2px solid #FDDCC4;
+}
+.slider__btn svg {
+  fill: #292929;
+}
+.slider__btn:disabled {
+  cursor: default;
+  border: 2px solid #CDCDCD;
+}
+.slider__btn:disabled svg {
+  fill: #CDCDCD;
+}
+.slider__btn:disabled:hover {
+  background: inherit;
+  border: 2px solid #CDCDCD;
+}
+.slider-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 90px;
 }
 
 .help {
@@ -321,7 +368,7 @@ body {
   background: #FDDCC4;
 }
 .donation__card img {
-  margin-right: 15px;
+  margin-right: 12px;
 }
 .donation__card span {
   font-family: "Georgia";
@@ -342,7 +389,7 @@ body {
 }
 
 .header {
-  padding: 30px 40px;
+  padding: 30px 0;
   background: #FFFFFF;
 }
 .header__wrapp {
@@ -361,6 +408,7 @@ body {
   margin-bottom: 10px;
 }
 .header-logo__subtitle {
+  margin-left: 4px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -373,7 +421,7 @@ body {
   display: flex;
 }
 .header-menu__item {
-  margin-left: 35px;
+  margin-left: 36px;
 }
 .header-menu__link {
   font-family: "Arial";
@@ -382,15 +430,20 @@ body {
   font-size: 15px;
   line-height: 24px;
   color: #545454;
+  transition: all 0.2s ease;
 }
 .header-menu__link.active {
+  cursor: default;
   color: #292929;
   padding-bottom: 4px;
   border-bottom: 3px solid #F1CDB3;
 }
+.header-menu__link:hover {
+  color: #292929;
+}
 
 .pets {
-  padding: 80px 40px 100px;
+  padding: 80px 0 100px;
   background: #F6F6F6;
 }
 .pets__wrapp {
@@ -465,7 +518,7 @@ body {
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
-  line-height: 22px;
+  line-height: 19px;
   letter-spacing: 0.06em;
   text-align: center;
   color: #292929;
@@ -548,7 +601,7 @@ body {
   width: 279px;
 }
 .footer__contacts a {
-  margin-top: 40px;
+  margin-top: 42px;
 }
 .footer__locations {
   margin-top: 16px;

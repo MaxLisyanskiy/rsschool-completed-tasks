@@ -13,14 +13,14 @@
         <div class="start-screen">
             <div class="container">
                 <header class="head">
-                    <div class="head-logo">
+                    <a href="#" class="head-logo">
                         <h1 class="head-logo__title">Cozy House</h1>
                         <h4 class="head-logo__subtitle">Shelter for pets in Boston</h4>
-                    </div>
+                    </a>
                     <nav>
                         <ul class="head-menu">
                             <li class="head-menu__item">
-                                <a href="#about" class="head-menu__link active">About the shelter</a>
+                                <p class="head-menu__link active">About the shelter</p>
                             </li>
                             <li class="head-menu__item">
                                 <a href="pets.html" class="head-menu__link">Our pets</a>
@@ -38,7 +38,7 @@
                     <div class="start-screen__content">
                         <h2 class="start-screen__title">Not only people <br> need a house</h2>
                         <p class="start-screen__descr">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-                        <button type="button" class="start-screen__btn">Make a friend</button>
+                        <a href="#our-friends" type="button" class="start-screen__btn">Make a friend</a>
                     </div>
                     <img class="start-screen__img" src="./assets/img/main/start-screen-puppy.png" alt="start-screen-puppy">
                 </div>
@@ -55,11 +55,48 @@
                     </div>
                 </div>
             </section>
-            <section class="our-friends">
+            <section class="our-friends" id="our-friends">
                 <div class="container our-friends__wrapp">
                     <h3 class="our-friends__title">Our friends who <br> are looking for a house</h3>
-                    <!-- slider -->
-                    <button class="our-friends__btn" type="button">Get to know the rest</button>
+
+                    <div class="slider">
+                        <button type="button" class="slider__btn">
+                            <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929"/>
+                            </svg>
+                        </button>
+
+                        <ul class="slider-cards">
+                            <li class="pets-cards__item">
+                                <img src="./assets/img/pets/katrine.png" alt="katrine" width="270" height="270">
+                                <div class="pets-cards__content">
+                                    <span class="pets-cards__title">Katrine</span>
+                                    <button type="button" class="pets-cards__btn">Learn more</button>
+                                </div>
+                            </li>
+                            <li class="pets-cards__item">
+                                <img src="./assets/img/pets/jennifer.png" alt="jennifer" width="270" height="270">
+                                <div class="pets-cards__content">
+                                    <span class="pets-cards__title">Jennifer</span>
+                                    <button type="button" class="pets-cards__btn">Learn more</button>
+                                </div>
+                            </li>
+                            <li class="pets-cards__item">
+                                <img src="./assets/img/pets/woody.png" alt="woody" width="270" height="270">
+                                <div class="pets-cards__content">
+                                    <span class="pets-cards__title">Woody</span>
+                                    <button type="button" class="pets-cards__btn">Learn more</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="slider__btn">
+                            <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="pets.html" class="our-friends__btn" type="button">Get to know the rest</a>
                 </div>
             </section>
             <section class="help" id="help">

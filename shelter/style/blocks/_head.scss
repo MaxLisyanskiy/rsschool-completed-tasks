@@ -41,10 +41,17 @@
             font-size: 15px;
             line-height: 24px;
             color: $color-dark-s;
+            transition: all .2s ease;
+
             &.active {
+                cursor: default;
                 color: $color-light-s;
                 padding-bottom: 4px;
                 border-bottom: 3px solid $color-primary;
+            }
+            
+            &:hover {
+                color: $color-light-s
             }
         }
     }

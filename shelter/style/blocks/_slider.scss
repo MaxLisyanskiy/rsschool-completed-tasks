@@ -1,0 +1,48 @@
+.slider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        background: inherit;
+        border: 2px solid $color-primary;
+        border-radius: 100px;
+        transition: all .15s ease;
+
+        &:hover {
+            background: $color-primary-light;
+            border: 2px solid $color-primary-light;
+        }
+
+        & svg {
+            fill: $color-dark-3xl
+        }
+
+        &:disabled {
+            cursor: default;
+            border: 2px solid $color-dark-s;
+
+            & svg {
+                fill: $color-dark-s
+            }
+
+            &:hover {
+                background: inherit;
+                border: 2px solid $color-dark-s;
+            }
+        }
+    }
+
+    &-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 90px;
+    }
+}
