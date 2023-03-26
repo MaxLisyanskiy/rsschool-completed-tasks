@@ -1,0 +1,58 @@
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-logo {
+        &__title {
+            font-family: 'Georgia';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 35px;
+            letter-spacing: 0.06em;
+            color: $color-primary;
+            margin-bottom: 10px;
+        }
+
+        &__subtitle {
+            margin-left: 4px;
+            font-family: 'Arial';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 15px;
+            letter-spacing: 0.1em;
+            color: $color-light-xl;
+        }
+    }
+
+    &-menu {
+        display: flex;
+
+        &__item {
+            margin-left: 36px;
+        }
+
+        &__link {
+            font-family: 'Arial';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 24px;
+            color: $color-dark-s;
+            transition: all .2s ease;
+
+            &.active {
+                cursor: default;
+                color: $color-light-s;
+                padding-bottom: 4px;
+                border-bottom: 3px solid $color-primary;
+            }
+            
+            &:hover {
+                color: $color-light-s
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.help {
+    background: $color-light-xl;
+
+    &__content {
+        @include df-column;
+        padding: 80px 0 45px;
+    }
+
+    &__title {
+        @include text-h3;
+    }
+
+    &__list {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        margin: 0 60px 55px;
+        @include df-column;
+
+        & span {
+            margin-top: 30px;
+            @include text-h4;
+        }
+    }
+}

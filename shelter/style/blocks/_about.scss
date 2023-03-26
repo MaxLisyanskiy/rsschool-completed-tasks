@@ -1,0 +1,26 @@
+.about {
+    padding: 80px 0 100px;
+    background: #FFFFFF;
+
+    &__wrapp {
+        @include df-center
+    }
+
+    &__title {
+        @include text-h3;
+        text-align: left;
+    }
+
+    &__img {
+        margin-right: 120px;
+    }
+
+    &__content {
+        width: 430px;
+    }
+
+    &__text {
+        @include paragraph-l;
+        margin-top: 25px;
+    }
+}

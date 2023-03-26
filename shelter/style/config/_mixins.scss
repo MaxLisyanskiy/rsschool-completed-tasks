@@ -1,0 +1,100 @@
+@mixin df-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+@mixin df-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin text-h2 {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 57px;
+    color: $color-light-xl;
+}
+
+@mixin text-h3 {
+	font-family: 'Georgia';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 35px;
+	line-height: 45px;
+	letter-spacing: 0.06em;
+	color: $color-dark-l;
+    text-align: center;
+}
+
+@mixin text-h4 {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    color: $color-dark-l
+}
+
+@mixin text-h5 {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    color: $color-dark-l
+}
+
+@mixin paragraph-l {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    color: $color-dark-xl
+}
+
+@mixin btn {
+    padding: 15px 45px;
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: $color-dark-3xl;
+    background: $color-primary;
+    border-radius: 100px;
+    transition: all .3s ease;
+
+    &:hover {
+        background: $color-primary-light
+    }
+}
+
+@mixin btn-card {
+    padding: 15px 45px;
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 19px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: $color-dark-3xl;
+    background: inherit;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+    transition: all .3s ease;
+
+    &:hover {
+        background: $color-primary-light;
+        border: 2px solid $color-primary-light;
+    }
+}
