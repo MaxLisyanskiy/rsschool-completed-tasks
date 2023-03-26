@@ -26,8 +26,9 @@
     }
 
     &__card {
+        display: inline-block;
         margin-bottom: 20px;
-        padding: 10px 15px;
+        padding: 9px 15px;
         background: $color-primary;
         border-radius: 9px;
         transition: all .3s ease;

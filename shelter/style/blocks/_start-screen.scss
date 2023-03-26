@@ -28,6 +28,7 @@
     }
 
     &__btn {
+        display: inline-block;
         @include btn;
     }
 

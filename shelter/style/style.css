@@ -33,6 +33,10 @@
   font-style: italic;
   font-display: swap;
 }
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   font-size: 15px;
@@ -89,6 +93,7 @@ body {
   margin-bottom: 42px;
 }
 .start-screen__btn {
+  display: inline-block;
   padding: 15px 45px;
   font-family: "Georgia";
   font-style: normal;
@@ -358,8 +363,9 @@ body {
   margin-bottom: 20px;
 }
 .donation__card {
+  display: inline-block;
   margin-bottom: 20px;
-  padding: 10px 15px;
+  padding: 9px 15px;
   background: #F1CDB3;
   border-radius: 9px;
   transition: all 0.3s ease;
@@ -632,8 +638,15 @@ body {
   display: flex;
   align-items: center;
 }
+.footer__link:hover img {
+  opacity: 0.5;
+}
+.footer__link:hover p {
+  color: rgba(253, 220, 196, 0.6);
+}
 .footer__link img {
   margin-right: 20px;
+  transition: all 0.15s ease;
 }
 .footer__link p {
   font-family: "Georgia";
@@ -644,4 +657,5 @@ body {
   letter-spacing: 0.06em;
   color: #545454;
   color: #F1CDB3;
+  transition: all 0.15s ease;
 }/*# sourceMappingURL=style.css.map */

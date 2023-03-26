@@ -40,13 +40,24 @@
         display: flex;
         align-items: center;
 
+        &:hover {
+            img {
+                opacity: .5;
+            }
+            p {
+                color: rgba($color: $color-primary-light, $alpha: .6);
+            }
+        }
+
         & img {
             margin-right: 20px;
+            transition: all .15s ease;
         }
 
         & p {
             @include text-h4;
             color: $color-primary;
+            transition: all .15s ease;
         }
     }
 }
