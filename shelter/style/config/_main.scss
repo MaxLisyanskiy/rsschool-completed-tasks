@@ -20,4 +20,7 @@ body {
     margin: 0 auto;
     padding: 0 40px;
     overflow: hidden;
+	@media (max-width: 800px) {
+		padding: 0 30px;
+	}
 }

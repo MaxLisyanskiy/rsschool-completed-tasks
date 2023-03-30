@@ -3,7 +3,10 @@
     background: #FFFFFF;
 
     &__wrapp {
-        @include df-center
+        @include df-center;
+        @media (max-width: 800px) {
+            flex-direction: column-reverse;
+        }
     }
 
     &__title {
@@ -13,6 +16,9 @@
 
     &__img {
         margin-right: 120px;
+        @media (max-width: 800px) {
+            margin: 80px 0 0 0;
+        }
     }
 
     &__content {

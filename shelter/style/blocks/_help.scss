@@ -20,6 +20,11 @@
     &__item {
         margin: 0 60px 55px;
         @include df-column;
+        @media (max-width: 800px) {
+            margin: 0;
+            width: 170px;
+            margin: 0 30px 55px;
+        }
 
         & span {
             margin-top: 30px;

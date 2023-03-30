@@ -1,15 +1,29 @@
 .footer {
     padding: 40px 0 0;
     background: $bg-gradient;
+    @media (max-width: 1000px) {
+        padding: 30px 0 0;
+    }
 
     &__wrapp {
         display: flex;
         justify-content: space-between;
+        align-items: flex-end;
+        @media (max-width: 900px) {
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
     }
 
     &__contacts {
         margin-top: 16px;
-        width: 279px;
+        margin-right: 15px;
+        margin-bottom: 60px;
+        min-width: 279px;
+        max-width: 279px;
+        @media (max-width: 800px) {
+            margin: 0;
+        }
 
         & a {
             margin-top: 42px;
@@ -18,7 +32,13 @@
 
     &__locations {
         margin-top: 16px;
-        width: 302px;
+        margin-right: 15px;
+        margin-bottom: 60px;
+        min-width: 302px;
+        max-width: 302px;
+        @media (max-width: 800px) {
+            margin: 0;
+        }
 
         & a{
             margin-top: 34px;
@@ -58,6 +78,16 @@
             @include text-h4;
             color: $color-primary;
             transition: all .15s ease;
+        }
+    }
+
+    &__img {
+        max-width: 300px;
+        width: 25%;
+        height: fit-content;
+        @media (max-width: 900px) {
+            margin-top: 65px;
+            width: 100%;
         }
     }
 }
