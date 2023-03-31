@@ -3,6 +3,12 @@
     background: $bg-gradient;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+    &__container {
+        @media (max-width: 767px) {
+            padding: 0 10px;
+        }
+    }
+
     &__wrapp {
         margin-top: 90px;
         display: flex;
@@ -26,18 +32,32 @@
             max-width: 460px;
             width: 100%;
         }
+        @media (max-width: 767px) {
+            margin-bottom: 105px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+        }
     }
 
     &__title {
         white-space: nowrap;
         @include text-h2;
         margin-bottom: 42px;
+        @media (max-width: 767px) {
+            @include text-h3-mobile;
+            color: $color-light-xl;
+        }
     }
 
     &__descr {
         @include paragraph-l;
         color: $color-dark-s;
         margin-bottom: 42px;
+        @media (max-width: 767px) {
+            text-align: center;
+        }
     }
 
     &__btnWrapper {
@@ -57,6 +77,10 @@
         @media (max-width: 800px) {
             margin-left: 137px;
             width: 80.3%;
+        }
+        @media (max-width: 767px) {
+            margin-left: 40px;
+            width: 87%;
         }
     }
 }
