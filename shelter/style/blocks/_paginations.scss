@@ -1,5 +1,11 @@
 .paginations {
     display: flex;
+    @media (max-width: 800px) {
+        margin-top: -3px;
+    }
+    @media (max-width: 500px) {
+        margin-top: 0px;
+    }
 
     &__btn {
         margin: 0 10px;
@@ -12,6 +18,10 @@
         border: 2px solid $color-primary;
         border-radius: 100px;
         transition: all .15s ease;
+
+        @media (max-width: 500px) {
+            margin: 0 5px;
+        }
 
         &:hover {
             background: $color-primary-light;
@@ -52,5 +62,8 @@
         outline: none;
         caret-color: transparent;
         cursor: default;
+        @media (max-width: 500px) {
+            margin: 0 5px;
+        }
     }
 }

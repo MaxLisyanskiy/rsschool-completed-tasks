@@ -24,12 +24,19 @@
             max-width: 505px;
             width: 100%;
         }
+        @media (max-width: 450px) {
+            margin: 42px 0 0 0;
+            width: 95%;
+        }
     }
 
     &__content {
         width: 380px;
         @media (max-width: 767px) {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
 
@@ -45,6 +52,10 @@
     &__subtitle {
         @include text-h5;
         margin-bottom: 20px;
+        @media (max-width: 450px) {
+            line-height: 24px;
+            letter-spacing: 0;
+        }
     }
 
     &__card {
@@ -66,6 +77,7 @@
         }
 
         & p {
+            margin-left: 2px;
             @include text-h4;
             @media (max-width: 767px) {
                 @include text-h5;
@@ -80,5 +92,10 @@
         font-size: 12px;
         line-height: 18px;
         color: $color-dark-m;
+        @media (max-width: 450px) {
+            display: flex;
+            align-items: center;
+            text-align: justify;
+        }
     }
 }
