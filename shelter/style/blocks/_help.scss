@@ -1,13 +1,25 @@
 .help {
+    padding: 80px 0 45px;
     background: $color-light-xl;
+    @media (max-width: 767px) {
+        padding: 42px 0 42px;
+    }
+    @media (max-width: 450px) {
+        padding: 42px 0 12px;
+    }
 
     &__content {
         @include df-column;
-        padding: 80px 0 45px;
+        @media (max-width: 450px) {
+            padding: 0 15px;
+        }
     }
 
     &__title {
         @include text-h3;
+        @media (max-width: 767px) {
+            @include text-h3-mobile;
+        }
     }
 
     &__list {
@@ -15,15 +27,40 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        @media (max-width: 450px) {
+            margin-top: 42px;
+            justify-content: space-between;
+        }
     }
 
     &__item {
         margin: 0 60px 55px;
         @include df-column;
+        @media (max-width: 800px) {
+            margin: 0;
+            width: 170px;
+            margin: 0 30px 55px;
+        }
+
+        @media (max-width: 450px) {
+            width: 130px;
+            margin: 0 0 30px 0;
+        }
+
+        & img {
+            @media (max-width: 450px) {
+                width: 50px;
+                height: 50px;
+            }
+        }
 
         & span {
             margin-top: 30px;
             @include text-h4;
+            @media (max-width: 450px) {
+                margin-top: 20px;
+                @include text-h5;
+            }
         }
     }
 }

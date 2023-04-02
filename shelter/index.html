@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="start-screen">
-            <div class="container">
+            <div class="container start-screen__container">
                 <header class="head">
                     <a href="#" class="head-logo">
                         <h1 class="head-logo__title">Cozy House</h1>
@@ -33,12 +33,17 @@
                             </li>
                         </ul>
                     </nav>
+                    <button class="head-burger">
+                        <img src="./assets/img/icons/burger.svg" alt="burger-icon">
+                    </button>
                 </header>
                 <div class="start-screen__wrapp">
                     <div class="start-screen__content">
                         <h2 class="start-screen__title">Not only people <br> need a house</h2>
                         <p class="start-screen__descr">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-                        <a href="#our-friends" class="start-screen__btn">Make a friend</a>
+                        <div class="start-screen__btnWrapper">
+                            <a href="#our-friends" class="start-screen__btn">Make a friend</a>
+                        </div>
                     </div>
                     <img class="start-screen__img" src="./assets/img/main/start-screen-puppy.png" alt="start-screen-puppy">
                 </div>
@@ -60,7 +65,7 @@
                     <h3 class="our-friends__title">Our friends who <br> are looking for a house</h3>
 
                     <div class="slider">
-                        <button type="button" class="slider__btn">
+                        <button type="button" class="slider__btn slider__btn_desk">
                             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929"/>
                             </svg>
@@ -90,12 +95,27 @@
                             </li>
                         </ul>
 
-                        <button type="button" class="slider__btn">
+                        <button type="button" class="slider__btn slider__btn_desk">
                             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929"/>
                             </svg>
                         </button>
+
+                        <div class="slider__btn_mob">
+                            <button type="button" class="slider__btn">
+                                <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929"/>
+                                </svg>
+                            </button>
+    
+                            <button type="button" class="slider__btn">
+                                <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
+
                     <a href="pets.html" class="our-friends__btn">Get to know the rest</a>
                 </div>
             </section>
@@ -150,7 +170,7 @@
                         <p class="donation__subtitle">Name of the bank / Type of bank account</p>
                         <a href="#" class="donation__card">
                             <img src="./assets/img/icons/credit-card.svg" alt="credit-card">
-                            <span>8380 2880 8028 8791 7435</span>
+                            <p>8380 2880 8028 8791 7435</p>
                         </a>
                         <p class="donation__descr">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
                     </div>
@@ -181,7 +201,7 @@
                         <p>18 South Park, London</p>
                     </a>
                 </div>
-                <img src="./assets/img/footer-puppy.png" alt="footer-puppy">
+                <img class="footer__img" src="./assets/img/footer-puppy.png" alt="footer-puppy">
             </div>
         </footer>
     </body>
