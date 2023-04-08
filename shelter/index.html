@@ -33,9 +33,28 @@
                             </li>
                         </ul>
                     </nav>
-                    <button class="head-burger">
-                        <img src="./assets/img/icons/burger.svg" alt="burger-icon">
+                    <button class="head-burger" id="burg">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </button>
+                    <div class="popup" id="popup">
+                        <ul class="popup-menu">
+                            <li class="popup-menu__item">
+                                <p class="popup-menu__link active">About the shelter</p>
+                            </li>
+                            <li class="popup-menu__item">
+                                <a href="pets.html" class="popup-menu__link">Our pets</a>
+                            </li>
+                            <li class="popup-menu__item" id="helpLink">
+                                <a href="#help" class="popup-menu__link">Help the shelter</a>
+                            </li>
+                            <li class="popup-menu__item" id="contactsLink">
+                                <a href="#contacts" class="popup-menu__link">Contacts</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popup__background" id="popupBack"></div>
                 </header>
                 <div class="start-screen__wrapp">
                     <div class="start-screen__content">
@@ -204,5 +223,7 @@
                 <img class="footer__img" src="./assets/img/footer-puppy.png" alt="footer-puppy">
             </div>
         </footer>
+
+        <script src="scripts/./script.js"></script>
     </body>
 </html>
