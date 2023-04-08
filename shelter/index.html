@@ -38,23 +38,23 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <div class="popup" id="popup">
-                        <ul class="popup-menu">
-                            <li class="popup-menu__item">
-                                <p class="popup-menu__link active">About the shelter</p>
+                    <div class="drawer" id="drawer">
+                        <ul class="drawer-menu">
+                            <li class="drawer-menu__item">
+                                <p class="drawer-menu__link active">About the shelter</p>
                             </li>
-                            <li class="popup-menu__item">
-                                <a href="pets.html" class="popup-menu__link">Our pets</a>
+                            <li class="drawer-menu__item">
+                                <a href="pets.html" class="drawer-menu__link">Our pets</a>
                             </li>
-                            <li class="popup-menu__item" id="helpLink">
-                                <a href="#help" class="popup-menu__link">Help the shelter</a>
+                            <li class="drawer-menu__item" id="helpLink">
+                                <a href="#help" class="drawer-menu__link">Help the shelter</a>
                             </li>
-                            <li class="popup-menu__item" id="contactsLink">
-                                <a href="#contacts" class="popup-menu__link">Contacts</a>
+                            <li class="drawer-menu__item" id="contactsLink">
+                                <a href="#contacts" class="drawer-menu__link">Contacts</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="popup__background" id="popupBack"></div>
+                    <div class="drawer__background" id="drawerBack"></div>
                 </header>
                 <div class="start-screen__wrapp">
                     <div class="start-screen__content">
@@ -91,21 +91,21 @@
                         </button>
 
                         <ul class="slider-cards">
-                            <li class="pets-cards__item">
+                            <li class="pets-cards__item" data-name="Katrine">
                                 <img src="./assets/img/pets/katrine.png" alt="katrine" width="270" height="270">
                                 <div class="pets-cards__content">
                                     <span class="pets-cards__title">Katrine</span>
                                     <button type="button" class="pets-cards__btn">Learn more</button>
                                 </div>
                             </li>
-                            <li class="pets-cards__item">
+                            <li class="pets-cards__item" data-name="Jennifer">
                                 <img src="./assets/img/pets/jennifer.png" alt="jennifer" width="270" height="270">
                                 <div class="pets-cards__content">
                                     <span class="pets-cards__title">Jennifer</span>
                                     <button type="button" class="pets-cards__btn">Learn more</button>
                                 </div>
                             </li>
-                            <li class="pets-cards__item">
+                            <li class="pets-cards__item" data-name="Woody">
                                 <img src="./assets/img/pets/woody.png" alt="woody" width="270" height="270">
                                 <div class="pets-cards__content">
                                     <span class="pets-cards__title">Woody</span>
@@ -224,6 +224,14 @@
             </div>
         </footer>
 
-        <script src="scripts/./script.js"></script>
+        <div id="popup" class="popup">
+            <div class="popup__wrapp">
+                <button type="button" id="close" class="popup__btn">
+                    <img src="./assets/img/icons/close.svg" alt="close-icon">
+                </button>
+            </div>
+        </div>
+
+        <script src="scripts/script.js" type="module"></script>
     </body>
 </html>

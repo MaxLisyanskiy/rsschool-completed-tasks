@@ -35,6 +35,7 @@
 }
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -1238,7 +1239,7 @@ body.noScroll {
   }
 }
 
-.popup {
+.drawer {
   position: fixed;
   top: 0px;
   right: -100%;
@@ -1250,11 +1251,11 @@ body.noScroll {
   overflow-y: auto;
   overflow-x: hidden;
 }
-.popup.active {
+.drawer.active {
   display: block;
   right: 0;
 }
-.popup__background {
+.drawer__background {
   visibility: hidden;
   opacity: 0;
   position: fixed;
@@ -1267,20 +1268,20 @@ body.noScroll {
   background: rgba(41, 41, 41, 0.6);
   transition: all 0.2s ease;
 }
-.popup__background.active {
+.drawer__background.active {
   visibility: visible;
   opacity: 1;
 }
-.popup-menu {
+.drawer-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 248px;
 }
-.popup-menu__item {
+.drawer-menu__item {
   margin-bottom: 40px;
 }
-.popup-menu__link {
+.drawer-menu__link {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -1289,24 +1290,169 @@ body.noScroll {
   color: #CDCDCD;
   transition: all 0.2s ease;
 }
-.popup-menu__link.active {
+.drawer-menu__link.active {
   cursor: default;
   color: #FAFAFA;
   padding-bottom: 4px;
   border-bottom: 3px solid #F1CDB3;
 }
-.popup-menu__link:hover {
+.drawer-menu__link:hover {
   color: #FAFAFA;
 }
-.popup_white {
+.drawer_white {
   background-color: #FFFFFF;
 }
-.popup_white .popup-menu__link {
+.drawer_white .drawer-menu__link {
   color: #545454;
 }
-.popup_white .popup-menu__link.active {
+.drawer_white .drawer-menu__link.active {
   color: #292929;
 }
-.popup_white .popup-menu__link:hover {
+.drawer_white .drawer-menu__link:hover {
   color: #292929;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 41, 41, 0.6);
+  padding: 0 60px;
+}
+.popup.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-animation: popup-fade 0.5s ease forwards;
+          animation: popup-fade 0.5s ease forwards;
+}
+.popup__wrapp {
+  position: relative;
+}
+.popup-content {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  background: #FAFAFA;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.popup-content__img {
+  width: 500px;
+}
+.popup-content__wrapp {
+  padding: 50px 20px 0 29px;
+}
+.popup-content__title {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  text-align: center;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.popup-content__subtitle {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 40px;
+}
+.popup-content__descr {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  color: #000000;
+  margin-bottom: 40px;
+}
+.popup-content__list {
+  padding-left: 13px;
+  color: #F1CDB3;
+}
+.popup-content__list li {
+  list-style: disc;
+  padding-bottom: 10px;
+}
+.popup-content__list li p {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  color: #000000;
+}
+.popup-content__list li p span {
+  font-weight: 700;
+}
+.popup__btn {
+  position: absolute;
+  top: -50px;
+  right: -46px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+.popup__btn:hover {
+  background: #FDDCC4;
+}
+
+@-webkit-keyframes backdrop-fade {
+  from {
+    background: transparent;
+  }
+  to {
+    background: rgba(41, 41, 41, 0.6);
+  }
+}
+
+@keyframes backdrop-fade {
+  from {
+    background: transparent;
+  }
+  to {
+    background: rgba(41, 41, 41, 0.6);
+  }
+}
+@-webkit-keyframes popup-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes popup-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=style.css.map */
