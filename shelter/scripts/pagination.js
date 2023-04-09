@@ -56,9 +56,13 @@ function renderPets() {
     petsAmount = handleCheckScreenWidth();
     maxPages = Math.ceil(48 / petsAmount);
 
-    petsSection.innerHTML = '';
+    if (currentPage > maxPages) {
+        currentPage = maxPages
+    }
 
     const items = petsData.slice((currentPage - 1) * petsAmount, currentPage * petsAmount);
+
+    petsSection.innerHTML = '';
 
     items.forEach(item => {
         const div = document.createElement('li');
@@ -122,6 +126,27 @@ paginationBtns.forEach(btn => {
         renderPagination()
     })
 })
+
+addEventListener("resize", () => {
+    const width = window.innerWidth
+
+    if(width <= 500) {
+        if(petsAmount !== 3) {
+            renderPets();
+            renderPagination()
+        }
+    } else if(width <= 1000) {
+        if(petsAmount !== 6) {
+            renderPets();
+            renderPagination()
+        }
+    } else {
+        if(petsAmount !== 8) {
+            renderPets();
+            renderPagination()
+        }
+    }
+});
 
 handleMakePetsArray()
 renderPets();
