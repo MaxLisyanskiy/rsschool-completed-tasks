@@ -28,7 +28,7 @@
             border: 2px solid $color-primary-light;
         }
 
-        & svg {
+        & svg path{
             fill: $color-dark-3xl
         }
 
@@ -36,7 +36,7 @@
             cursor: default;
             border: 2px solid $color-dark-s;
 
-            & svg {
+            & svg path{
                 fill: $color-dark-s
             }
 

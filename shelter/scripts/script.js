@@ -4,6 +4,8 @@ function include(url) {
     script.setAttribute('type', 'module');
     document.getElementsByTagName('body')[0].appendChild(script);
 }
-
-include("scripts/drawer.js");
-include("scripts/popup.js");
+document.addEventListener("DOMContentLoaded", function() {
+    include("scripts/drawer.js");
+    include("scripts/pagination.js");
+    setTimeout(() => include("scripts/popup.js"), 1000)
+})

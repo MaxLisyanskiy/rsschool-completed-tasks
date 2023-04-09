@@ -1038,14 +1038,14 @@ body.noScroll {
   background: #FDDCC4;
   border: 2px solid #FDDCC4;
 }
-.paginations__btn svg {
+.paginations__btn svg path {
   fill: #292929;
 }
 .paginations__btn:disabled {
   cursor: default;
   border: 2px solid #CDCDCD;
 }
-.paginations__btn:disabled svg {
+.paginations__btn:disabled svg path {
   fill: #CDCDCD;
 }
 .paginations__btn:disabled:hover {
@@ -1371,7 +1371,6 @@ body.noScroll {
 @media (max-width: 420px) {
   .popup-content {
     width: 240px;
-    height: 341px;
   }
 }
 .popup-content__img {

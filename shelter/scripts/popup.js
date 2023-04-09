@@ -6,7 +6,7 @@ const popupWrapp = document.querySelector(".popup__wrapp");
 
 import pets from "./pets.js";
 
-function showPopup(card) {
+export function showPopup(card) {
     const cardName = card.querySelector(".pets-cards__title").innerText;
     const item = pets.find(pet => pet.name === cardName)
     const popupLayout = `
