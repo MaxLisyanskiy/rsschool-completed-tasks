@@ -19,6 +19,13 @@
 
     &__wrapp {
         position: relative;
+        margin-left: 5px;
+        @media (max-width: 1050px) {
+            margin-left: 0;
+        }
+        @media (max-width: 420px) {
+            margin-top: -5px;
+        }
     }
 
     &-content {
@@ -28,13 +35,46 @@
         background: $color-light-s;
         border-radius: 9px;
         overflow: hidden;
+        transition: all .3s ease;
+
+        @media (max-width: 1050px) {
+            width: 630px;
+            height: 350px;
+        }
+
+        @media (max-width: 766px) {
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+            height: auto;
+        }
+
+        @media (max-width: 420px) {
+            width: 240px;
+            height: 341px;
+        }
 
         &__img {
             width: 500px;
+            @media (max-width: 1050px) {
+                width: 350px;
+            }
+            @media (max-width: 766px) {
+                width: 50%;
+            }
+            @media (max-width: 420px) {
+                display: none;
+            }
         }
 
         &__wrapp {
-            padding: 50px 20px 0 29px;
+            padding: 50px 20px 0 30px;
+            @media (max-width: 1050px) {
+                padding: 10px 9px 0 10px;
+            }
+            @media (max-width: 420px) {
+                padding: 10px;
+            }
         }
 
         &__title {
@@ -42,6 +82,10 @@
             text-align: left;
             color: #000000;
             margin-bottom: 10px;
+
+            @media (max-width: 420px) {
+                text-align: center;
+            }
         }
 
         &__subtitle {
@@ -49,21 +93,43 @@
             text-align: left;
             color: #000000;
             margin-bottom: 40px;
+            @media (max-width: 1050px) {
+                margin-bottom: 20px;
+            }
+
+            @media (max-width: 420px) {
+                text-align: center;
+            }
         }
 
         &__descr {
             @include text-h5;
             color: #000000;
             margin-bottom: 40px;
+            @media (max-width: 1050px) {
+                font-size: 13px;
+                line-height: 110%;
+                margin-bottom: 15px;
+            }
+            @media (max-width: 420px) {
+                margin-bottom: 20px;
+                text-align: justify;
+            }
         }
 
         &__list {
-            padding-left: 13px;
+            padding-left: 15px;
             color: $color-primary;
+            @media (max-width: 1050px) {
+                padding-bottom: 15px;
+            }
 
             & li {
                 list-style: disc;
-                padding-bottom: 10px;
+                padding-bottom: 7px;
+                @media (max-width: 1050px) {
+                    padding-bottom: 3px;
+                }
 
                 & p {
                     @include text-h5;
@@ -79,8 +145,8 @@
 
     &__btn {
         position: absolute;
-        top: -50px;
-        right: -46px;
+        top: -53px;
+        right: -43px;
         width: 52px;
         height: 52px;
         display: flex;
@@ -91,15 +157,22 @@
         border-radius: 100px;
         transition: all .2s ease;
 
+        @media (max-width: 1050px) {
+            top: -53px;
+            right: -43px;
+        }
+
+        @media (max-width: 766px) {
+            right: -30px;
+        }
+
         &:hover {
             background: $color-primary-light;
         }
+
+
     }
 }
-
-// .popup[open]::backdrop {
-//     animation: backdrop-fade .5s  ease forwards;
-// }
 
 @keyframes backdrop-fade {
     from {
