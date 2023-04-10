@@ -65,8 +65,31 @@
     &-burger {
         display: none;
         background: inherit;
+        z-index: 999;
+        transition: all 0.3s ease;
+
         @media (max-width: 767px) {
+            margin-top: 13px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &.active {
+            transform: rotate(90deg);
+        }
+
+        & span {
             display: block;
+            width: 30px;
+            height: 2px;
+            background-color: $color-primary;
+            margin-bottom: 8px;
+        }
+
+        &_white {
+            & span {
+                background-color: #000000;
+            }
         }
     }
 }
