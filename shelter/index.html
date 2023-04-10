@@ -84,50 +84,34 @@
                     <h3 class="our-friends__title">Our friends who <br> are looking for a house</h3>
 
                     <div class="slider">
-                        <button type="button" class="slider__btn slider__btn_desk">
+                        <button type="button" class="slider__btn slider__btn_desk prevBtn">
                             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929"/>
                             </svg>
                         </button>
 
-                        <ul class="slider-cards">
-                            <li class="pets-cards__item" data-name="Katrine">
-                                <img src="./assets/img/pets/katrine.png" alt="katrine" width="270" height="270">
-                                <div class="pets-cards__content">
-                                    <span class="pets-cards__title">Katrine</span>
-                                    <button type="button" class="pets-cards__btn">Learn more</button>
-                                </div>
-                            </li>
-                            <li class="pets-cards__item" data-name="Jennifer">
-                                <img src="./assets/img/pets/jennifer.png" alt="jennifer" width="270" height="270">
-                                <div class="pets-cards__content">
-                                    <span class="pets-cards__title">Jennifer</span>
-                                    <button type="button" class="pets-cards__btn">Learn more</button>
-                                </div>
-                            </li>
-                            <li class="pets-cards__item" data-name="Woody">
-                                <img src="./assets/img/pets/woody.png" alt="woody" width="270" height="270">
-                                <div class="pets-cards__content">
-                                    <span class="pets-cards__title">Woody</span>
-                                    <button type="button" class="pets-cards__btn">Learn more</button>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="slider__wrapp">
+                            <div class="slider-cards">
+                                <ul class="slider-cards__block cardsPastBlock"></ul>
+                                <ul class="slider-cards__block cardsCurrentBlock"></ul>
+                                <ul class="slider-cards__block cardsNextBlock"></ul>
+                            </div>
+                        </div>
 
-                        <button type="button" class="slider__btn slider__btn_desk">
+                        <button type="button" class="slider__btn slider__btn_desk nextBtn">
                             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929"/>
                             </svg>
                         </button>
 
                         <div class="slider__btn_mob">
-                            <button type="button" class="slider__btn">
+                            <button type="button" class="slider__btn prevBtnMob">
                                 <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929"/>
                                 </svg>
                             </button>
     
-                            <button type="button" class="slider__btn">
+                            <button type="button" class="slider__btn nextBtnMob">
                                 <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929"/>
                                 </svg>
@@ -232,6 +216,6 @@
             </div>
         </div>
 
-        <script src="scripts/script.js" type="module"></script>
+        <script src="scripts/scriptMain.js" type="module"></script>
     </body>
 </html>
