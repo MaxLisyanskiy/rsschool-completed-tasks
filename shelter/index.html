@@ -33,9 +33,28 @@
                             </li>
                         </ul>
                     </nav>
-                    <button class="head-burger">
-                        <img src="./assets/img/icons/burger.svg" alt="burger-icon">
+                    <button class="head-burger" id="burg">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </button>
+                    <div class="drawer" id="drawer">
+                        <ul class="drawer-menu">
+                            <li class="drawer-menu__item">
+                                <p class="drawer-menu__link active">About the shelter</p>
+                            </li>
+                            <li class="drawer-menu__item">
+                                <a href="pets.html" class="drawer-menu__link">Our pets</a>
+                            </li>
+                            <li class="drawer-menu__item" id="helpLink">
+                                <a href="#help" class="drawer-menu__link">Help the shelter</a>
+                            </li>
+                            <li class="drawer-menu__item" id="contactsLink">
+                                <a href="#contacts" class="drawer-menu__link">Contacts</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="drawer__background" id="drawerBack"></div>
                 </header>
                 <div class="start-screen__wrapp">
                     <div class="start-screen__content">
@@ -65,50 +84,34 @@
                     <h3 class="our-friends__title">Our friends who <br> are looking for a house</h3>
 
                     <div class="slider">
-                        <button type="button" class="slider__btn slider__btn_desk">
+                        <button type="button" class="slider__btn slider__btn_desk prevBtn">
                             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929"/>
                             </svg>
                         </button>
 
-                        <ul class="slider-cards">
-                            <li class="pets-cards__item">
-                                <img src="./assets/img/pets/katrine.png" alt="katrine" width="270" height="270">
-                                <div class="pets-cards__content">
-                                    <span class="pets-cards__title">Katrine</span>
-                                    <button type="button" class="pets-cards__btn">Learn more</button>
-                                </div>
-                            </li>
-                            <li class="pets-cards__item">
-                                <img src="./assets/img/pets/jennifer.png" alt="jennifer" width="270" height="270">
-                                <div class="pets-cards__content">
-                                    <span class="pets-cards__title">Jennifer</span>
-                                    <button type="button" class="pets-cards__btn">Learn more</button>
-                                </div>
-                            </li>
-                            <li class="pets-cards__item">
-                                <img src="./assets/img/pets/woody.png" alt="woody" width="270" height="270">
-                                <div class="pets-cards__content">
-                                    <span class="pets-cards__title">Woody</span>
-                                    <button type="button" class="pets-cards__btn">Learn more</button>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="slider__wrapp">
+                            <div class="slider-cards">
+                                <ul class="slider-cards__block cardsPastBlock"></ul>
+                                <ul class="slider-cards__block cardsCurrentBlock"></ul>
+                                <ul class="slider-cards__block cardsNextBlock"></ul>
+                            </div>
+                        </div>
 
-                        <button type="button" class="slider__btn slider__btn_desk">
+                        <button type="button" class="slider__btn slider__btn_desk nextBtn">
                             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929"/>
                             </svg>
                         </button>
 
                         <div class="slider__btn_mob">
-                            <button type="button" class="slider__btn">
+                            <button type="button" class="slider__btn prevBtnMob">
                                 <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929"/>
                                 </svg>
                             </button>
     
-                            <button type="button" class="slider__btn">
+                            <button type="button" class="slider__btn nextBtnMob">
                                 <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929"/>
                                 </svg>
@@ -204,5 +207,15 @@
                 <img class="footer__img" src="./assets/img/footer-puppy.png" alt="footer-puppy">
             </div>
         </footer>
+
+        <div id="popup" class="popup">
+            <div class="popup__wrapp">
+                <button type="button" id="close" class="popup__btn">
+                    <img src="./assets/img/icons/close.svg" alt="close-icon">
+                </button>
+            </div>
+        </div>
+
+        <script src="scripts/scriptMain.js" type="module"></script>
     </body>
 </html>
