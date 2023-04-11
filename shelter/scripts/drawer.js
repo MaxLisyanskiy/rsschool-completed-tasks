@@ -4,6 +4,7 @@ const drawerBack = document.querySelector("#drawerBack");
 const helpLink = document.querySelector("#helpLink");
 const contactsLink = document.querySelector("#contactsLink");
 const burg = document.querySelector("#burg");
+const activeLink = document.querySelector(".drawer-menu__link.active");
 
 function handleToggleMenu(event) {
     if(event) event.preventDefault();
@@ -20,3 +21,6 @@ drawerBack.addEventListener("click", event => handleToggleMenu(event));
 helpLink && helpLink.addEventListener("click",  () => handleToggleMenu());
 
 contactsLink.addEventListener("click", () => handleToggleMenu());
+
+activeLink.addEventListener("click", () => handleToggleMenu());
+
