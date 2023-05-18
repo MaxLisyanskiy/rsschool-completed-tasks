@@ -1,3 +1,9 @@
 @import "reset.css";
 @import "_varibles.scss";
 @import "_main.scss";
+
+// blocks
+@import "blocks/_head.scss";
+@import "blocks/_values.scss";
+@import "blocks/_controls.scss";
+@import "blocks/_field.scss";

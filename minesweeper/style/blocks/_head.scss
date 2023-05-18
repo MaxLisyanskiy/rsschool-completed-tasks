@@ -1,0 +1,15 @@
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__btn {
+        background: none;
+        cursor: pointer;
+    }
+
+    &__title {
+        font-size: calc(3vw + 12px);
+        margin: 0 30px;
+    }
+}
