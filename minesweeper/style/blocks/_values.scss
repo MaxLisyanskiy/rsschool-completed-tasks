@@ -1,3 +1,19 @@
 .values {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        & span {
+            font-weight: 700;
+            font-size: 30px;
+            margin-right: 5px;
+        }
     
+        & img {
+            width: 25px;
+        }
+    }
 }

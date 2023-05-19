@@ -1,6 +1,8 @@
+
+
 .light {
     --bg-color: #f1f4fa;
-    --inverted-bg-color: #364153;
+    --minesweeper-color: rgba(206, 210, 217, 0.8);
     --primary-color: #ff3e17;
     --secondary-color: #f9d3cb;
     --inverted-primary-color: #ff3e17;
@@ -9,7 +11,7 @@
 
 .dark {
     --bg-color:#727272;
-    --inverted-bg-color: #364153;
+    --minesweeper-color: #364153;
     --primary-color: #ff3e17;
     --secondary-color: #f9d3cb;
     --inverted-primary-color: #ff3e17;

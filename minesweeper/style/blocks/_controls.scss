@@ -1,3 +1,19 @@
 .controls {
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+
+    & button {
+        padding: 8px;
+        border-radius: 8px;
+        background: rgb(183, 186, 191);
+    }
+
+    &-menu,
+    &-question {
+        & img {
+            width: 30px;
+        }
+    }
 }

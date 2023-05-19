@@ -22,38 +22,181 @@
                 </button>
             </div>
 
-
-
             <div class="minesweeper">
                 <div class="values">
-                    <div>
+                    <div class="values__item">
+                        <span>0</span>
                         <img src="./assets/flag.png" alt="flag">
                     </div>
-                    <div>
+                    <div class="values__item">
+                        <span>0</span>
                         <img src="./assets/timer.png" alt="timer">
                     </div>
-                    <div>
+                    <div class="values__item">
+                        <span>0</span>
                         <img src="./assets/click.png" alt="click">
                     </div>
                 </div>
 
                 <div class="controls">
-                    <button>
+                    <button class="controls-menu">
                         <img src="./assets/menu.png" alt="menu">
                     </button>
                     <button>
                         <img src="./assets/cat-first.png" alt="cat">
                     </button>
-                    <button>
+                    <button class="controls-question">
                         <img src="./assets/question.png" alt="question">
                     </button>
                 </div>
 
-                <div class="field">
+                <div class="addition">
+                    <div class="addition-level">
+                        <span>Level:</span>
+                        <select name="select">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="addition-count">
+                        <span>Count of bombs:</span>
+                        <div class="addition-count__wrapp">
+                            <input type="number" value="10">
+                            <button>✔</button>
+                        </div>
+                    </div>
+                    <button class="addition__result">Check results</button>
+                </div>
 
+                <div class="field">
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
                 </div>
             </div>
         </main>
+
+        <div class="popup">
+            <div class="popup__content">
+                <button class="popup__close"><span>x</span></button>
+                <div class="info">
+                    <div class="info-flag">
+                        <img src="./assets/flag.png" alt="flag">
+                        <p>Нажмите правую кнопку мыши на ячейке, чтобы разместить флаг</p>
+                    </div>
+                    <div class="info-field">
+                        <div class="info-field__cell">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <p>Обычное нажатие, чтобы раскопать участок</p>
+                    </div>
+                    <div class="info-cat">
+                        <img src="./assets/cat-first.png" alt="cat-first">
+                        <p>Нажмите на котика, чтобы начать игру занаво</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <script src="script/index.js" type="module"></script>
     </body>
