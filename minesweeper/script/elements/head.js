@@ -16,9 +16,9 @@ export function createHeadElement() {
           sound.setAttribute('src', './assets/sound-on.png');
           sound.setAttribute('alt', 'sound-on');
 
-    head.appendChild(img);
-    head.appendChild(h1);
-    head.appendChild(sound);
+    head.append(img);
+    head.append(h1);
+    head.append(sound);
 
     return head
 }

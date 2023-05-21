@@ -7,7 +7,6 @@
   --controls-color: rgb(183, 186, 191);
   --cell-color: #ffffff;
   --cell-shadow-color: 0px 1px 0px rgba(0, 0, 0, 0.3);
-  --addition-color: rgb(183, 186, 191);
 }
 
 .dark {
@@ -17,7 +16,6 @@
   --controls-color: #171616;
   --cell-color: #5d5d5d;
   --cell-shadow-color: 0px 1px 0px rgba(255, 255, 255, 0.3);
-  --addition-color: rgb(183, 186, 191);
 }
 
 body {
@@ -229,7 +227,7 @@ body {
   background: rgba(41, 41, 41, 0.6);
   padding: 0 60px;
 }
-.popup.open {
+.popup.show {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,7 +240,7 @@ body {
   width: 300px;
   height: auto;
   padding: 12px;
-  background: #FAFAFA;
+  background: var(--controls-color);
   border-radius: 9px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -257,8 +255,13 @@ body {
   padding: 4px 10px;
   font-size: 20px;
   font-weight: 700;
+  color: var(--color);
   border: 1px solid grey;
   border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.popup__close:hover span {
+  transform: scale(1.1);
 }
 
 .info {

@@ -26,8 +26,8 @@ export function generateBody(themeСolor, ) {
     minesweeper.append(addition)
     minesweeper.append(field)
 
-    main.appendChild(head);
-    main.appendChild(minesweeper);
+    main.append(head);
+    main.append(minesweeper);
 
     body.prepend(main);
 }

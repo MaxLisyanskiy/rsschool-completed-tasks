@@ -10,7 +10,7 @@
     background: rgba(41, 41, 41, 0.6);
     padding: 0 60px;
 
-    &.open {
+    &.show {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -24,7 +24,7 @@
         width: 300px;
         height: auto;
         padding: 12px;
-        background: #FAFAFA;
+        background: var(--controls-color);
         border-radius: 9px;
         overflow: hidden;
         transition: all 0.3s ease;
@@ -40,8 +40,17 @@
             padding: 4px 10px;
             font-size: 20px;
             font-weight: 700;
+            color: var(--color);
             border: 1px solid grey;
-            border-radius: 50%
+            border-radius: 50%;
+            transition: all .2s ease;
+        }
+
+        &:hover {
+
+            & span {
+                transform: scale(1.1);
+            }
         }
     }
 }
