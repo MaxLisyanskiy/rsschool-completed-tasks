@@ -7,7 +7,12 @@
     & button {
         padding: 8px;
         border-radius: 8px;
-        background: rgb(183, 186, 191);
+        background: var(--controls-color);
+        transition: transform .1s ease;
+
+        &:active {
+            transform: scale(0.9);
+        }
     }
 
     &-menu,

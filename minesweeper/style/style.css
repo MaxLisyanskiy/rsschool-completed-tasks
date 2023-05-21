@@ -1,25 +1,28 @@
 @import "reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
 .light {
+  --color: #313131;
   --bg-color: #f1f4fa;
   --minesweeper-color: rgba(206, 210, 217, 0.8);
-  --primary-color: #ff3e17;
-  --secondary-color: #f9d3cb;
-  --inverted-primary-color: #ff3e17;
-  --inverted-secondary-color: #f9d3cb;
+  --controls-color: rgb(183, 186, 191);
+  --cell-color: #ffffff;
+  --cell-shadow-color: 0px 1px 0px rgba(0, 0, 0, 0.3);
+  --addition-color: rgb(183, 186, 191);
 }
 
 .dark {
+  --color: #ffffff;
   --bg-color:#727272;
-  --minesweeper-color: #364153;
-  --primary-color: #ff3e17;
-  --secondary-color: #f9d3cb;
-  --inverted-primary-color: #ff3e17;
-  --inverted-secondary-color: #f9d3cb;
+  --minesweeper-color: #313131;
+  --controls-color: #171616;
+  --cell-color: #5d5d5d;
+  --cell-shadow-color: 0px 1px 0px rgba(255, 255, 255, 0.3);
+  --addition-color: rgb(183, 186, 191);
 }
 
 body {
   font-family: "Nunito", sans-serif;
+  color: var(--color);
   background-color: var(--bg-color);
 }
 
@@ -92,7 +95,11 @@ body {
 .controls button {
   padding: 8px;
   border-radius: 8px;
-  background: rgb(183, 186, 191);
+  background: var(--controls-color);
+  transition: transform 0.1s ease;
+}
+.controls button:active {
+  transform: scale(0.9);
 }
 .controls-menu img, .controls-question img {
   width: 30px;
@@ -105,7 +112,7 @@ body {
   margin-top: 20px;
   padding: 12px;
   border-radius: 8px;
-  background: rgb(183, 186, 191);
+  background: var(--controls-color);
 }
 @media (max-width: 600px) {
   .addition {
@@ -202,9 +209,12 @@ body {
   justify-content: center;
   margin: 2px;
   border-radius: 3px;
-  background: #FFFFFF;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+  background: var(--cell-color);
+  box-shadow: var(--cell-shadow-color);
   cursor: pointer;
+}
+.cell:hover {
+  box-shadow: inset 0 0 0 1px var(--controls-color);
 }
 
 .popup {

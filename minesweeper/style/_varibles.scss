@@ -1,19 +1,21 @@
-
-
 .light {
+    --color: #313131;
     --bg-color: #f1f4fa;
     --minesweeper-color: rgba(206, 210, 217, 0.8);
-    --primary-color: #ff3e17;
-    --secondary-color: #f9d3cb;
-    --inverted-primary-color: #ff3e17;
-    --inverted-secondary-color: #f9d3cb;
+    --controls-color: rgb(183, 186, 191);
+    --cell-color: #ffffff;
+    --cell-shadow-color: 0px 1px 0px rgba(0, 0, 0, 0.3);
+
+    --addition-color: rgb(183, 186, 191);
 }
 
 .dark {
+    --color: #ffffff;
     --bg-color:#727272;
-    --minesweeper-color: #364153;
-    --primary-color: #ff3e17;
-    --secondary-color: #f9d3cb;
-    --inverted-primary-color: #ff3e17;
-    --inverted-secondary-color: #f9d3cb;
+    --minesweeper-color: #313131;
+    --controls-color: #171616;
+    --cell-color: #5d5d5d;
+    --cell-shadow-color: 0px 1px 0px rgba(255, 255, 255, 0.3);
+
+    --addition-color: rgb(183, 186, 191);
 }
