@@ -1,5 +1,5 @@
 .addition {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
@@ -11,8 +11,8 @@
         flex-direction: column;
     }
 
-    &.hide {
-        display: none;
+    &.show {
+        display: flex;
     }
 
     &-level {

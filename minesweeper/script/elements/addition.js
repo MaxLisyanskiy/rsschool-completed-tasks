@@ -1,6 +1,7 @@
 export function createAdditionElement() {
     const additionWrapp = document.createElement('div');
-          additionWrapp.classList.add('addition');
+          additionWrapp.setAttribute('id', 'addition');
+          additionWrapp.setAttribute('class', 'addition');
 
     additionWrapp.insertAdjacentHTML('beforeend',
         `

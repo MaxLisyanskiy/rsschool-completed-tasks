@@ -1,6 +1,6 @@
 import { generateBody } from './generate-body.js'
 import { generateInfoPopup } from './popup/info-popup.js'
-import { events } from './events.js'
+import { controlsEvents } from './events/controls-events.js'
 import { popupEvents } from './events/popup-events.js';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     generateBody(themeСolor);
     generateInfoPopup();
-    events();
+    controlsEvents();
     popupEvents();
 });

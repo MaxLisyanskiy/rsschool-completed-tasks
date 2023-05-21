@@ -23,8 +23,12 @@ body {
   color: var(--color);
   background-color: var(--bg-color);
 }
+body.hidden {
+  overflow: hidden;
+}
 
 .container {
+  padding: 30px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +48,6 @@ body {
 }
 
 .head {
-  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -104,7 +107,7 @@ body {
 }
 
 .addition {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
@@ -117,8 +120,8 @@ body {
     flex-direction: column;
   }
 }
-.addition.hide {
-  display: none;
+.addition.show {
+  display: flex;
 }
 .addition-level {
   display: flex;
@@ -225,7 +228,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(41, 41, 41, 0.6);
-  padding: 0 60px;
+  padding: 0 20px;
 }
 .popup.show {
   display: flex;
