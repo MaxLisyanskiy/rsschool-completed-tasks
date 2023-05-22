@@ -5,11 +5,11 @@ import { gameEvents } from './events/game-events.js';
 import { popupEvents } from './events/popup-events.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-    const themeСolor = localStorage.getItem('themeСolor');
-    const level = localStorage.getItem('level');
-    const bombsCount = localStorage.getItem('bombsCount');
-    const flagsCount = localStorage.getItem('flagsCount');
-    const clicksCount = localStorage.getItem('clicksCount');
+    const themeСolor = localStorage.getItem('themeСolor') ?? 'light';
+    const level = localStorage.getItem('level') ?? 'easy';
+    const bombsCount = localStorage.getItem('bombsCount') ?? 10;
+    const flagsCount = localStorage.getItem('flagsCount') ?? 10;
+    const clicksCount = localStorage.getItem('clicksCount') ?? 0;
 
     generateBody(themeСolor, level, bombsCount, flagsCount, clicksCount);
     generateInfoPopup();

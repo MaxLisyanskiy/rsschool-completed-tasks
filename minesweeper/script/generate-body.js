@@ -6,7 +6,7 @@ import { createFieldElement } from './elements/field.js'
 
 export function generateBody(themeСolor, level, bombsCount, flagsCount, clicksCount) {
     const body = document.querySelector('body')
-    body.classList.add(themeСolor ?? 'light');
+    body.classList.add(themeСolor);
 
     const main = document.createElement('main');
     main.classList.add('container');
