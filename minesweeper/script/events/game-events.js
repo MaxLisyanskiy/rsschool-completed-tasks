@@ -5,7 +5,7 @@ import { generateBombs } from "../helpers/generate-bombs.js";
 import { saveFieldState } from "../helpers/save-field-state.js";
 import { searchBombs } from "../helpers/search-bombs.js";
 
-export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount) {
+export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sTimer) {
 	let time = 0;
 	let level = sLevel;
 	let totalCellCount = sTotalCellCount;
@@ -13,11 +13,15 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	let bombsCount = sBombsCount;
 	let indexesBombs = []
 	let flagsCount = sFlagsCount;
-	let clicksCount = 0;
+	let clicksCount = sClicksCount;
 	let gameOver = false;
 
     const field = document.querySelector('.field');
     const catBtn = document.querySelector('#catBtn');
+
+	if (Number(sTimer) > 0) {
+		handleStartInterval(Number(sTimer))
+	}
     
 	function changeLevelOrCountBombs(value) {
 		const flags = document.querySelector('#flags');
@@ -62,11 +66,17 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		}
 	}
 
-	function handleStartInterval() {
+	function handleStartInterval(timerState) {
 		const timer = document.querySelector('#timer');
 
-		time = 1;
-		timer.innerText = 1;
+		if(timerState) {
+			time = timerState;
+			timer.innerText = timerState;
+		} else {
+			time = 1;
+			timer.innerText = 1;
+		}
+
 		interval = setInterval(() => {
 			time++;
 			timer.innerText = time;
@@ -131,6 +141,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	}
 	
 	function restartGame() {
+		clearInterval(interval)
 		clearStorage()
 		catImg.src = "./assets/cat-first.png"
 		createField()
@@ -161,9 +172,8 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 				handleOpenCell(Number(item.id))
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-good.png"
-				saveFieldState()
-
 			}
+			saveFieldState()
 		}
     });
 
@@ -183,6 +193,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 					item.innerHTML = `<span id="${item.id}">🚩</span>`;
 					handleToggleFlag('add')
 				}
+				saveFieldState()
 			}
 		}
 	});
@@ -202,7 +213,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		level = value;
 		totalCellCount = count * count;
 		changeLevelOrCountBombs(count)
-		createField()
+		restartGame()
 	});
 
 	//additionCountBombs
@@ -210,5 +221,6 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	const additionBombsInput = document.querySelector('#additionBombsInput');
 	additionBombsBtn.addEventListener('click', () => {
 		changeLevelOrCountBombs(additionBombsInput.value)
+		restartGame()
 	});
 }

@@ -5,7 +5,7 @@ import { createAdditionElement } from './elements/addition.js'
 import { createFieldElement } from './elements/field.js'
 import { createSoundsElement } from './elements/sounds.js'
 
-export function generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount) {
+export function generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sFieldState) {
     const body = document.querySelector('body')
     body.classList.add(sThemeСolor);
 
@@ -20,7 +20,7 @@ export function generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount,
     const values = createValuesElement(sFlagsCount, sClicksCount)
     const controls = createControlsElement()
     const addition = createAdditionElement(sLevel, sBombsCount)
-    const field = createFieldElement(sLevel, sTotalCellCount)
+    const field = createFieldElement(sLevel, sTotalCellCount, sFieldState)
 
     minesweeper.append(values)
     minesweeper.append(controls)
