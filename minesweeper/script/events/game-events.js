@@ -35,6 +35,9 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 
 	function handleClick() {
 		const clicks = document.querySelector('#clicks');
+		const clickSound = document.getElementById('clickSound');
+
+		clickSound.play();
 
 		clicksCount++;
 		clicks.innerText = clicksCount;
@@ -43,6 +46,9 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 
 	function handleToggleFlag(action) {
 		const flags = document.querySelector('#flags');
+		const flagSound = document.getElementById('flagSound')
+
+		flagSound.play()
 
 		if(action === 'add') {
 			flagsCount--;
@@ -81,6 +87,8 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		const item = document.getElementById(id)
 		item.classList.add('clicked')
 
+		const gameOverSound = document.getElementById('gameOverSound');
+
 		const nearBombsCount = searchBombs(indexesBombs, id, level)
 		
 		if (indexesBombs.includes(id)) {
@@ -90,6 +98,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 				clearInterval(interval);
 				gameOver = true;
 				addCellBomb(id)
+				gameOverSound.play()
 
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-bad.png"

@@ -3,6 +3,7 @@ import { createValuesElement } from './elements/values.js'
 import { createControlsElement } from './elements/controls.js'
 import { createAdditionElement } from './elements/addition.js'
 import { createFieldElement } from './elements/field.js'
+import { createSoundsElement } from './elements/sounds.js'
 
 export function generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount) {
     const body = document.querySelector('body')
@@ -28,6 +29,9 @@ export function generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount,
 
     main.append(head);
     main.append(minesweeper);
+    main.append(minesweeper);
 
     body.prepend(main);
+
+    createSoundsElement()
 }

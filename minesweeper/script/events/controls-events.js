@@ -5,7 +5,10 @@ export function controlsEvents() {
     const themeElement = document.querySelector('#theme');
 
     themeElement.addEventListener('click', () => {
+		  const switchSound = document.getElementById('switchSound');
       const themeColor = body.className;
+
+      switchSound.play()
 
       localStorage.setItem('_themeСolor', themeColor === 'light' ? 'dark' : 'light');
       body.className = themeColor === 'light' ? 'dark' : 'light'
