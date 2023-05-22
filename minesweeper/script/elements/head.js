@@ -1,11 +1,11 @@
-export function createHeadElement() {
+export function createHeadElement(themeColor) {
     const head = document.createElement('div');
           head.classList.add('head');
 
     const img = document.createElement('img');
           img.setAttribute('id', 'theme');
-          img.setAttribute('src', './assets/icon-dark.png');
-          img.setAttribute('alt', 'icon-dark');
+          img.setAttribute('src', themeColor === 'light' ? './assets/icon-dark.png' : './assets/icon-light.png');
+          img.setAttribute('alt', 'icon-theme');
 
     const h1 = document.createElement('h1');
           h1.setAttribute('class', 'head__title');

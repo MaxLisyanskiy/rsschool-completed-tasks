@@ -2,6 +2,7 @@
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     width: 60vmin;
     max-width: 600px;
     height: 60vmin;

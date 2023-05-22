@@ -10,12 +10,11 @@ export function createFieldElement(fieldState, count = 100) {
     } else {
         for (let i = 0; i < count; i++) {
             const cell = document.createElement('div');
-            cell.classList.add('cell')
+            cell.classList.add('cell');
+            cell.id = i;
             fieldWrapp.append(cell)
         }
     }
         
-
-
     return fieldWrapp
 }

@@ -4,22 +4,13 @@ export function controlsEvents() {
     //theme
     const theme = document.querySelector('#theme');
     theme.addEventListener('click', () => {
-        const themeValue = localStorage.getItem('theme');
-  
-        localStorage.setItem('theme', themeValue === 'light' ? 'dark' : 'light');
-  
-        changeTheme();
+      const themeValue = localStorage.getItem('themeСolor');
+
+      localStorage.setItem('themeСolor', themeValue === 'light' ? 'dark' : 'light');
+
+      document.body.className = themeValue === 'light' ? 'dark' : 'light'
+      theme.src = themeValue === 'light' ? './assets/icon-light.png' : './assets/icon-dark.png'
     });
-    function changeTheme() {
-        const themeValue = localStorage.getItem('theme');
-  
-        if (!localStorage.getItem('theme')) {
-          localStorage.setItem('theme', 'light');
-        }
-  
-        document.body.className = themeValue === 'light' ? 'dark' : 'light'
-        theme.src = themeValue === 'light' ? './assets/icon-light.png' : './assets/icon-dark.png'
-    }
   
     //infoBtn
     const info = document.querySelector('#infoBtn');

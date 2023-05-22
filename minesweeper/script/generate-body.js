@@ -4,7 +4,7 @@ import { createControlsElement } from './elements/controls.js'
 import { createAdditionElement } from './elements/addition.js'
 import { createFieldElement } from './elements/field.js'
 
-export function generateBody(themeСolor, ) {
+export function generateBody(themeСolor, level, bombsCount, flagsCount, clicksCount) {
     const body = document.querySelector('body')
     body.classList.add(themeСolor ?? 'light');
 
@@ -16,9 +16,9 @@ export function generateBody(themeСolor, ) {
     const minesweeper = document.createElement('div');
     minesweeper.classList.add('minesweeper');
 
-    const values = createValuesElement()
+    const values = createValuesElement(flagsCount, clicksCount)
     const controls = createControlsElement()
-    const addition = createAdditionElement()
+    const addition = createAdditionElement(level, bombsCount)
     const field = createFieldElement()
 
     minesweeper.append(values)
