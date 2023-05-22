@@ -8,4 +8,12 @@ export function popupEvents() {
         infoPopup.classList.remove('show')
         body.classList.remove('hidden')
     });
+
+    //infoPopup
+    const bombPopup = document.querySelector('#bombPopup');
+    const bombPopupClose = document.querySelector('#bombPopupClose');
+    bombPopupClose.addEventListener('click', () => {
+        bombPopup.classList.remove('show')
+        body.classList.remove('hidden')
+    });
 }

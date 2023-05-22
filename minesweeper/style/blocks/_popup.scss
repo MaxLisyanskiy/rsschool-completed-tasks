@@ -130,6 +130,19 @@
     }
 }
 
+.bomp-popup {
+    & img {
+        width: 100%;
+    }
+    & p {
+        color: var(--color);
+        text-align: center;
+        font-size: 18px;
+        margin: 20px 0;
+        font-weight: 700;
+    }
+}
+
 @keyframes backdrop-fade {
     from {
       background: transparent;

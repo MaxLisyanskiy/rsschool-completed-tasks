@@ -1,10 +1,10 @@
-export function generateBombs(totalCellCount, bombsCount) {
+export function generateBombs(id, totalCellCount, bombsCount) {
     let bombsArr = [];
 
-    for (let i = 0; i < bombsCount; i++) {
-        const id = Math.floor(Math.random() * (totalCellCount - 1) + 1);
+    while (bombsArr.length < bombsCount) {
+        const randomId = Math.floor(Math.random() * (totalCellCount - 1) + 1);
 
-        if (!bombsArr.includes(id)) bombsArr.push(id);
+        if (!bombsArr.includes(randomId) && randomId !== id) bombsArr.push(randomId);
     }
 
     localStorage.setItem('_indexesBombs', JSON.stringify(bombsArr));

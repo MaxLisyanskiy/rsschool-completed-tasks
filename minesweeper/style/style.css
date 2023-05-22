@@ -452,6 +452,17 @@ body.hidden {
   text-align: center;
 }
 
+.bomp-popup img {
+  width: 100%;
+}
+.bomp-popup p {
+  color: var(--color);
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0;
+  font-weight: 700;
+}
+
 @-webkit-keyframes backdrop-fade {
   from {
     background: transparent;

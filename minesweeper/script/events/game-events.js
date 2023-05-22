@@ -14,6 +14,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	let indexesBombs = []
 	let flagsCount = sFlagsCount;
 	let clicksCount = 0;
+	let gameOver = false;
 
     const field = document.querySelector('.field');
     
@@ -77,13 +78,35 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	}
 
 	function handleOpenCell(id) {
+		const item = document.getElementById(id)
+		item.classList.add('clicked')
 
 		const nearBombsCount = searchBombs(indexesBombs, id, level)
 		
 		if (indexesBombs.includes(id)) {
-			addCellBomb(id)
+			if (gameOver) {
+				addCellBomb(id)
+			} else {
+				clearInterval(interval);
+				gameOver = true;
+				addCellBomb(id)
+
+				const catImg = document.querySelector('#catImg');
+				catImg.src = "./assets/cat-bad.png"
+
+
+				const cells = document.querySelectorAll('.cell');
+				cells.forEach((cell) => handleOpenCell(Number(cell.id)));
+
+				const bombPopup = document.querySelector('#bombPopup');
+				setTimeout(() => {
+					bombPopup.classList.add('show')
+				}, 800)
+			}
 		} else if (nearBombsCount > 0){
 			addCellNumber(id, nearBombsCount)
+		} else {
+			
 		}
 
 	}
@@ -93,18 +116,18 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		const item = event.target
 		
 		if(item.classList.contains('cell') && !item.classList.contains('clicked') && !item.classList.contains('flaged')) {
-
-			item.classList.add('clicked')
-
 			if (localStorage.getItem('_fieldState')) {
 				handleClick()
 				handleOpenCell(Number(item.id))
 			} else {
 				handleStartInterval()
 				handleClick()
-				indexesBombs = generateBombs(totalCellCount, bombsCount);
+				indexesBombs = generateBombs(event.target.id, totalCellCount, bombsCount);
 				handleOpenCell(Number(item.id))
+				const catImg = document.querySelector('#catImg');
+				catImg.src = "./assets/cat-good.png"
 				saveFieldState()
+
 			}
 		}
     });

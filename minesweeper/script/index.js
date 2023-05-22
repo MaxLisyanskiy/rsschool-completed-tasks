@@ -1,5 +1,7 @@
-import { generateBody } from './generate-body.js'
+import { generateBody } from './generate-body.js';
 import { generateInfoPopup } from './popup/info-popup.js'
+import { generateBompPopup } from './popup/bomb-popup.js';
+
 import { controlsEvents } from './events/controls-events.js'
 import { gameEvents } from './events/game-events.js';
 import { popupEvents } from './events/popup-events.js';
@@ -15,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount);
     generateInfoPopup();
+    generateBompPopup();
+
     controlsEvents();
     popupEvents();
 

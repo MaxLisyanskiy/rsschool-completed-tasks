@@ -7,8 +7,8 @@ export function createControlsElement() {
             <button id="additionBtn" class="controls-menu">
                 <img src="./assets/menu.png" alt="menu">
             </button>
-            <button>
-                <img src="./assets/cat-first.png" alt="cat">
+            <button id="catBtn">
+                <img id="catImg" src="./assets/cat-first.png" alt="cat">
             </button>
             <button id="infoBtn" class="controls-question">
                 <img src="./assets/question.png" alt="question">
