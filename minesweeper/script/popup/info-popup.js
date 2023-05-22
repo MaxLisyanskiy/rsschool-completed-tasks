@@ -24,7 +24,7 @@ export function generateInfoPopup() {
                     </div>
                     <div class="info-cat">
                         <img src="./assets/cat-first.png" alt="cat-first">
-                        <p>Нажмите на котика, чтобы начать игру занаво</p>
+                        <p>Нажмите на котика, чтобы начать игру заново</p>
                     </div>
                 </div>
             </div>

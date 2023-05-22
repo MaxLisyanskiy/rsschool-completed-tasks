@@ -287,6 +287,14 @@ body.hidden {
     margin: 1px;
   }
 }
+.cell.clicked {
+  background: none;
+  box-shadow: none;
+  cursor: default;
+}
+.cell.clicked:hover {
+  box-shadow: none;
+}
 .cell:hover {
   box-shadow: inset 0 0 0 1px var(--controls-color);
 }

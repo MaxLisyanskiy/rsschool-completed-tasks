@@ -18,5 +18,5 @@ document.addEventListener('DOMContentLoaded', function () {
     controlsEvents();
     popupEvents();
 
-    gameEvents()
+    gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount)
 });

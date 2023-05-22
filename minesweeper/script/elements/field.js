@@ -9,7 +9,7 @@ export function createFieldElement(sLevel, sTotalCellCount, fieldState) {
     if (fieldState) {
         fieldState.forEach( obj => {})
     } else {
-        for (let i = 0; i < sTotalCellCount; i++) {
+        for (let i = 1; i <= sTotalCellCount; i++) {
             const cell = createNewCellElement(i)
             fieldWrapp.append(cell)
         }

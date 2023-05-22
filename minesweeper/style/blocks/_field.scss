@@ -58,6 +58,15 @@
         margin: 1px;
     }
 
+    &.clicked {
+        background: none;
+        box-shadow: none;
+        cursor: default;
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
     &:hover {
         box-shadow: inset 0 0 0 1px var(--controls-color);
     }
