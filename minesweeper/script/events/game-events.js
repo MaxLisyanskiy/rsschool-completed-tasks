@@ -12,7 +12,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	let interval = 0;
 	let bombsCount = sBombsCount;
 	let indexesBombs = []
-	let flagsCount = 0;
+	let flagsCount = sFlagsCount;
 	let clicksCount = 0;
 
     const field = document.querySelector('.field');
@@ -112,18 +112,19 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	field.addEventListener('contextmenu', (event) => {
 		event.preventDefault();
 
-		const item = event.target
-		
-		if (item.classList.contains('cell') && !item.classList.contains('clicked') && flagsCount > 0 ) {
-			
-			if (item.classList.contains('flaged')) {
-				item.classList.remove('flaged')
-				item.innerHTML = '';
-				handleToggleFlag('remove')
-			} else {
-				item.classList.add('flaged')
-				item.innerHTML = '<span>🚩</span>';
-				handleToggleFlag('add')
+		const item = document.getElementById(event.target.id)
+
+		if (item.classList.contains('cell') && !item.classList.contains('clicked')) {
+			if(flagsCount > 0 || item.classList.contains('flaged')) {
+				if (item.classList.contains('flaged')) {
+					item.classList.remove('flaged')
+					item.innerHTML = '';
+					handleToggleFlag('remove')
+				} else {
+					item.classList.add('flaged')
+					item.innerHTML = `<span id="${item.id}">🚩</span>`;
+					handleToggleFlag('add')
+				}
 			}
 		}
 	});
