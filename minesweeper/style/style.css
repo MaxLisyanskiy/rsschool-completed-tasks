@@ -44,6 +44,12 @@ body.hidden {
 @media (max-width: 600px) {
   .minesweeper {
     margin-top: 20px;
+    padding: 20px 10px;
+  }
+}
+@media (max-width: 400px) {
+  .minesweeper {
+    padding: 10px 5px;
   }
 }
 
@@ -74,6 +80,11 @@ body.hidden {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 400px) {
+  .values {
+    padding: 10px 10px;
+  }
+}
 .values__item {
   display: flex;
   align-items: center;
@@ -83,8 +94,24 @@ body.hidden {
   font-size: 30px;
   margin-right: 5px;
 }
+@media (max-width: 600px) {
+  .values__item span {
+    font-size: 24px;
+    margin-right: 2px;
+  }
+}
+@media (max-width: 400px) {
+  .values__item span {
+    font-size: 18px;
+  }
+}
 .values__item img {
   width: 25px;
+}
+@media (max-width: 400px) {
+  .values__item img {
+    font-size: 20px;
+  }
 }
 
 .controls {
@@ -92,6 +119,12 @@ body.hidden {
   align-items: center;
   justify-content: space-between;
   margin-top: 30px;
+  padding: 0 20px;
+}
+@media (max-width: 400px) {
+  .controls {
+    margin-top: 10px;
+  }
 }
 .controls button {
   padding: 8px;
@@ -118,6 +151,7 @@ body.hidden {
 @media (max-width: 600px) {
   .addition {
     flex-direction: column;
+    margin: 20px 20px 0;
   }
 }
 .addition.show {
@@ -197,15 +231,48 @@ body.hidden {
 .field {
   margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
   width: 60vmin;
   max-width: 600px;
   height: 60vmin;
   max-height: 600px;
 }
+.field.easy {
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+.field.medium {
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+}
+.field.hard {
+  grid-template-columns: repeat(25, 1fr);
+  grid-template-rows: repeat(25, 1fr);
+}
+@media (max-width: 400px) {
+  .field {
+    width: 90vmin;
+    height: 90vmin;
+  }
+}
+
+@media (max-width: 600px) {
+  .field.hard {
+    width: 80vmin;
+    height: 80vmin;
+  }
+}
+@media (max-width: 400px) {
+  .field.hard {
+    width: 90vmin;
+    height: 90vmin;
+  }
+}
+.field.hard .cell span {
+  font-size: 8px;
+}
 
 .cell {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,8 +282,24 @@ body.hidden {
   box-shadow: var(--cell-shadow-color);
   cursor: pointer;
 }
+@media (max-width: 400px) {
+  .cell {
+    margin: 1px;
+  }
+}
 .cell:hover {
   box-shadow: inset 0 0 0 1px var(--controls-color);
+}
+.cell span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 600px) {
+  .cell span {
+    font-size: 10px;
+  }
 }
 
 .popup {

@@ -4,22 +4,22 @@ import { createControlsElement } from './elements/controls.js'
 import { createAdditionElement } from './elements/addition.js'
 import { createFieldElement } from './elements/field.js'
 
-export function generateBody(themeСolor, level, bombsCount, flagsCount, clicksCount) {
+export function generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount) {
     const body = document.querySelector('body')
-    body.classList.add(themeСolor);
+    body.classList.add(sThemeСolor);
 
     const main = document.createElement('main');
     main.classList.add('container');
 
-    const head = createHeadElement(themeСolor);
+    const head = createHeadElement(sThemeСolor);
 
     const minesweeper = document.createElement('div');
     minesweeper.classList.add('minesweeper');
 
-    const values = createValuesElement(flagsCount, clicksCount)
+    const values = createValuesElement(sFlagsCount, sClicksCount)
     const controls = createControlsElement()
-    const addition = createAdditionElement(level, bombsCount)
-    const field = createFieldElement()
+    const addition = createAdditionElement(sLevel, sBombsCount)
+    const field = createFieldElement(sLevel, sTotalCellCount)
 
     minesweeper.append(values)
     minesweeper.append(controls)

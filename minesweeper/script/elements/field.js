@@ -1,6 +1,7 @@
-export function createFieldElement(fieldState, count = 100) {
+export function createFieldElement(sLevel, sTotalCellCount, fieldState) {
     const fieldWrapp = document.createElement('div');
-          fieldWrapp.classList.add('field');
+          fieldWrapp.setAttribute('class', `field ${sLevel}`);
+
 
     const flag = '🚩'
     const bomb = '💣'
@@ -8,13 +9,19 @@ export function createFieldElement(fieldState, count = 100) {
     if (fieldState) {
         fieldState.forEach( obj => {})
     } else {
-        for (let i = 0; i < count; i++) {
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-            cell.id = i;
+        for (let i = 0; i < sTotalCellCount; i++) {
+            const cell = createNewCellElement(i)
             fieldWrapp.append(cell)
         }
     }
         
     return fieldWrapp
+}
+
+export function createNewCellElement(index) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.id = index;
+
+    return cell;
 }

@@ -1,10 +1,10 @@
-export function createHeadElement(themeColor) {
+export function createHeadElement(sThemeСolor) {
     const head = document.createElement('div');
           head.classList.add('head');
 
     const img = document.createElement('img');
           img.setAttribute('id', 'theme');
-          img.setAttribute('src', themeColor === 'light' ? './assets/icon-dark.png' : './assets/icon-light.png');
+          img.setAttribute('src', sThemeСolor === 'light' ? './assets/icon-dark.png' : './assets/icon-light.png');
           img.setAttribute('alt', 'icon-theme');
 
     const h1 = document.createElement('h1');

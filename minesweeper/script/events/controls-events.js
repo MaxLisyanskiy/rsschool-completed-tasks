@@ -2,14 +2,14 @@ export function controlsEvents() {
     const body = document.querySelector('body');
   
     //theme
-    const theme = document.querySelector('#theme');
-    theme.addEventListener('click', () => {
-      const themeValue = localStorage.getItem('themeСolor');
+    const themeElement = document.querySelector('#theme');
 
-      localStorage.setItem('themeСolor', themeValue === 'light' ? 'dark' : 'light');
+    themeElement.addEventListener('click', () => {
+      const themeColor = body.className;
 
-      document.body.className = themeValue === 'light' ? 'dark' : 'light'
-      theme.src = themeValue === 'light' ? './assets/icon-light.png' : './assets/icon-dark.png'
+      localStorage.setItem('_themeСolor', themeColor === 'light' ? 'dark' : 'light');
+      body.className = themeColor === 'light' ? 'dark' : 'light'
+      themeElement.src = themeColor === 'light' ? './assets/icon-light.png' : './assets/icon-dark.png'
     });
   
     //infoBtn

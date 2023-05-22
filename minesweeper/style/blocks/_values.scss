@@ -3,6 +3,10 @@
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: 400px) {
+        padding: 10px 10px;
+    }
+
     &__item {
         display: flex;
         align-items: center;
@@ -10,10 +14,20 @@
             font-weight: 700;
             font-size: 30px;
             margin-right: 5px;
+            @media (max-width: 600px) {
+                font-size: 24px;
+                margin-right: 2px;
+            }
+            @media (max-width: 400px) {
+                font-size: 18px;
+            }
         }
     
         & img {
             width: 25px;
+            @media (max-width: 400px) {
+                font-size: 20px;
+            }
         }
     }
 }
