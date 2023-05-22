@@ -1,0 +1,23 @@
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & img {
+        cursor: pointer;
+        transition: all .3s ease;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__title {
+        font-size: 50px;
+        margin: 0 30px;
+
+        @media (max-width: 1200px) {
+            font-size: calc(3vw + 12px);
+        }
+    }
+}

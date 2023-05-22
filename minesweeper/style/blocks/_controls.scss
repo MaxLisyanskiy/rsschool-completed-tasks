@@ -1,0 +1,34 @@
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 0 20px;
+
+    @media (max-width: 400px) {
+        margin-top: 10px;
+    }
+
+    & button {
+        padding: 8px;
+        border-radius: 8px;
+        background: var(--controls-color);
+        transition: all .2s ease;
+
+        &:active {
+            transform: scale(0.9);
+        }
+
+        &:hover {
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+        }
+    }
+
+    &-menu,
+    &-question {
+        & img {
+            width: 30px;
+        }
+    }
+}
