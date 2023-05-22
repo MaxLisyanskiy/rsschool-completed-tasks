@@ -17,6 +17,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 	let gameOver = false;
 
     const field = document.querySelector('.field');
+    const catBtn = document.querySelector('#catBtn');
     
 	function changeLevelOrCountBombs(value) {
 		const flags = document.querySelector('#flags');
@@ -73,6 +74,14 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		}, 1000);
 	}
 
+	function clearStorage() {
+		localStorage.removeItem('_indexesBombs');
+		localStorage.removeItem('_flagsCount');
+		localStorage.removeItem('_clicksCount');
+		localStorage.removeItem('_timer');
+		localStorage.removeItem('_fieldState');
+	}
+
 	function createField() {
 		field.innerHTML = '';
 		field.setAttribute('class', `field ${level}`);
@@ -90,7 +99,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		const gameOverSound = document.getElementById('gameOverSound');
 
 		const nearBombsCount = searchBombs(indexesBombs, id, level)
-		
+
 		if (indexesBombs.includes(id)) {
 			if (gameOver) {
 				addCellBomb(id)
@@ -99,6 +108,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 				gameOver = true;
 				addCellBomb(id)
 				gameOverSound.play()
+				clearStorage();
 
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-bad.png"
@@ -119,7 +129,23 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		}
 
 	}
+	
+	function restartGame() {
+		clearStorage()
+		catImg.src = "./assets/cat-first.png"
+		createField()
+		gameOver = false;
+		const timer = document.getElementById('timer')
+		const clicks = document.getElementById('clicks')
+		const flags = document.getElementById('flags')
+		time = 0;
+		flagsCount = bombsCount;
+		clicksCount = 0
 
+		timer.innerText = 0;
+		clicks.innerText = 0;
+		flags.innerText = flagsCount;
+	}
 
 	field.addEventListener('click', (event) => {
 		const item = event.target
@@ -131,7 +157,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 			} else {
 				handleStartInterval()
 				handleClick()
-				indexesBombs = generateBombs(event.target.id, totalCellCount, bombsCount);
+				indexesBombs = generateBombs(Number(event.target.id), totalCellCount, bombsCount);
 				handleOpenCell(Number(item.id))
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-good.png"
@@ -160,6 +186,10 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 			}
 		}
 	});
+
+	catBtn.addEventListener('click', () => {
+		restartGame()
+    });
 
 	//additionLevel
 	const additionLevel = document.querySelector('#additionLevel');
