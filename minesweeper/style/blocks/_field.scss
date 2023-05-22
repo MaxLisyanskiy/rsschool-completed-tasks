@@ -59,12 +59,49 @@
     }
 
     &.clicked {
+        font-weight: 900;
         background: none;
         box-shadow: none;
         cursor: default;
         &:hover {
             box-shadow: none;
         }
+    }
+
+    &.one {
+        color: green
+    }
+
+    &.two {
+        color: blue
+    }
+
+    &.three {
+        color: red
+    }
+
+    &.four {
+        color: rgb(255, 0, 221)
+    }
+
+    &.five {
+        color: rgb(111, 0, 255)
+    }
+
+    &.six {
+        color: rgb(255, 255, 0)
+    }
+
+    &.seven {
+        color: rgb(0, 195, 255)
+    }
+
+    &.eight {
+        color: rgb(0, 255, 115)
+    }
+
+    &.bombed {
+        background: #f90000;
     }
 
     &:hover {

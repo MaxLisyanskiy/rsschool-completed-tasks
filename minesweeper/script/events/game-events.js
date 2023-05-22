@@ -1,5 +1,6 @@
 import { createNewCellElement } from "../elements/field.js";
 import { addCellNumber } from "../helpers/add-cell-number.js";
+import { addCellBomb } from "../helpers/add-cell-bomb.js";
 import { generateBombs } from "../helpers/generate-bombs.js";
 import { saveFieldState } from "../helpers/save-field-state.js";
 import { searchBombs } from "../helpers/search-bombs.js";
@@ -80,7 +81,7 @@ export function gameEvents(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, s
 		const nearBombsCount = searchBombs(indexesBombs, id, level)
 		
 		if (indexesBombs.includes(id)) {
-			console.log(id);
+			addCellBomb(id)
 		} else if (nearBombsCount > 0){
 			addCellNumber(id, nearBombsCount)
 		}
