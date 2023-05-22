@@ -119,10 +119,10 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 				addCellBomb(id)
 				gameOverSound.play()
 				clearStorage();
+				updateResult('Lose')
 
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-bad.png"
-
 
 				const cells = document.querySelectorAll('.cell');
 				cells.forEach((cell) => handleOpenCell(Number(cell.id)));
@@ -158,22 +158,53 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 		flags.innerText = flagsCount;
 	}
 
+	function updateResult(result) {
+		let resultState = localStorage.getItem('_resultState');
+
+		const date = new Date();
+		const day = date.getDate();
+		const month = date.getMonth() + 1;
+		const year = date.getFullYear();
+		const currentTime = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
+		const currentDate = `${day}-${month}-${year} ${currentTime}`;
+		
+
+		const obj = {
+			date: currentDate,
+			result,
+			level,
+			clicksCount,
+			time
+		}
+
+		if (resultState) {
+			resultState = JSON.parse(resultState)
+		} else {
+			resultState = []
+		}
+
+		resultState.unshift(obj)
+		resultState = resultState.slice(0, 10);
+		localStorage.setItem('_resultState', JSON.stringify(resultState));
+	}
+
 	field.addEventListener('click', (event) => {
 		const item = event.target
 		
 		if(item.classList.contains('cell') && !item.classList.contains('clicked') && !item.classList.contains('flaged')) {
 			if (localStorage.getItem('_fieldState')) {
 				handleClick()
+				saveFieldState()
 				handleOpenCell(Number(item.id))
 			} else {
 				handleStartInterval()
 				handleClick()
 				indexesBombs = generateBombs(Number(event.target.id), totalCellCount, bombsCount);
+				saveFieldState()
 				handleOpenCell(Number(item.id))
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-good.png"
 			}
-			saveFieldState()
 		}
     });
 

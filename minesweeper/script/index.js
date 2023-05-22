@@ -1,6 +1,7 @@
 import { generateBody } from './generate-body.js';
 import { generateInfoPopup } from './popup/info-popup.js'
 import { generateBompPopup } from './popup/bomb-popup.js';
+import { generateResultPopup } from './popup/result-popup.js';
 
 import { controlsEvents } from './events/controls-events.js'
 import { gameEvents } from './events/game-events.js';
@@ -20,9 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
     generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sFieldState);
     generateInfoPopup();
     generateBompPopup();
+    generateResultPopup();
 
     controlsEvents();
     popupEvents();
 
-    gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sTimer, sFieldState)
+    gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sTimer)
 });

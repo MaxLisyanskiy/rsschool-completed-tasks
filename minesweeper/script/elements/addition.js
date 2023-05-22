@@ -20,7 +20,7 @@ export function createAdditionElement(sLevel, sBombsCount) {
                     <button id="additionBombsBtn">✔</button>
                 </div>
             </div>
-            <button class="addition__result">Check results</button>
+            <button id="resultBtn" class="addition__result">Check results</button>
         `
     );
 
