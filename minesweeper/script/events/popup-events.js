@@ -9,11 +9,19 @@ export function popupEvents() {
         body.classList.remove('hidden')
     });
 
-    //infoPopup
+    //bombPopup
     const bombPopup = document.querySelector('#bombPopup');
     const bombPopupClose = document.querySelector('#bombPopupClose');
     bombPopupClose.addEventListener('click', () => {
         bombPopup.classList.remove('show')
+        body.classList.remove('hidden')
+    });
+
+    //winPopup
+    const winPopup = document.querySelector('#winPopup');
+    const winPopupClose = document.querySelector('#winPopupClose');
+    winPopupClose.addEventListener('click', () => {
+        winPopup.classList.remove('show')
         body.classList.remove('hidden')
     });
 }
