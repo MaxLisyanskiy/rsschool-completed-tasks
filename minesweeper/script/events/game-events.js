@@ -94,6 +94,39 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 		localStorage.removeItem('_fieldState');
 	}
 
+	function checkAllCellOpened() {
+		const winGameSound = document.getElementById('winGameSound');
+		const soundState = localStorage.getItem('_soundState') ?? 'on';
+
+		const cells = document.querySelectorAll('.cell')
+		let result = 0
+
+		cells.forEach(i => {
+			if(i.classList.contains('clicked')) {
+				result++
+			}
+		})
+
+		if(result === (totalCellCount - bombsCount)) {
+			clearInterval(interval);
+			gameOver = true;
+			if(soundState === 'on') winGameSound.play()
+			clearStorage();
+			updateResult('Win')
+
+			const catImg = document.querySelector('#catImg');
+			catImg.src = "./assets/cat-win.png"
+
+			const cells = document.querySelectorAll('.cell');
+			cells.forEach((cell) => handleOpenCell(Number(cell.id)));
+
+			const winPopup = document.querySelector('#winPopup');
+			setTimeout(() => {
+				winPopup.classList.add('show')
+			}, 800)
+		}
+	}
+
 	function createField() {
 		field.innerHTML = '';
 		field.setAttribute('class', `field ${level}`);
@@ -106,6 +139,9 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 
 	function handleOpenCell(id) {
 		const item = document.getElementById(id)
+
+		if(item.classList.contains('clicked')) return false
+
 		item.classList.add('clicked')
 
 		const gameOverSound = document.getElementById('gameOverSound');
@@ -135,12 +171,106 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 					bombPopup.classList.add('show')
 				}, 800)
 			}
-		} else if (nearBombsCount > 0){
-			addCellNumber(id, nearBombsCount)
 		} else {
-			
+			checkAllCellOpened()
+			if (nearBombsCount > 0){
+				addCellNumber(id, nearBombsCount)
+			} else {
+				const rowCount = level === 'easy' ? 10 : level === 'medium' ? 15 : 25;
+	
+				if (id === 1) {
+					for (let y = 0; y < rowCount * 2; y += rowCount) {
+						for (let x = id; x < id + 2; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+	
+				else if (id > 1 && id < rowCount) {
+					for (let y = 0; y < rowCount * 2; y += rowCount) {
+						for (let x = id - 1; x < id + 2; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+	
+				else if (id == rowCount) {
+					for (let y = 0; y < rowCount * 2; y += rowCount) {
+						for (let x = id - 1; x < id + 1; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+	
+				else if (id > rowCount && (id - 1) % rowCount == 0 && id < rowCount * rowCount - rowCount) {
+					for (let y = 0; y < rowCount * 3; y += rowCount) {
+						for (let x = id - rowCount; x < id - rowCount + 2; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+
+				else if (id == rowCount * rowCount - rowCount + 1) {
+					for (let y = 0; y < rowCount * 2; y += rowCount) {
+						for (let x = id - rowCount; x < id - rowCount + 2; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+
+				else if (id > rowCount * rowCount - rowCount + 1 && id < rowCount * rowCount) {
+					for (let y = 0; y < rowCount * 2; y += rowCount) {
+						for (let x = id - rowCount - 1; x < id - rowCount + 2; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+
+				else if (id == rowCount * rowCount) {
+					for (let y = 0; y < rowCount * 2; y += rowCount) {
+						for (let x = id - rowCount - 1; x < id - rowCount + 1; x++) {
+						handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+
+				else if (id > rowCount && id % rowCount == 0 && id < rowCount * rowCount) {
+					for (let y = 0; y < rowCount * 3; y += rowCount) {
+						for (let x = id - rowCount - 1; x < id - rowCount + 1; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+
+				else if (id > rowCount + 1 && id < rowCount * rowCount - rowCount - 1) {
+					for (let y = 0; y < rowCount * 3; y += rowCount) {
+						for (let x = id - rowCount - 1; x < id - rowCount + 2; x++) {
+							handleOpenEmptyCell(x + y);
+						}
+					}
+				}
+			}
 		}
 
+	}
+
+	function handleOpenEmptyCell(id) {
+		if (id > 0 && id <= totalCellCount) {
+			const item = document.getElementById(id)
+
+			const nearBombsCount = searchBombs(indexesBombs, id, level)
+
+			if (nearBombsCount > 0) {
+				item.classList.add('clicked')
+				addCellNumber(id, nearBombsCount)
+			} else if(indexesBombs.includes(id)) {
+				return false
+			} else {
+				handleOpenCell(id);
+			}
+
+			checkAllCellOpened()
+		}
 	}
 	
 	function restartGame() {

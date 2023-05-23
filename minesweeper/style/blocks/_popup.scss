@@ -144,6 +144,19 @@
     }
 }
 
+.win-popup {
+    & img {
+        width: 100%;
+    }
+    & p {
+        color: var(--color);
+        text-align: center;
+        font-size: 17px;
+        margin: 20px 0;
+        font-weight: 700;
+    }
+}
+
 .result-popup {
     overflow: auto;
 
