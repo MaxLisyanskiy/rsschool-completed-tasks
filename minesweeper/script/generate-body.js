@@ -5,14 +5,14 @@ import { createAdditionElement } from './elements/addition.js'
 import { createFieldElement } from './elements/field.js'
 import { createSoundsElement } from './elements/sounds.js'
 
-export function generateBody(sThemeСolor, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sFieldState) {
+export function generateBody(sThemeСolor, sSoundState, sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sFieldState) {
     const body = document.querySelector('body')
     body.classList.add(sThemeСolor);
 
     const main = document.createElement('main');
     main.classList.add('container');
 
-    const head = createHeadElement(sThemeСolor);
+    const head = createHeadElement(sThemeСolor, sSoundState);
 
     const minesweeper = document.createElement('div');
     minesweeper.classList.add('minesweeper');

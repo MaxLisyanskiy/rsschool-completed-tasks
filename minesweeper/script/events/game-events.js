@@ -41,8 +41,9 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 	function handleClick() {
 		const clicks = document.querySelector('#clicks');
 		const clickSound = document.getElementById('clickSound');
+		const soundState = localStorage.getItem('_soundState') ?? 'on';
 
-		clickSound.play();
+		if(soundState === 'on') clickSound.play();
 
 		clicksCount++;
 		clicks.innerText = clicksCount;
@@ -52,8 +53,9 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 	function handleToggleFlag(action) {
 		const flags = document.querySelector('#flags');
 		const flagSound = document.getElementById('flagSound')
+		const soundState = localStorage.getItem('_soundState') ?? 'on';
 
-		flagSound.play()
+		if(soundState === 'on') flagSound.play()
 
 		if(action === 'add') {
 			flagsCount--;
@@ -107,6 +109,7 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 		item.classList.add('clicked')
 
 		const gameOverSound = document.getElementById('gameOverSound');
+		const soundState = localStorage.getItem('_soundState') ?? 'on';
 
 		const nearBombsCount = searchBombs(indexesBombs, id, level)
 
@@ -117,7 +120,7 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 				clearInterval(interval);
 				gameOver = true;
 				addCellBomb(id)
-				gameOverSound.play()
+				if(soundState === 'on') gameOverSound.play()
 				clearStorage();
 				updateResult('Lose')
 

@@ -3,16 +3,25 @@ export function controlsEvents() {
   
     //theme
     const themeElement = document.querySelector('#theme');
-
     themeElement.addEventListener('click', () => {
+      const soundState = localStorage.getItem('_soundState') ?? 'on';
 		  const switchSound = document.getElementById('switchSound');
       const themeColor = body.className;
 
-      switchSound.play()
+      if(soundState === 'on') switchSound.play()
 
       localStorage.setItem('_themeСolor', themeColor === 'light' ? 'dark' : 'light');
       body.className = themeColor === 'light' ? 'dark' : 'light'
       themeElement.src = themeColor === 'light' ? './assets/icon-light.png' : './assets/icon-dark.png'
+    });
+
+    //sound
+    const soundElement = document.querySelector('#sound');
+    soundElement.addEventListener('click', () => {
+      const soundState = localStorage.getItem('_soundState') ?? 'on';
+
+      localStorage.setItem('_soundState', soundState === 'on' ? 'off' : 'on');
+      soundElement.src = soundState === 'on' ? './assets/sound-off.png' : './assets/sound-on.png'
     });
   
     //infoBtn
