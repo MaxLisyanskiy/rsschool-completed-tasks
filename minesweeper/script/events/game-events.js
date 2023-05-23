@@ -41,8 +41,9 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 	function handleClick() {
 		const clicks = document.querySelector('#clicks');
 		const clickSound = document.getElementById('clickSound');
+		const soundState = localStorage.getItem('_soundState') ?? 'on';
 
-		clickSound.play();
+		if(soundState === 'on') clickSound.play();
 
 		clicksCount++;
 		clicks.innerText = clicksCount;
@@ -52,8 +53,9 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 	function handleToggleFlag(action) {
 		const flags = document.querySelector('#flags');
 		const flagSound = document.getElementById('flagSound')
+		const soundState = localStorage.getItem('_soundState') ?? 'on';
 
-		flagSound.play()
+		if(soundState === 'on') flagSound.play()
 
 		if(action === 'add') {
 			flagsCount--;
@@ -107,6 +109,7 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 		item.classList.add('clicked')
 
 		const gameOverSound = document.getElementById('gameOverSound');
+		const soundState = localStorage.getItem('_soundState') ?? 'on';
 
 		const nearBombsCount = searchBombs(indexesBombs, id, level)
 
@@ -117,12 +120,12 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 				clearInterval(interval);
 				gameOver = true;
 				addCellBomb(id)
-				gameOverSound.play()
+				if(soundState === 'on') gameOverSound.play()
 				clearStorage();
+				updateResult('Lose')
 
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-bad.png"
-
 
 				const cells = document.querySelectorAll('.cell');
 				cells.forEach((cell) => handleOpenCell(Number(cell.id)));
@@ -158,22 +161,53 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 		flags.innerText = flagsCount;
 	}
 
+	function updateResult(result) {
+		let resultState = localStorage.getItem('_resultState');
+
+		const date = new Date();
+		const day = date.getDate();
+		const month = date.getMonth() + 1;
+		const year = date.getFullYear();
+		const currentTime = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
+		const currentDate = `${day}-${month}-${year} ${currentTime}`;
+		
+
+		const obj = {
+			date: currentDate,
+			result,
+			level,
+			clicksCount,
+			time
+		}
+
+		if (resultState) {
+			resultState = JSON.parse(resultState)
+		} else {
+			resultState = []
+		}
+
+		resultState.unshift(obj)
+		resultState = resultState.slice(0, 10);
+		localStorage.setItem('_resultState', JSON.stringify(resultState));
+	}
+
 	field.addEventListener('click', (event) => {
 		const item = event.target
 		
 		if(item.classList.contains('cell') && !item.classList.contains('clicked') && !item.classList.contains('flaged')) {
 			if (localStorage.getItem('_fieldState')) {
 				handleClick()
+				saveFieldState()
 				handleOpenCell(Number(item.id))
 			} else {
 				handleStartInterval()
 				handleClick()
 				indexesBombs = generateBombs(Number(event.target.id), totalCellCount, bombsCount);
+				saveFieldState()
 				handleOpenCell(Number(item.id))
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-good.png"
 			}
-			saveFieldState()
 		}
     });
 

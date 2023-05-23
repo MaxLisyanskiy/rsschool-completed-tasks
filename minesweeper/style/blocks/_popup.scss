@@ -23,6 +23,7 @@
         flex-direction: column;
         width: 300px;
         height: auto;
+        max-height: 500px;
         padding: 12px;
         background: var(--controls-color);
         border-radius: 9px;
@@ -140,6 +141,56 @@
         font-size: 18px;
         margin: 20px 0;
         font-weight: 700;
+    }
+}
+
+.result-popup {
+    overflow: auto;
+
+    &__empty {
+        & img {
+            width: 100%;
+        }
+        & h3 {
+            color: var(--color);
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+    }
+
+    &__list {
+        & li {
+            margin: 8px 0;
+            padding: 10px 10px;
+            border-radius: 8px;
+            background: var(--bg-color);
+
+            & h3 {
+                font-weight: 800;
+                margin-bottom: 5px;
+
+                &.Lose {
+                    color: red
+                }
+                &.Win {
+                    color: green
+                }
+            }
+
+            & h4 {
+                font-size: 14px;
+                font-weight: 800;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    &__values {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }
 

@@ -369,6 +369,7 @@ body.hidden {
   flex-direction: column;
   width: 300px;
   height: auto;
+  max-height: 500px;
   padding: 12px;
   background: var(--controls-color);
   border-radius: 9px;
@@ -468,6 +469,46 @@ body.hidden {
   font-size: 18px;
   margin: 20px 0;
   font-weight: 700;
+}
+
+.result-popup {
+  overflow: auto;
+}
+.result-popup__empty img {
+  width: 100%;
+}
+.result-popup__empty h3 {
+  color: var(--color);
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0;
+  font-weight: 700;
+}
+.result-popup__list li {
+  margin: 8px 0;
+  padding: 10px 10px;
+  border-radius: 8px;
+  background: var(--bg-color);
+}
+.result-popup__list li h3 {
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+.result-popup__list li h3.Lose {
+  color: red;
+}
+.result-popup__list li h3.Win {
+  color: green;
+}
+.result-popup__list li h4 {
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+.result-popup__values {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @-webkit-keyframes backdrop-fade {
