@@ -172,7 +172,7 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 				}, 800)
 			}
 		} else {
-			checkAllCellOpened()
+			if(!gameOver) checkAllCellOpened()
 			if (nearBombsCount > 0){
 				addCellNumber(id, nearBombsCount)
 			} else {
@@ -269,7 +269,7 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 				handleOpenCell(id);
 			}
 
-			checkAllCellOpened()
+			if(!gameOver) checkAllCellOpened()
 		}
 	}
 	
