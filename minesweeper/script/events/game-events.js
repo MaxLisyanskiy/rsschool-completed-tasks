@@ -5,13 +5,13 @@ import { generateBombs } from "../helpers/generate-bombs.js";
 import { saveFieldState } from "../helpers/save-field-state.js";
 import { searchBombs } from "../helpers/search-bombs.js";
 
-export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sTimer) {
+export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sIndexesBombs, sFlagsCount, sClicksCount, sTimer) {
 	let time = 0;
 	let level = sLevel;
 	let totalCellCount = sTotalCellCount;
 	let interval = 0;
 	let bombsCount = sBombsCount;
-	let indexesBombs = []
+	let indexesBombs = sIndexesBombs
 	let flagsCount = sFlagsCount;
 	let clicksCount = sClicksCount;
 	let gameOver = false;
@@ -111,7 +111,6 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 			clearInterval(interval);
 			gameOver = true;
 			if(soundState === 'on') winGameSound.play()
-			clearStorage();
 			updateResult('Win')
 
 			const catImg = document.querySelector('#catImg');
@@ -123,6 +122,7 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 			const winPopup = document.querySelector('#winPopup');
 			setTimeout(() => {
 				winPopup.classList.add('show')
+				clearStorage();
 			}, 800)
 		}
 	}
@@ -157,7 +157,6 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 				gameOver = true;
 				addCellBomb(id)
 				if(soundState === 'on') gameOverSound.play()
-				clearStorage();
 				updateResult('Lose')
 
 				const catImg = document.querySelector('#catImg');
@@ -169,12 +168,14 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 				const bombPopup = document.querySelector('#bombPopup');
 				setTimeout(() => {
 					bombPopup.classList.add('show')
+					clearStorage();
 				}, 800)
 			}
 		} else {
 			if(!gameOver) checkAllCellOpened()
 			if (nearBombsCount > 0){
 				addCellNumber(id, nearBombsCount)
+				saveFieldState()
 			} else {
 				const rowCount = level === 'easy' ? 10 : level === 'medium' ? 15 : 25;
 	
@@ -263,6 +264,7 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 			if (nearBombsCount > 0) {
 				item.classList.add('clicked')
 				addCellNumber(id, nearBombsCount)
+				saveFieldState()
 			} else if(indexesBombs.includes(id)) {
 				return false
 			} else {
@@ -327,13 +329,11 @@ export function gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sC
 		if(item.classList.contains('cell') && !item.classList.contains('clicked') && !item.classList.contains('flaged')) {
 			if (localStorage.getItem('_fieldState')) {
 				handleClick()
-				saveFieldState()
 				handleOpenCell(Number(item.id))
 			} else {
 				handleStartInterval()
 				handleClick()
 				indexesBombs = generateBombs(Number(event.target.id), totalCellCount, bombsCount);
-				saveFieldState()
 				handleOpenCell(Number(item.id))
 				const catImg = document.querySelector('#catImg');
 				catImg.src = "./assets/cat-good.png"

@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sLevel = localStorage.getItem('_level') ?? 'easy';
     const sTotalCellCount = localStorage.getItem('_totalCellCount') ?? 100;
     const sBombsCount = localStorage.getItem('_bombsCount') ?? 10;
+    const sIndexesBombs = localStorage.getItem('_indexesBombs') ?? [];
     const sFlagsCount = localStorage.getItem('_flagsCount') ?? sBombsCount;
     const sClicksCount = localStorage.getItem('_clicksCount') ?? 0;
     const sTimer = localStorage.getItem('_timer') ?? 0;
@@ -29,5 +30,5 @@ document.addEventListener('DOMContentLoaded', function () {
     controlsEvents();
     popupEvents();
 
-    gameEvents(sLevel, sTotalCellCount, sBombsCount, sFlagsCount, sClicksCount, sTimer)
+    gameEvents(sLevel, sTotalCellCount, sBombsCount, sIndexesBombs, sFlagsCount, sClicksCount, sTimer)
 });
