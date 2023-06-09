@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"target": "es2016",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true, // Task: В конфигурационном файле TypeScript стоят флаги: "strict": true
+		"noImplicitAny": true, // В конфигурационном файле TypeScript стоят флаги: "noImplicitAny": true
+		"skipLibCheck": true
+	}
+}
