@@ -4,6 +4,7 @@
         "browser": true,
         "node": true
     },
+    "eslintIgnore": ["webpack.config.js", "eslintrc.json"],
     "plugins": ["prettier", "import", "@typescript-eslint"],
     "extends": [
         "airbnb-typescript/base",
