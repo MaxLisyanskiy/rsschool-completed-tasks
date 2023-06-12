@@ -31,6 +31,10 @@
     transition: transform 0.2s;
 }
 
+.news__item .news__meta-photo_hide {
+    display: none;
+}
+
 .news__item .news__meta-details,
 .news__item .news__meta-details ul {
     margin: auto;
