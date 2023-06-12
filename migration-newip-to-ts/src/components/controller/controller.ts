@@ -11,6 +11,10 @@ class AppController extends AppLoader {
         super.getResp(
             {
                 endpoint: Endpoint.sources,
+                options: {
+                    category: 'general',
+                    country: 'ru'
+                },
             },
             callback
         );

@@ -2,13 +2,13 @@ import Loader from './loader';
 
 enum Api { 
     dev = "https://newsapi.org/v2/", 
-    prod = "https://nodenews.herokuapp.com/",
+    prod = "https://rss-news-api.onrender.com/",
 };
 
 class AppLoader extends Loader {
     constructor() {
-        super(Api.dev, {
-            apiKey: '017b55d657094789b986676060a3b835', // получите свой ключ https://newsapi.org/
+        super(Api.prod, {
+            apiKey: '3907f9547d364fdaa36a6b87c92e8015', // получите свой ключ https://newsapi.org/
         });
     }
 }
