@@ -19,17 +19,34 @@ footer {
     align-items: center;
     justify-content: center;
 }
+footer .rsschool {
+    width: 100px;
+}
+footer .github {
+    width: 50px;
+}
 footer .copyright {
+    margin: 0 50px;
     font-size: 14px;
-    color: #333;
+    color: rgb(202, 212, 13);
     text-align: center;
 }
 footer .copyright a {
-    color: #444;
+    margin-left: 10px;
+    color: rgb(190, 13, 13);
 }
 footer .copyright a:hover {
     color: #555;
 }
 footer .copyright:before {
     content: '©';
+}
+
+@media (max-width: 500px) {
+    footer .rsschool {
+        width: 50px;
+    }
+    footer .github {
+        width: 30px;
+    }
 }
