@@ -15,3 +15,14 @@ export interface NewsItem {
     url: string;
     urlToImage: string;
 }
+
+// Sources
+export interface SourcesItem {
+    category: string;
+    country: string;
+    description: string;
+    id: string;
+    language: string;
+    name: string;
+    url: string;
+}
