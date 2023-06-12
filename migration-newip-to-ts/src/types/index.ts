@@ -1,5 +1,7 @@
 // Options
 export type TemplateElementOrNull = HTMLTemplateElement | null
+export type Options = Record<string, unknown>
+export type Callback<T> = (data: T) => void;
 
 
 // News
