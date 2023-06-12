@@ -1,7 +1,13 @@
 // Options
 export type TemplateElementOrNull = HTMLTemplateElement | null
 
+
 // News
+export interface NewsData {
+    articles: NewsItem[];
+    status: string;
+    totalResults: number;
+}
 export interface NewsItem {
     author: string;
     content: string;
@@ -16,7 +22,13 @@ export interface NewsItem {
     urlToImage: string;
 }
 
+
+
 // Sources
+export interface SourcesData {
+    sources: SourcesItem[];
+    status: string;
+}
 export interface SourcesItem {
     category: string;
     country: string;
