@@ -2,15 +2,15 @@ import { Callback, Options } from "../../types";
 
 class Loader {
     private readonly baseLink: string;
-    private readonly options: Options;
+    private readonly options: Options | undefined;
     
-    constructor(baseLink: string, options: Options) {
+    constructor(baseLink: string, options?: Options) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     public getResp<Data>( 
-        { endpoint, options = {} }: { endpoint: string; options: Options },
+        { endpoint, options = {} }: { endpoint: string; options?: Options },
         callback: Callback<Data> = () => {
             console.error('No callback for GET response');
         }
