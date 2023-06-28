@@ -43,6 +43,10 @@ const baseConfig = {
           filename: "assets/[name][ext]",
         },
       },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        use: "file-loader",
+      },
     ],
   },
 
