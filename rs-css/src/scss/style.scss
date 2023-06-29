@@ -23,3 +23,10 @@ body {
   font-style: normal;
   background: #f1f4fa;
 }
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: hidden;
+}

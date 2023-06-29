@@ -86,7 +86,7 @@ export default class AppSidebar {
   };
 
   public getHtmlElement(): HTMLElement {
-    const sidebar = document.createElement("div");
+    const sidebar = document.createElement("aside");
     sidebar.classList.add("sidebar");
     sidebar.append(this.header, this.info, this.list);
     return sidebar;
