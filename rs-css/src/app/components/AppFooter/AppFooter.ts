@@ -4,8 +4,9 @@ export default class AppFooter {
   createLink(className: string, href: string, text: string): HTMLAnchorElement {
     const link = document.createElement("a");
     link.classList.add(className);
-    link.innerHTML = text;
     link.href = href;
+    link.target = "_blank";
+    link.innerHTML = text;
     return link;
   }
 

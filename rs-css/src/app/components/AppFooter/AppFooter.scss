@@ -4,4 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+
+  &__school {
+    width: 80px;
+    height: 80px;
+    background: url("../../../assets/rs_school.svg") center / contain no-repeat;
+  }
 }
