@@ -33,7 +33,10 @@ export default class AppSidebar {
     this.burgerIcon = createElement("div", "header-menu__burger");
     headerMenu.append(this.burgerIcon);
 
-    this.header.append(headerLevel, headerArrow, headerMenu);
+    const headerActions = createElement("div", "sidebar-header__actions");
+    headerActions.append(headerArrow, headerMenu);
+
+    this.header.append(headerLevel, headerActions);
   }
 
   private createSidebarInfo(): void {
