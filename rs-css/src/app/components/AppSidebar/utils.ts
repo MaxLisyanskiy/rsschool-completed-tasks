@@ -11,3 +11,16 @@ export function createTextElement(elem: string, className: string, text: string)
   element.innerHTML = text;
   return element;
 }
+
+export function createButtonElement(
+  className: string,
+  text: string,
+  type: string,
+  func?: () => void,
+): HTMLButtonElement {
+  const btn = document.createElement("button");
+  btn.classList.add(className);
+  btn.innerHTML = text;
+  btn.type = type;
+  return btn;
+}
