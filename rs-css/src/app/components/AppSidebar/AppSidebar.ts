@@ -1,18 +1,20 @@
 import "./AppSidebar.scss";
-import State from "../../State";
+
 import { createElement, createTextElement } from "../utils";
 import { StateLevels } from "../../types";
 
-export default class AppSidebar extends State {
+export default class AppSidebar {
+  levels: StateLevels[];
+  currentLevel: number;
   showMenu: boolean = false;
   header: HTMLElement = document.createElement("div");
   info: HTMLElement = document.createElement("div");
   list: HTMLElement = document.createElement("div");
   burgerIcon: HTMLElement = document.createElement("div");
 
-  constructor(state: StateLevels[]) {
-    super(state);
-    this.levels = state;
+  constructor(levels: StateLevels[], currentLevel: number) {
+    this.levels = levels;
+    this.currentLevel = currentLevel;
     this.createSidebarHeader();
     this.createSidebarInfo();
     this.createSidebarList();

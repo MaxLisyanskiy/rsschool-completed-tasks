@@ -1,11 +1,15 @@
 import "./AppMain.scss";
 
-import State from "../../State";
 import { StateLevels } from "../../types";
 import { createButtonElement, createElement, createTextElement } from "../utils";
+import AppViewer from "../AppViewer/AppViewer";
 
-export default class AppMain extends State {
+export default class AppMain {
+  levels: StateLevels[];
+  currentLevel: number;
   title: HTMLElement = document.createElement("h1");
+
+  phone: HTMLElement = document.createElement("div");
 
   form: HTMLElement = document.createElement("form");
   formInput: HTMLInputElement = document.createElement("input");
@@ -14,9 +18,9 @@ export default class AppMain extends State {
 
   htmlViewer: HTMLElement = createElement("div", "layout__html");
 
-  constructor(state: StateLevels[]) {
-    super(state);
-    this.levels = state;
+  constructor(levels: StateLevels[], currentLevel: number) {
+    this.levels = levels;
+    this.currentLevel = currentLevel;
   }
 
   private createRowNumbers(className: string): HTMLElement {
@@ -56,10 +60,10 @@ export default class AppMain extends State {
     const phoneSection = createElement("section", "table");
 
     this.title = createTextElement("h1", "table__title", this.levels[this.currentLevel].title);
-    const phone = createElement("div", "table__phone");
+    this.phone = createElement("div", "table__phone");
 
     const phoneWrapp = createElement("div", "table__wrapp");
-    phoneWrapp.append(this.title, phone);
+    phoneWrapp.append(this.title, this.phone);
 
     const editor = createElement("div", "editor");
 

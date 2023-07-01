@@ -1,5 +1,6 @@
-import { createElement } from "../utils";
 import "./AppFooter.scss";
+
+import { createElement } from "../utils";
 
 export default class AppFooter {
   createLink(className: string, href: string, text: string): HTMLAnchorElement {
