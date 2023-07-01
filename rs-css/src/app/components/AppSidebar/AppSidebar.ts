@@ -1,14 +1,18 @@
 import "./AppSidebar.scss";
+import State from "../../State";
 import { createElement, createTextElement } from "../utils";
+import { StateLevels } from "../../types";
 
-export default class AppSidebar {
+export default class AppSidebar extends State {
   showMenu: boolean = false;
   header: HTMLElement = document.createElement("div");
   info: HTMLElement = document.createElement("div");
   list: HTMLElement = document.createElement("div");
   burgerIcon: HTMLElement = document.createElement("div");
 
-  constructor() {
+  constructor(state: StateLevels[]) {
+    super(state);
+    this.levels = state;
     this.createSidebarHeader();
     this.createSidebarInfo();
     this.createSidebarList();
@@ -19,7 +23,7 @@ export default class AppSidebar {
 
     const headerLevel = createElement("div", "header-level");
     headerLevel.innerHTML = `
-      <p class="header-level__title">Level 1 of 10</p>
+      <p class="header-level__title">Level ${this.currentLevel} of ${this.levels.length}</p>
       <span class="header-level__check"></span>
     `;
 
@@ -42,23 +46,26 @@ export default class AppSidebar {
   private createSidebarInfo(): void {
     this.info = createElement("div", "sidebar-info");
 
-    const title = createTextElement("h2", "sidebar-info__title", "Type Selector");
-    const subTitle = createTextElement("h3", "sidebar-info__subtitle", "Select elements by their type");
-    const syntax = createTextElement("span", "sidebar-info__syntax", "A");
+    const title = createTextElement("h2", "sidebar-info__title", this.levels[this.currentLevel].sidebarTitle);
+    const subTitle = createTextElement("h3", "sidebar-info__subtitle", this.levels[this.currentLevel].sidebarSubtitle);
+    const syntax = createTextElement("span", "sidebar-info__syntax", this.levels[this.currentLevel].sidebarSyntax);
     const description = createTextElement(
       "p",
       "sidebar-info__description",
-      "Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.",
+      this.levels[this.currentLevel].sidebarDescr,
     );
 
     const examplesWrapp = createElement("div", "sidebar-example");
-    const exampleTitle = createTextElement("h4", "sidebar-example__title", "Examples:");
-    const exampleOption = createTextElement(
-      "p",
-      "sidebar-example__option",
-      "<strong>div</strong> selects all <tag>div</tag> elements.",
-    );
-    examplesWrapp.append(exampleTitle, exampleOption);
+
+    if (this.levels[this.currentLevel].sidebarExamples.length !== 0) {
+      const exampleTitle = createTextElement("h4", "sidebar-example__title", "Examples:");
+      const wrapp: HTMLElement[] = [];
+      this.levels[this.currentLevel].sidebarExamples.forEach((item: string) => {
+        wrapp.push(createTextElement("p", "sidebar-example__option", item));
+      });
+
+      examplesWrapp.append(exampleTitle, ...wrapp);
+    }
 
     this.info.append(title, subTitle, syntax, description, examplesWrapp);
   }
@@ -69,12 +76,12 @@ export default class AppSidebar {
 
     const levelList = createElement("ul", "level-list");
 
-    for (let i = 1; i < 11; i++) {
+    for (let i = 0; i < this.levels.length; i++) {
       const level = createElement("li", "level-list__item");
       level.innerHTML = `
         <span class="level-list__check"></span>
-        <p class="level-list__number">${i}</p>
-        <p class="level-list__title">A</p>
+        <p class="level-list__number">${i + 1}</p>
+        <p class="level-list__title">${this.levels[i].sidebarSyntax}</p>
       `;
       levelList.append(level);
     }

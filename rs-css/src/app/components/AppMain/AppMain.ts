@@ -1,7 +1,10 @@
-import { createButtonElement, createElement, createTextElement } from "../utils";
 import "./AppMain.scss";
 
-export default class AppMain {
+import State from "../../State";
+import { StateLevels } from "../../types";
+import { createButtonElement, createElement, createTextElement } from "../utils";
+
+export default class AppMain extends State {
   title: HTMLElement = document.createElement("h1");
 
   form: HTMLElement = document.createElement("form");
@@ -11,7 +14,12 @@ export default class AppMain {
 
   htmlViewer: HTMLElement = createElement("div", "layout__html");
 
-  private createFormRowNumbers(className: string): HTMLElement {
+  constructor(state: StateLevels[]) {
+    super(state);
+    this.levels = state;
+  }
+
+  private createRowNumbers(className: string): HTMLElement {
     const numbers = createElement("div", className);
     for (let i = 1; i < 20; i++) {
       numbers.innerHTML += `${i}<br>`;
@@ -44,11 +52,10 @@ export default class AppMain {
     return this.form;
   }
 
-  createPhoneSection(): HTMLElement {
-    const phoneSection = document.createElement("section");
-    phoneSection.classList.add("table");
+  private createPhoneSection(): HTMLElement {
+    const phoneSection = createElement("section", "table");
 
-    this.title = createTextElement("h1", "table__title", "Select the plates");
+    this.title = createTextElement("h1", "table__title", this.levels[this.currentLevel].title);
 
     const phone = createElement("div", "table__phone");
 
@@ -58,14 +65,14 @@ export default class AppMain {
     pane.classList.add("editor__item", "pane");
     const paneHeader = createTextElement("p", "pane__title", "CSS Editor <span>style.css</span>");
     const formWrapper = createElement("div", "pane__wrapp");
-    formWrapper.append(this.createFormRowNumbers("pane__numbers"), this.createForm());
+    formWrapper.append(this.createRowNumbers("pane__numbers"), this.createForm());
     pane.append(paneHeader, formWrapper);
 
     const layout = document.createElement("div");
     layout.classList.add("editor__item", "layout");
     const layoutHeader = createTextElement("p", "layout__title", "HTML Viewer <span>table.html</span>");
     const layoutWrapper = createElement("div", "layout__wrapp");
-    layoutWrapper.append(this.createFormRowNumbers("layout__numbers"), this.htmlViewer);
+    layoutWrapper.append(this.createRowNumbers("layout__numbers"), this.htmlViewer);
     layout.append(layoutHeader, layoutWrapper);
 
     editor.append(pane, layout);
@@ -75,20 +82,7 @@ export default class AppMain {
     return phoneSection;
   }
 
-  createEditorSection(): HTMLElement {
-    const phoneSection = document.createElement("section");
-    phoneSection.classList.add("table");
-
-    this.title = createTextElement("h1", "table__title", "Select the plates");
-
-    const phone = createElement("div", "table__phone");
-
-    phoneSection.append(this.title, phone);
-
-    return phoneSection;
-  }
-
-  getHtmlElement(): HTMLElement {
+  public getHtmlElement(): HTMLElement {
     const main = document.createElement("main");
     main.classList.add("main");
     main.append(this.createPhoneSection());
