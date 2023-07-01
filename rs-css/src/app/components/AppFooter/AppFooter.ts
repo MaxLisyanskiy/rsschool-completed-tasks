@@ -1,3 +1,4 @@
+import { createElement } from "../utils";
 import "./AppFooter.scss";
 
 export default class AppFooter {
@@ -11,9 +12,9 @@ export default class AppFooter {
   }
 
   getHtmlElement(): HTMLElement {
-    const footer = document.createElement("footer");
-    footer.classList.add("footer");
-    footer.append(
+    const footer = createElement("footer", "footer");
+    const footerWrapp = createElement("div", "footer__wrapp");
+    footerWrapp.append(
       this.createLink("footer__school", "https://rs.school/", ""),
       this.createLink(
         "footer__task",
@@ -22,6 +23,7 @@ export default class AppFooter {
       ),
       this.createLink("footer__git", "https://github.com/MaxLisyanskiy", "Made by @MaxLisyanskiy"),
     );
+    footer.append(footerWrapp);
     return footer;
   }
 }

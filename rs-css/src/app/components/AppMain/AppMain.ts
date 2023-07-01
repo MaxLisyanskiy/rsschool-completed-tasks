@@ -1,4 +1,4 @@
-import { createButtonElement, createElement, createTextElement } from "../AppSidebar/utils";
+import { createButtonElement, createElement, createTextElement } from "../utils";
 import "./AppMain.scss";
 
 export default class AppMain {

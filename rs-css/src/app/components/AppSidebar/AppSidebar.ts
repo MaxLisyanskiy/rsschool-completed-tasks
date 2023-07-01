@@ -1,5 +1,5 @@
 import "./AppSidebar.scss";
-import { createElement, createTextElement } from "./utils";
+import { createElement, createTextElement } from "../utils";
 
 export default class AppSidebar {
   showMenu: boolean = false;
