@@ -17,6 +17,13 @@
   font-style: bold;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 body {
   font-family: "Ubuntu";
   font-weight: normal;
@@ -25,8 +32,8 @@ body {
 }
 
 .container {
+  height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  overflow: hidden;
 }

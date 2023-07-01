@@ -23,11 +23,124 @@
 .editor {
   display: flex;
   width: 90%;
-  margin: 0 auto;
-  border: solid 10px rgba(0, 0, 0, 0.35);
+  margin: 30px auto;
+  border: 5px solid rgba(0, 0, 0, 0.35);
   border-radius: 4px;
 
   &__item {
     width: 50%;
+  }
+}
+
+.pane {
+  background: #fff;
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    border-right: 0.25px solid rgb(53, 53, 53);
+    & span {
+      font-size: 14px;
+      color: rgb(219, 216, 216);
+    }
+  }
+
+  &__wrapp {
+    display: flex;
+  }
+
+  &__numbers {
+    padding: 10px 5px;
+    line-height: 20px;
+    text-align: end;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.layout {
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    border-left: 0.25px solid rgb(53, 53, 53);
+
+    & span {
+      font-size: 14px;
+      color: rgb(219, 216, 216);
+    }
+  }
+
+  &__wrapp {
+    display: flex;
+  }
+
+  &__numbers {
+    padding: 10px 5px;
+    line-height: 20px;
+    text-align: end;
+    background: rgba(#1a202c, 0.8);
+  }
+
+  &__html {
+    width: 100%;
+    height: auto;
+    background: rgba(#1a202c, 0.9);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 5px;
+
+  &__wrapp {
+    display: flex;
+  }
+
+  &__input {
+    width: 100%;
+
+    &.blinking {
+      background: rgba(62, 203, 255, 0.3);
+      animation: blink 1s infinite;
+    }
+  }
+
+  &__enter {
+    margin-right: 5px;
+    padding: 3px 8px;
+    color: #fff;
+    border-radius: 6px;
+    background: #3a36db;
+  }
+
+  &__help {
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #afbac2;
+    color: #06152b;
+  }
+
+  &__descr {
+    font-size: 14px;
+    line-height: 20px;
+    font-style: italic;
+    color: #aaa;
+    & span {
+      margin-left: 10px;
+    }
+  }
+}
+
+@keyframes blink {
+  50% {
+    background: none;
   }
 }
