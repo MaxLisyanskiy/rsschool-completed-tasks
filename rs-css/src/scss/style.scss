@@ -21,7 +21,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body {
@@ -33,9 +33,16 @@ body {
 
 .container {
   max-width: 1280px;
+  height: auto;
   margin: 0 auto;
-  height: 100vh;
+  padding: 20px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }

@@ -2,7 +2,7 @@ export const levels = [
   {
     title: "Select the plates",
     sidebarTitle: "Type Selector",
-    sidebarSubtitle: "Select the tombstone",
+    sidebarSubtitle: "Select the plates",
     sidebarSyntax: "A",
     sidebarDescr:
       "Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.",

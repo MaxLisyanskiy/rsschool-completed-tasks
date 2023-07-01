@@ -56,8 +56,10 @@ export default class AppMain extends State {
     const phoneSection = createElement("section", "table");
 
     this.title = createTextElement("h1", "table__title", this.levels[this.currentLevel].title);
-
     const phone = createElement("div", "table__phone");
+
+    const phoneWrapp = createElement("div", "table__wrapp");
+    phoneWrapp.append(this.title, phone);
 
     const editor = createElement("div", "editor");
 
@@ -77,7 +79,7 @@ export default class AppMain extends State {
 
     editor.append(pane, layout);
 
-    phoneSection.append(this.title, phone, editor);
+    phoneSection.append(phoneWrapp, editor);
 
     return phoneSection;
   }

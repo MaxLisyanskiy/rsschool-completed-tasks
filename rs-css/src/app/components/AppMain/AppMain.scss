@@ -1,8 +1,11 @@
 .main {
   width: 70%;
-  // height: 300px;
-  // background: url("../../../assets/iphone.png") center/contain no-repeat;
-  // border-radius: 8px;
+  margin: 10px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .table {
@@ -10,30 +13,78 @@
   align-items: center;
   flex-direction: column;
 
+  &__wrapp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 3px 14px 1px rgba(14, 15, 22, 0.1);
+    overflow: hidden;
+
+    @media (max-width: 800px) {
+      margin: 10px 0;
+    }
+
+    @media (max-width: 400px) {
+      padding: 10px;
+    }
+  }
+
   &__title {
+    margin: 10px;
+    font-size: 24px;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(135deg, red, #3a36db);
   }
 
   &__phone {
     width: 100%;
     height: 200px;
     background: url("../../../assets/iphone-new.png") center/contain no-repeat;
+
+    @media (max-width: 800px) {
+      height: 150px;
+    }
   }
 }
 
 .editor {
   display: flex;
-  width: 90%;
+  width: 100%;
   margin: 30px auto;
   border: 5px solid rgba(0, 0, 0, 0.35);
   border-radius: 4px;
 
+  @media (max-width: 800px) {
+    margin: 10px 0 0 0;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
   &__item {
     width: 50%;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
   }
 }
 
 .pane {
   background: #fff;
+
+  @media (max-width: 600px) {
+    height: 175px;
+    overflow: hidden;
+  }
+
   &__title {
     display: flex;
     align-items: center;
@@ -45,6 +96,10 @@
     & span {
       font-size: 14px;
       color: rgb(219, 216, 216);
+    }
+
+    @media (max-width: 600px) {
+      border-right: none;
     }
   }
 
@@ -69,6 +124,10 @@
     color: #fff;
     background: rgba(0, 0, 0, 0.5);
     border-left: 0.25px solid rgb(53, 53, 53);
+
+    @media (max-width: 600px) {
+      border-left: none;
+    }
 
     & span {
       font-size: 14px;
@@ -108,8 +167,9 @@
     width: 100%;
 
     &.blinking {
-      background: rgba(62, 203, 255, 0.3);
-      animation: blink 1s infinite;
+      // background: rgba(62, 203, 255, 0.3) ;
+      background: linear-gradient(135deg, rgba(red, 0.3), rgba(62, 203, 255, 0.3));
+      animation: blink 1.1s infinite;
     }
   }
 

@@ -49,6 +49,10 @@ export default class AppSidebar extends State {
     const title = createTextElement("h2", "sidebar-info__title", this.levels[this.currentLevel].sidebarTitle);
     const subTitle = createTextElement("h3", "sidebar-info__subtitle", this.levels[this.currentLevel].sidebarSubtitle);
     const syntax = createTextElement("span", "sidebar-info__syntax", this.levels[this.currentLevel].sidebarSyntax);
+
+    const sidebarLeftSide = createElement("div", "sidebar-info__main");
+    sidebarLeftSide.append(title, subTitle, syntax);
+
     const description = createTextElement(
       "p",
       "sidebar-info__description",
@@ -67,7 +71,7 @@ export default class AppSidebar extends State {
       examplesWrapp.append(exampleTitle, ...wrapp);
     }
 
-    this.info.append(title, subTitle, syntax, description, examplesWrapp);
+    this.info.append(sidebarLeftSide, description, examplesWrapp);
   }
 
   private createSidebarList(): void {
