@@ -16,7 +16,21 @@ export default class Game {
   }
 
   private handleShowTooltip = (e: MouseEvent): void => {
-    console.log(e);
+    const elementsTable: HTMLElement[] = Array.from(this.AppViewer.AppMain.phone.querySelectorAll("*"));
+
+    if (e.target instanceof HTMLElement) {
+      // const index = e.target.closest(".table__phone")
+      //   ? elementsTable.indexOf(e.target)
+      //   : elementsCode.indexOf(e.target.closest(".wrap"));
+      const index = elementsTable.indexOf(e.target);
+
+      if (e.type === "mouseover") {
+        this.AppViewer.AppTooltip.onShowTooltip("block", elementsTable[index]);
+      }
+      if (e.type === "mouseout") {
+        this.AppViewer.AppTooltip.onShowTooltip("none", elementsTable[index]);
+      }
+    }
   };
 
   private handleChangeLevel = (type: SidebarActionType, level?: string): void => {
