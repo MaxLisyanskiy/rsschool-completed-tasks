@@ -12,7 +12,7 @@ export default class AppTooltip {
       this.tooltip.innerHTML = `
       &lt;${elem.tagName.toLocaleLowerCase()}&gt;&lt;/${elem.tagName.toLocaleLowerCase()}&gt;`;
       this.tooltip.style.left = `${elem.getClientRects()[0].x}px`;
-      this.tooltip.style.top = `${elem.getClientRects()[0].y - 20}px`;
+      this.tooltip.style.top = `${elem.getClientRects()[0].y - 30}px`;
     }
   }
 
