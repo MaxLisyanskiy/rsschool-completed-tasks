@@ -7,3 +7,9 @@ export interface StateLevels {
   sidebarExamples: string[];
   code: string;
 }
+
+export enum SidebarActionType {
+  PREV = "prev",
+  NEXT = "next",
+  LIST = "list",
+}

@@ -17,7 +17,7 @@ export const levels = [
   },
   {
     title: "<span>Select the lion</span> 🦁",
-    sidebarTitle: "Type Selector",
+    sidebarTitle: "Type Selectorasdsad",
     sidebarSubtitle: "Select elements by their type",
     sidebarSyntax: "A",
     sidebarDescr:

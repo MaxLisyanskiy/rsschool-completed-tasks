@@ -8,27 +8,29 @@ import { StateLevels } from "../../types";
 export default class AppViewer {
   levels: StateLevels[];
   currentLevel: number;
-  // main: AppMain;
-  // sidebar: AppSidebar;
-  // footer: AppFooter;
+  AppMain: AppMain;
+  AppSidebar: AppSidebar;
+  AppFooter: AppFooter;
 
   constructor(levels: StateLevels[], currentLevel: number) {
     this.levels = levels;
     this.currentLevel = currentLevel;
-    // this.main = new AppMain(levels, currentLevel);
-    // this.sidebar = new AppSidebar(levels, currentLevel);
-    // this.footer = new AppFooter();
+    this.AppMain = new AppMain(levels, currentLevel);
+    this.AppSidebar = new AppSidebar(levels, currentLevel);
+    this.AppFooter = new AppFooter();
   }
 
-  public createGameView() {}
+  public createGameView(levels: StateLevels[], currentLevel: number) {
+    this.levels = levels;
+    this.currentLevel = currentLevel;
+    this.AppMain.phone.innerHTML = this.levels[this.currentLevel].code;
+    this.AppSidebar.loadNewContent(this.levels, this.currentLevel);
+  }
 
-  public createDom = (): { main: AppMain; sidebar: AppSidebar; footer: AppFooter } => {
-    const main = new AppMain(this.levels, this.currentLevel);
-    const sidebar = new AppSidebar(this.levels, this.currentLevel);
-    const footer = new AppFooter();
+  public createDom = (): { AppMain: AppMain; AppSidebar: AppSidebar } => {
     const container = createElement("div", "container");
-    container.prepend(main.getHtmlElement(), sidebar.getHtmlElement());
-    document.body.prepend(container, footer.getHtmlElement());
-    return { main, sidebar, footer };
+    container.prepend(this.AppMain.getHtmlElement(), this.AppSidebar.getHtmlElement());
+    document.body.prepend(container, this.AppFooter.getHtmlElement());
+    return { AppMain: this.AppMain, AppSidebar: this.AppSidebar };
   };
 }

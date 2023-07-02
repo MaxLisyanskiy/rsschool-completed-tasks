@@ -1,44 +1,61 @@
-import AppFooter from "./components/AppFooter/AppFooter";
+import { SidebarActionType, StateLevels } from "./types";
+
+import AppViewer from "./components/AppViewer/AppViewer";
 import AppMain from "./components/AppMain/AppMain";
 import AppSidebar from "./components/AppSidebar/AppSidebar";
-import AppViewer from "./components/AppViewer/AppViewer";
-import { StateLevels } from "./types";
 
 export default class Game {
   levels: StateLevels[];
   currentLevel: number;
-  main: AppMain;
-  sidebar: AppSidebar | null = null;
-  footer: AppFooter | null = null;
+  AppViewer: AppViewer;
+  AppMain: AppMain;
+  AppSidebar: AppSidebar;
 
   constructor(levels: StateLevels[], currentLevel: number) {
     this.levels = levels;
     this.currentLevel = currentLevel;
-    this.main = new AppMain(levels, currentLevel);
-    this.sidebar = new AppSidebar(levels, currentLevel);
-    this.footer = new AppFooter();
+    this.AppViewer = new AppViewer(this.levels, this.currentLevel);
+    this.AppMain = new AppMain(levels, currentLevel);
+    this.AppSidebar = new AppSidebar(levels, currentLevel);
   }
 
-  createNewGame() {
-    this.main.phone.innerHTML = this.levels[this.currentLevel].code;
-  }
-
-  handleChangeLevel = (type: string, level?: string): void => {
-    this.currentLevel++;
-    this.createNewGame();
+  createNewGame = () => {
+    this.AppViewer.createGameView(this.levels, this.currentLevel);
+    this.AppSidebar.setActions(this.handleChangeLevel);
   };
 
-  private setActions() {
-    this.sidebar?.setActions(this.handleChangeLevel);
-  }
+  handleChangeLevel = (type: SidebarActionType, level?: string): void => {
+    switch (type) {
+      case SidebarActionType.PREV:
+        if (this.currentLevel !== 0) {
+          this.currentLevel -= 1;
+          this.createNewGame();
+        }
+        break;
+      case SidebarActionType.NEXT: {
+        if (this.currentLevel < this.levels.length - 1) {
+          this.currentLevel++;
+          this.createNewGame();
+        }
+        break;
+      }
+      case SidebarActionType.LIST: {
+        this.currentLevel = Number(level);
+        this.createNewGame();
+        break;
+      }
+    }
+  };
+
+  private setActions = () => {
+    this.AppSidebar.setActions(this.handleChangeLevel);
+  };
 
   public initNewGame = () => {
-    const viewer = new AppViewer(this.levels, this.currentLevel);
-    const { main, sidebar, footer } = viewer.createDom();
-    this.main = main;
-    this.sidebar = sidebar;
-    this.footer = footer;
-    this.createNewGame();
+    const { AppMain, AppSidebar } = this.AppViewer.createDom();
+    this.AppMain = AppMain;
+    this.AppSidebar = AppSidebar;
+    // this.createNewGame();
     this.setActions();
   };
 }
