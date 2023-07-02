@@ -46,12 +46,15 @@
   }
 
   &__phone {
-    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
     height: 200px;
     background: url("../../../assets/iphone.png") center/contain no-repeat;
 
-    @media (max-width: 800px) {
-      height: 150px;
+    @media (max-width: 500px) {
+      width: 100%;
     }
   }
 }

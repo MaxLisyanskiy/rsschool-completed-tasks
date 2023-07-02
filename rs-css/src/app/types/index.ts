@@ -5,4 +5,5 @@ export interface StateLevels {
   sidebarSyntax: string;
   sidebarDescr: string;
   sidebarExamples: string[];
+  code: string;
 }

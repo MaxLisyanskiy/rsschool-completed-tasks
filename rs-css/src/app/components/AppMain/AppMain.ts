@@ -86,7 +86,6 @@ export default class AppMain {
   }
 
   public getHtmlElement = (): HTMLElement => {
-    console.log(this);
     const main = document.createElement("main");
     main.classList.add("main");
     main.append(this.createPhoneSection());

@@ -20,7 +20,9 @@ export default class AppViewer {
     // this.footer = new AppFooter();
   }
 
-  createDom = (): { main: AppMain; sidebar: AppSidebar; footer: AppFooter } => {
+  public createGameView() {}
+
+  public createDom = (): { main: AppMain; sidebar: AppSidebar; footer: AppFooter } => {
     const main = new AppMain(this.levels, this.currentLevel);
     const sidebar = new AppSidebar(this.levels, this.currentLevel);
     const footer = new AppFooter();

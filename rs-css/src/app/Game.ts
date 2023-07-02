@@ -7,19 +7,26 @@ import { StateLevels } from "./types";
 export default class Game {
   levels: StateLevels[];
   currentLevel: number;
-  main: AppMain | null = null;
+  main: AppMain;
   sidebar: AppSidebar | null = null;
   footer: AppFooter | null = null;
 
   constructor(levels: StateLevels[], currentLevel: number) {
     this.levels = levels;
     this.currentLevel = currentLevel;
+    this.main = new AppMain(levels, currentLevel);
+    this.sidebar = new AppSidebar(levels, currentLevel);
+    this.footer = new AppFooter();
   }
 
-  handleChangeLevel(type: string, level: string): void {
-    console.log(type);
-    console.log(level);
+  createNewGame() {
+    this.main.phone.innerHTML = this.levels[this.currentLevel].code;
   }
+
+  handleChangeLevel = (type: string, level?: string): void => {
+    this.currentLevel++;
+    this.createNewGame();
+  };
 
   private setActions() {
     this.sidebar?.setActions(this.handleChangeLevel);
@@ -31,6 +38,7 @@ export default class Game {
     this.main = main;
     this.sidebar = sidebar;
     this.footer = footer;
+    this.createNewGame();
     this.setActions();
   };
 }
