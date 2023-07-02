@@ -1,8 +1,6 @@
 import { SidebarActionType, StateLevels } from "./types";
 
 import AppViewer from "./components/AppViewer/AppViewer";
-import AppMain from "./components/AppMain/AppMain";
-import AppSidebar from "./components/AppSidebar/AppSidebar";
 
 export default class Game {
   levels: StateLevels[];
@@ -19,9 +17,6 @@ export default class Game {
     const elementsTable: HTMLElement[] = Array.from(this.AppViewer.AppMain.phone.querySelectorAll("*"));
 
     if (e.target instanceof HTMLElement) {
-      // const index = e.target.closest(".table__phone")
-      //   ? elementsTable.indexOf(e.target)
-      //   : elementsCode.indexOf(e.target.closest(".wrap"));
       const index = elementsTable.indexOf(e.target);
 
       if (e.type === "mouseover") {
@@ -43,7 +38,7 @@ export default class Game {
         break;
       case SidebarActionType.NEXT: {
         if (this.currentLevel < this.levels.length - 1) {
-          this.currentLevel++;
+          this.currentLevel += 1;
           this.createNewGame();
         }
         break;
@@ -58,12 +53,13 @@ export default class Game {
 
   private createNewGame = () => {
     this.AppViewer.createGameView(this.levels, this.currentLevel);
-    this.AppViewer.AppSidebar.setActions(this.handleChangeLevel);
-    this.AppViewer.AppMain.setActions(this.handleShowTooltip);
+    this.AppViewer.AppSidebar.setActionsForList(this.handleChangeLevel);
   };
 
   public initNewGame = () => {
     this.AppViewer.createDom();
     this.createNewGame();
+    this.AppViewer.AppSidebar.setActionsForArrow(this.handleChangeLevel);
+    this.AppViewer.AppMain.setActions(this.handleShowTooltip);
   };
 }

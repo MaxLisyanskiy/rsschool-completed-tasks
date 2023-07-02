@@ -26,8 +26,8 @@ export default class AppViewer {
   public createGameView(levels: StateLevels[], currentLevel: number) {
     this.levels = levels;
     this.currentLevel = currentLevel;
-    this.AppSidebar.loadNewContent(this.levels, this.currentLevel);
-    this.AppMain.loadNewContent(this.levels, this.currentLevel);
+    this.AppSidebar.loadNewContent(levels, currentLevel);
+    this.AppMain.loadNewContent(levels, currentLevel);
   }
 
   public createDom = (): void => {

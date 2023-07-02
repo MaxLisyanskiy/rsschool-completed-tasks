@@ -5,6 +5,12 @@
   height: 100px;
   cursor: pointer;
   transition: filter 0.2s ease;
+
+  &.small {
+    width: 35px !important;
+    height: 35px !important;
+    margin: 0 !important;
+  }
 }
 
 dog {
@@ -17,6 +23,83 @@ lion {
 
 pig {
   background: url("../assets/emoji/pig.png") center/contain no-repeat;
+}
+
+cloud {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/cloud.png") center/contain no-repeat;
+
+  &#rainy {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: url("../assets/emoji/rainy-cloud.png") center/contain no-repeat;
+  }
+}
+
+sun {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/sun.png") center/contain no-repeat;
+}
+
+lollipop {
+  background: url("../assets/emoji/lollipop.png") center/contain no-repeat;
+}
+
+plate {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/plate.png") center/contain no-repeat;
+}
+
+donut {
+  width: 35px !important;
+  height: 35px !important;
+  margin: 0 !important;
+  background: url("../assets/emoji/donut.png") center/contain no-repeat;
+}
+
+cookie {
+  background: url("../assets/emoji/cookie.png") center/contain no-repeat;
+}
+
+rocket {
+  width: 35px !important;
+  height: 35px !important;
+  margin: 0 !important;
+  background: url("../assets/emoji/rocket.png") center/contain no-repeat;
+}
+
+bomb {
+  background: url("../assets/emoji/bomb.png") center/contain no-repeat;
+}
+
+earth {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/earth.png") center/contain no-repeat;
+}
+
+plane {
+  background: url("../assets/emoji/plane.png") center/contain no-repeat;
+}
+
+burger {
+  background: url("../assets/emoji/burger.png") center/contain no-repeat;
+}
+
+monkey {
+  background: url("../assets/emoji/monkey.png") center/contain no-repeat;
+}
+
+fish {
+  background: url("../assets/emoji/fish.png") center/contain no-repeat;
 }
 
 .bounce {
@@ -39,7 +122,7 @@ pig {
     transform: scale(1.1, 0.9) translateY(0);
   }
   30% {
-    transform: scale(0.9, 1.1) translateY(-30px);
+    transform: scale(0.9, 1.1) translateY(-10px);
   }
   50% {
     transform: scale(1, 1) translateY(0);

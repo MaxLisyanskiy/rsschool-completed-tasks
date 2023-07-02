@@ -10,6 +10,7 @@ export default class AppSidebar {
   header: HTMLElement = createElement("div", "sidebar-header");
   info: HTMLElement = createElement("div", "sidebar-info");
   list: HTMLElement = createElement("div", "sidebar-list");
+  listLevel: HTMLElement = createElement("ul", "level-list");
   burgerIcon: HTMLElement = document.createElement("div");
   prevArrow: HTMLElement = createElement("span", "header-arrow__prev");
   nextArrow: HTMLElement = createElement("span", "header-arrow__next");
@@ -48,7 +49,7 @@ export default class AppSidebar {
     this.header.append(headerLevel, headerActions);
   };
 
-  private createSidebarInfo(levels: StateLevels[], currentLevel: number): void {
+  private createSidebarInfo = (levels: StateLevels[], currentLevel: number): void => {
     this.info.innerHTML = "";
 
     const title = createTextElement("h2", "sidebar-info__title", levels[currentLevel].sidebarTitle);
@@ -60,9 +61,10 @@ export default class AppSidebar {
 
     const description = createTextElement("p", "sidebar-info__description", levels[currentLevel].sidebarDescr);
 
-    const examplesWrapp = createElement("div", "sidebar-example");
+    let examplesWrapp = createElement("div", "sidebar-example__empty");
 
     if (levels[currentLevel].sidebarExamples.length !== 0) {
+      examplesWrapp = createElement("div", "sidebar-example");
       const exampleTitle = createTextElement("h4", "sidebar-example__title", "Examples:");
       const wrapp: HTMLElement[] = [];
       levels[currentLevel].sidebarExamples.forEach((item: string) => {
@@ -73,13 +75,13 @@ export default class AppSidebar {
     }
 
     this.info.append(sidebarLeftSide, description, examplesWrapp);
-  }
+  };
 
   private createSidebarList = (levels: StateLevels[], currentLevel: number): void => {
     this.list.innerHTML = "";
     const title = createTextElement("h3", "sidebar-list__title", "Choose a level:");
 
-    const listLevels = createElement("ul", "level-list");
+    this.listLevel.innerHTML = "";
 
     for (let i = 0; i < levels.length; i++) {
       const level = createElement("li", "level-list__item");
@@ -90,19 +92,22 @@ export default class AppSidebar {
         <p class="level-list__number">${i + 1}</p>
         <p class="level-list__title">${levels[i].sidebarSyntax}</p>
       `;
-      listLevels.append(level);
+      this.listLevel.append(level);
     }
 
-    this.list.append(title, listLevels);
+    this.list.append(title, this.listLevel);
   };
 
-  public setActions = (handleChangeLevel: Function): void => {
+  public setActionsForArrow = (handleChangeLevel: Function): void => {
     this.prevArrow.addEventListener("click", () => handleChangeLevel(SidebarActionType.PREV));
     this.nextArrow.addEventListener("click", () => handleChangeLevel(SidebarActionType.NEXT));
+  };
 
-    const levelList: NodeListOf<HTMLDivElement> = document.querySelectorAll(".level-list__item");
-    levelList.forEach((item) => {
-      item.addEventListener("click", () => handleChangeLevel(SidebarActionType.LIST, item.getAttribute("level")));
+  public setActionsForList = (handleChangeLevel: Function): void => {
+    this.listLevel.childNodes.forEach((item) => {
+      item.addEventListener("click", () =>
+        handleChangeLevel(SidebarActionType.LIST, (item as HTMLElement).getAttribute("level")),
+      );
     });
   };
 

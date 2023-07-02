@@ -46,14 +46,30 @@ export default class AppMain {
     return this.form;
   }
 
+  createHtmlTags = (element: HTMLElement): HTMLElement => {
+    const div = document.createElement("div");
+    div.classList.add("wrap");
+    const openTag = `&lt${element.nodeName.toLocaleLowerCase()}>`;
+    const closedTag = `&lt;/${element.nodeName.toLocaleLowerCase()}>`;
+    if (element.children.length > 0) {
+      div.append(createTextElement("span", "code", `${openTag}`));
+      for (let i = 0; i < element.children.length; i += 1) {
+        div.append(this.createHtmlTags(element.children[i].cloneNode(true) as HTMLElement));
+      }
+      div.append(createTextElement("span", "code", `${closedTag}`));
+    } else {
+      div.append(createTextElement("span", "code", `${openTag}${closedTag}`));
+    }
+    return div;
+  };
+
   private createTableSection(levels: StateLevels[], currentLevel: number): void {
     this.tableSection.innerHTML = "";
 
     const phoneWrapp = createElement("div", "table__wrapp");
     const title = createTextElement("h1", "table__title", levels[currentLevel].title);
-    this.phone.innerHTML = levels[currentLevel].code;
     phoneWrapp.append(title, this.phone);
-
+    this.phone.innerHTML = levels[currentLevel].code;
     this.tableSection.append(phoneWrapp);
   }
 
@@ -71,7 +87,19 @@ export default class AppMain {
     layout.classList.add("editor__item", "layout");
     const layoutHeader = createTextElement("p", "layout__title", "HTML Viewer <span>table.html</span>");
     const layoutWrapper = createElement("div", "layout__wrapp");
+
+    this.htmlViewer.innerHTML = "";
+
+    const container = document.createElement("div");
+    container.innerHTML = levels[currentLevel].code;
+    const arrCode = document.createDocumentFragment();
+    container.childNodes.forEach((item) => {
+      if (item.nodeType === 1) arrCode.append(this.createHtmlTags(item as HTMLElement));
+    });
+    this.htmlViewer.append(arrCode);
+
     layoutWrapper.append(createRowNumbers("layout__numbers"), this.htmlViewer);
+
     layout.append(layoutHeader, layoutWrapper);
 
     this.editorSection.append(pane, layout);
