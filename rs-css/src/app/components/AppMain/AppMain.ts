@@ -11,7 +11,7 @@ export default class AppMain {
   phone: HTMLElement = createElement("div", "table__phone");
 
   editorSection: HTMLElement = createElement("section", "editor");
-  form: HTMLElement = document.createElement("form");
+  form: HTMLElement = createElement("form", "form");
   formInput: HTMLInputElement = document.createElement("input");
   formBtnEnter: HTMLButtonElement = createButtonElement("form__enter", "Enter", "submit");
   formBtnHelp: HTMLButtonElement = createButtonElement("form__help", "Help?", "button");
@@ -24,10 +24,11 @@ export default class AppMain {
   }
 
   private createForm(): HTMLElement {
-    this.form = createElement("div", "form");
-
+    this.form.innerHTML = "";
     this.formInput = document.createElement("input");
     this.formInput.classList.add("form__input", "blinking");
+    this.formInput.type = "text";
+    this.formInput.id = "formInput";
     this.formInput.placeholder = "Type in a CSS selector";
 
     const formInputWrapp = createElement("div", "form__wrapp");
@@ -105,7 +106,7 @@ export default class AppMain {
     this.editorSection.append(pane, layout);
   }
 
-  public setActions = (handleShowTooltip: Function): void => {
+  public setActions = (handleShowTooltip: Function, handleCheckSubmit: Function): void => {
     this.phone.addEventListener("mouseover", (e: MouseEvent): void => {
       if (e.target instanceof HTMLElement) {
         if (e.target.className !== "table__phone") {
@@ -120,6 +121,13 @@ export default class AppMain {
           e.target.classList.remove("outline");
           handleShowTooltip(e);
         }
+      }
+    });
+
+    this.form.addEventListener("submit", (e: SubmitEvent) => {
+      e.preventDefault();
+      if (e.target instanceof HTMLFormElement) {
+        e.target.formInput.value.trim() !== "" && handleCheckSubmit(e.target.formInput.value);
       }
     });
   };

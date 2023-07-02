@@ -10,6 +10,7 @@ export const levels = [
       "<strong>div</strong> selects all <tag>div</tag> elements.",
       "<strong>p</strong> selects all <tag>p</tag> elements.",
     ],
+    cssSelector: "dog",
     code: `
       <dog class="emoji bounce"></dog>
       <dog class="emoji bounce"></dog>
@@ -26,6 +27,7 @@ export const levels = [
       "<strong>div</strong> selects all <tag>div</tag> elements.",
       "<strong>p</strong> selects all <tag>p</tag> elements.",
     ],
+    cssSelector: "lion",
     code: `
       <dog class="emoji"></dog>
       <lion class="emoji bounce"></lion>
@@ -43,6 +45,7 @@ export const levels = [
       '<strong>#cool</strong> selects any element with <strong>id="cool"</strong>',
       '<strong>ul#long</strong> selects <tag>ul id="long"</tag>',
     ],
+    cssSelector: "#rainy",
     code: `
       <cloud id="rainy" class="emoji bounce"></cloud>
       <cloud class="emoji"></cloud>
@@ -60,6 +63,7 @@ export const levels = [
       "<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>",
       '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
     ],
+    cssSelector: "plate donut",
     code: `
       <lollipop class="emoji"></lollipop>
       <plate class="emoji">
@@ -77,6 +81,7 @@ export const levels = [
     sidebarExamples: [
       '<strong>#cool&nbsp;span</strong> selects all <tag>span</tag> elements that are inside of elements with <strong>id="cool"</strong>',
     ],
+    cssSelector: "#rainy rocket",
     code: `
       <cloud class="emoji">
         <rocket class="emoji"></rocket>
@@ -97,6 +102,7 @@ export const levels = [
     sidebarDescr:
       "The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.",
     sidebarExamples: ['<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>'],
+    cssSelector: ".small",
     code: `
       <bomb class="emoji"></bomb>
       <earth class="emoji">
@@ -115,6 +121,7 @@ export const levels = [
       '<strong>ul.important</strong> selects all <tag>ul</tag> elements that have <strong>class="important"</strong>',
       '<strong>#big.wide</strong> selects all elements with <strong>id="big"</strong> that also have <strong>class="wide"</strong>',
     ],
+    cssSelector: "plane.small",
     code: `
       <earth class="emoji">
         <plane class="emoji small bounce"></plane>
@@ -132,6 +139,7 @@ export const levels = [
     sidebarSyntax: "Put your back into it!",
     sidebarDescr: "Combine what you learned in the last few levels to solve this one!",
     sidebarExamples: [],
+    cssSelector: "plate burger.small",
     code: `
       <plate class="emoji">
         <burger class="emoji small bounce"></burger>
@@ -156,6 +164,7 @@ export const levels = [
       '<strong>p, .fun</strong> selects all <tag>p</tag> elements as well as all elements with <strong>class="fun"</strong>',
       "<strong>a, p, div</strong> selects all <tag>a</tag>, <tag>p</tag> and <tag>div</tag> elements",
     ],
+    cssSelector: "monkey,fish",
     code: `
       <monkey class="emoji bounce"></monkey>
       <pig class="emoji"></pig>
@@ -172,6 +181,7 @@ export const levels = [
     sidebarSyntax: "*",
     sidebarDescr: "You can select all elements with the universal selector!",
     sidebarExamples: ["<strong>p *</strong> selects any element inside all <tag>p</tag> elements."],
+    cssSelector: "*",
     code: `
       <rocket class="emoji bounce"></rocket>
       <earth class="emoji bounce">
