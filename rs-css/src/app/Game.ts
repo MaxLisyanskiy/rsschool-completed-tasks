@@ -8,23 +8,18 @@ export default class Game {
   levels: StateLevels[];
   currentLevel: number;
   AppViewer: AppViewer;
-  AppMain: AppMain;
-  AppSidebar: AppSidebar;
 
   constructor(levels: StateLevels[], currentLevel: number) {
     this.levels = levels;
     this.currentLevel = currentLevel;
     this.AppViewer = new AppViewer(this.levels, this.currentLevel);
-    this.AppMain = new AppMain(levels, currentLevel);
-    this.AppSidebar = new AppSidebar(levels, currentLevel);
   }
 
-  createNewGame = () => {
-    this.AppViewer.createGameView(this.levels, this.currentLevel);
-    this.AppSidebar.setActions(this.handleChangeLevel);
+  private handleShowTooltip = (e: MouseEvent): void => {
+    console.log(e);
   };
 
-  handleChangeLevel = (type: SidebarActionType, level?: string): void => {
+  private handleChangeLevel = (type: SidebarActionType, level?: string): void => {
     switch (type) {
       case SidebarActionType.PREV:
         if (this.currentLevel !== 0) {
@@ -47,15 +42,14 @@ export default class Game {
     }
   };
 
-  private setActions = () => {
-    this.AppSidebar.setActions(this.handleChangeLevel);
+  private createNewGame = () => {
+    this.AppViewer.createGameView(this.levels, this.currentLevel);
+    this.AppViewer.AppSidebar.setActions(this.handleChangeLevel);
+    this.AppViewer.AppMain.setActions(this.handleShowTooltip);
   };
 
   public initNewGame = () => {
-    const { AppMain, AppSidebar } = this.AppViewer.createDom();
-    this.AppMain = AppMain;
-    this.AppSidebar = AppSidebar;
-    // this.createNewGame();
-    this.setActions();
+    this.AppViewer.createDom();
+    this.createNewGame();
   };
 }

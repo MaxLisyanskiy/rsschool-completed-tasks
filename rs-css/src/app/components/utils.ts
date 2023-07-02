@@ -24,3 +24,11 @@ export function createButtonElement(
   btn.type = type;
   return btn;
 }
+
+export function createRowNumbers(className: string): HTMLElement {
+  const numbers = createElement("div", className);
+  for (let i = 1; i < 20; i++) {
+    numbers.innerHTML += `${i}<br>`;
+  }
+  return numbers;
+}

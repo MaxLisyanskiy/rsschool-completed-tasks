@@ -23,14 +23,13 @@ export default class AppViewer {
   public createGameView(levels: StateLevels[], currentLevel: number) {
     this.levels = levels;
     this.currentLevel = currentLevel;
-    this.AppMain.phone.innerHTML = this.levels[this.currentLevel].code;
     this.AppSidebar.loadNewContent(this.levels, this.currentLevel);
+    this.AppMain.loadNewContent(this.levels, this.currentLevel);
   }
 
-  public createDom = (): { AppMain: AppMain; AppSidebar: AppSidebar } => {
+  public createDom = (): void => {
     const container = createElement("div", "container");
     container.prepend(this.AppMain.getHtmlElement(), this.AppSidebar.getHtmlElement());
     document.body.prepend(container, this.AppFooter.getHtmlElement());
-    return { AppMain: this.AppMain, AppSidebar: this.AppSidebar };
   };
 }

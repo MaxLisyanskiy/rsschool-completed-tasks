@@ -19,17 +19,10 @@ export default class AppSidebar {
     this.currentLevel = currentLevel;
   }
 
-  toggleShowMenuList = (): void => {
+  private toggleShowMenuList = (): void => {
     this.burgerIcon.classList.toggle("close");
     this.list.classList.toggle("active");
     this.showList = !this.showList;
-  };
-
-  change = (levels: StateLevels[], currentLevel: number) => {
-    // this.hedearLevel.innerHTML = `Level ${currentLevel + 1} of ${levels.length}`;
-    this.createSidebarHeader(levels, currentLevel);
-    this.createSidebarList(levels, currentLevel);
-    this.createSidebarInfo(levels, currentLevel);
   };
 
   private createSidebarHeader = (levels: StateLevels[], currentLevel: number): void => {
@@ -103,11 +96,6 @@ export default class AppSidebar {
     this.list.append(title, listLevels);
   };
 
-  public loadNewContent = (levels: StateLevels[], currentLevel: number): void => {
-    // this.createSidebarHeader(levels, currentLevel);
-    this.change(levels, currentLevel);
-  };
-
   public setActions = (handleChangeLevel: Function): void => {
     this.prevArrow.addEventListener("click", () => handleChangeLevel(SidebarActionType.PREV));
     this.nextArrow.addEventListener("click", () => handleChangeLevel(SidebarActionType.NEXT));
@@ -118,12 +106,16 @@ export default class AppSidebar {
     });
   };
 
+  public loadNewContent = (levels: StateLevels[], currentLevel: number) => {
+    this.createSidebarHeader(levels, currentLevel);
+    this.createSidebarList(levels, currentLevel);
+    this.createSidebarInfo(levels, currentLevel);
+  };
+
   public getHtmlElement = (): HTMLElement => {
     const sidebar = document.createElement("aside");
     sidebar.classList.add("sidebar");
-    this.createSidebarHeader(this.levels, this.currentLevel);
-    this.createSidebarInfo(this.levels, this.currentLevel);
-    this.createSidebarList(this.levels, this.currentLevel);
+    this.loadNewContent(this.levels, this.currentLevel);
     sidebar.append(this.header, this.info, this.list);
     return sidebar;
   };

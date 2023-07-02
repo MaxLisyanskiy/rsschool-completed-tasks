@@ -11,13 +11,13 @@ export const levels = [
       "<strong>p</strong> selects all <tag>p</tag> elements.",
     ],
     code: `
-      <dog class="emoji bounce outline"></dog>
+      <dog class="emoji bounce"></dog>
       <dog class="emoji bounce"></dog>
     `,
   },
   {
     title: "<span>Select the lion</span> 🦁",
-    sidebarTitle: "Type Selectorasdsad",
+    sidebarTitle: "Type Selector",
     sidebarSubtitle: "Select elements by their type",
     sidebarSyntax: "A",
     sidebarDescr:
@@ -28,7 +28,7 @@ export const levels = [
     ],
     code: `
       <dog class="emoji"></dog>
-      <lion class="emoji bounce outline"></lion>
+      <lion class="emoji bounce"></lion>
       <pig class="emoji"></pig>
     `,
   },
