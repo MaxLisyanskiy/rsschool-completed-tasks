@@ -1,5 +1,5 @@
 .main {
-  width: 70%;
+  width: 65%;
   margin: 10px;
 
   @media (max-width: 800px) {
@@ -35,7 +35,11 @@
 
   &__title {
     margin: 10px;
-    font-size: 24px;
+    font-size: 22px;
+
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
 
     & span {
       color: transparent;
