@@ -6,11 +6,12 @@ import { StateLevels } from "../../types";
 export default class AppSidebar {
   levels: StateLevels[];
   currentLevel: number;
-  showMenu: boolean = false;
   header: HTMLElement = document.createElement("div");
   info: HTMLElement = document.createElement("div");
   list: HTMLElement = document.createElement("div");
   burgerIcon: HTMLElement = document.createElement("div");
+  prevArrow: HTMLElement = createElement("span", "header-arrow__prev");
+  nextArrow: HTMLElement = createElement("span", "header-arrow__next");
 
   constructor(levels: StateLevels[], currentLevel: number) {
     this.levels = levels;
@@ -30,10 +31,7 @@ export default class AppSidebar {
     `;
 
     const headerArrow = createElement("div", "header-arrow");
-    headerArrow.innerHTML = `
-      <span class="header-arrow__prev"></span>
-      <span class="header-arrow__next"></span>
-    `;
+    headerArrow.append(this.prevArrow, this.nextArrow);
 
     const headerMenu = createElement("div", "header-menu", this.toggleShowMenuList);
     this.burgerIcon = createElement("div", "header-menu__burger");
@@ -84,6 +82,7 @@ export default class AppSidebar {
 
     for (let i = 0; i < this.levels.length; i++) {
       const level = createElement("li", "level-list__item");
+      level.setAttribute("level", String(i));
       level.innerHTML = `
         <span class="level-list__check"></span>
         <p class="level-list__number">${i + 1}</p>
@@ -98,8 +97,17 @@ export default class AppSidebar {
   private toggleShowMenuList = (): void => {
     this.burgerIcon.classList.toggle("close");
     this.list.classList.toggle("active");
-    this.showMenu = !this.showMenu;
   };
+
+  public setActions(handleChangeLevel: Function): void {
+    this.prevArrow.addEventListener("click", () => handleChangeLevel("prev"));
+    this.nextArrow.addEventListener("click", () => handleChangeLevel("next"));
+
+    const levelList: NodeListOf<HTMLDivElement> = document.querySelectorAll(".level-list__item");
+    levelList.forEach((item) => {
+      item.addEventListener("click", () => handleChangeLevel("list", item.getAttribute("level")));
+    });
+  }
 
   public getHtmlElement(): HTMLElement {
     const sidebar = document.createElement("aside");

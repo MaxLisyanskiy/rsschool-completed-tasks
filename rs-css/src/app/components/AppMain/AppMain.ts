@@ -2,7 +2,6 @@ import "./AppMain.scss";
 
 import { StateLevels } from "../../types";
 import { createButtonElement, createElement, createTextElement } from "../utils";
-import AppViewer from "../AppViewer/AppViewer";
 
 export default class AppMain {
   levels: StateLevels[];
@@ -37,8 +36,6 @@ export default class AppMain {
     this.formInput = document.createElement("input");
     this.formInput.classList.add("form__input", "blinking");
     this.formInput.placeholder = "Type in a CSS selector";
-
-    // this.formBtnEnter = createButtonElement("form__enter", "Enter", "submit");
 
     const formInputWrapp = createElement("div", "form__wrapp");
     formInputWrapp.append(this.formInput, this.formBtnEnter, this.formBtnHelp);
@@ -88,10 +85,11 @@ export default class AppMain {
     return phoneSection;
   }
 
-  public getHtmlElement(): HTMLElement {
+  public getHtmlElement = (): HTMLElement => {
+    console.log(this);
     const main = document.createElement("main");
     main.classList.add("main");
     main.append(this.createPhoneSection());
     return main;
-  }
+  };
 }
