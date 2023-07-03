@@ -1,6 +1,6 @@
 import "./AppSidebar.scss";
 
-import { checkGameLevelResult, createElement, createTextElement } from "../utils";
+import { checkGameLevelResult, createButtonElement, createElement, createTextElement } from "../utils";
 import { GameResults, SidebarActionType, StateLevels } from "../../types";
 
 export default class AppSidebar {
@@ -15,6 +15,7 @@ export default class AppSidebar {
   burgerIcon: HTMLElement = document.createElement("div");
   prevArrow: HTMLElement = createElement("span", "header-arrow__prev");
   nextArrow: HTMLElement = createElement("span", "header-arrow__next");
+  resetGameBtn: HTMLButtonElement = createButtonElement("sidebar-reset", "Reset Levels", "button");
 
   constructor(levels: StateLevels[], currentLevel: number, gameResults: GameResults) {
     this.levels = levels;
@@ -100,9 +101,10 @@ export default class AppSidebar {
     this.list.append(title, this.listLevel);
   };
 
-  public setActionsForArrow = (handleChangeLevel: Function): void => {
+  public setActionsForArrow = (handleChangeLevel: Function, resetGameLevels: Function): void => {
     this.prevArrow.addEventListener("click", () => handleChangeLevel(SidebarActionType.PREV));
     this.nextArrow.addEventListener("click", () => handleChangeLevel(SidebarActionType.NEXT));
+    this.resetGameBtn.addEventListener("click", () => resetGameLevels());
   };
 
   public setActionsForList = (handleChangeLevel: Function): void => {
@@ -123,7 +125,7 @@ export default class AppSidebar {
     const sidebar = document.createElement("aside");
     sidebar.classList.add("sidebar");
     this.loadNewContent(this.levels, this.currentLevel, this.gameResults);
-    sidebar.append(this.header, this.info, this.list);
+    sidebar.append(this.header, this.info, this.list, this.resetGameBtn);
     return sidebar;
   };
 }

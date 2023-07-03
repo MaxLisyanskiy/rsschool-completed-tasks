@@ -3,6 +3,9 @@
   width: 35%;
   height: 814px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0px 3px 14px 1px rgba(14, 15, 22, 0.1);
@@ -15,6 +18,7 @@
   }
 
   &-header {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -341,6 +345,32 @@
       &__title {
         margin-left: 15px;
       }
+    }
+  }
+
+  &-reset {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 8px;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 6px;
+    background: #fff;
+    border: 2px solid #3a36db;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    &:hover {
+      box-shadow: 0px 3px 14px 1px rgba(14, 15, 22, 0.3);
+    }
+
+    @media (max-width: 800px) {
+      position: static;
+      bottom: 0;
+      left: 0;
+      transform: none;
+      margin-bottom: 10px;
     }
   }
 }
