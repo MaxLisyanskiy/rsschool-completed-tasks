@@ -33,7 +33,7 @@ export default class AppMain {
 
   private createForm(levels: StateLevels[], currentLevel: number, gameResults: GameResults): HTMLElement {
     const levelResult = checkGameLevelResult(gameResults, currentLevel) === GameLevelResult.TODO;
-    console.log(levelResult);
+
     this.form.innerHTML = "";
     this.formInput = document.createElement("input");
 
@@ -42,6 +42,10 @@ export default class AppMain {
       this.formInput.type = "text";
       this.formInput.id = "formInput";
       this.formInput.placeholder = "Type in a CSS selector";
+
+      this.formBtnEnter.type = "submit";
+      this.formBtnEnter.disabled = false;
+      this.formBtnHelp.disabled = false;
     } else {
       this.formInput.classList.add("form__input", "done");
       this.formInput.type = "text";
@@ -51,9 +55,14 @@ export default class AppMain {
 
       this.formBtnEnter.type = "button";
       this.formBtnEnter.disabled = true;
-      this.formBtnHelp.type = "button";
       this.formBtnHelp.disabled = true;
     }
+
+    this.formInput.addEventListener("input", () => {
+      return this.formInput.value.length === 0
+        ? this.formInput.classList.add("blinking")
+        : this.formInput.classList.remove("blinking");
+    });
 
     const formInputWrapp = createElement("div", "form__wrapp");
     formInputWrapp.append(this.formInput, this.formBtnEnter, this.formBtnHelp);
