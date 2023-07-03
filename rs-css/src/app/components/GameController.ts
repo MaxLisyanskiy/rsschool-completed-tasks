@@ -5,6 +5,7 @@ export default class GameController {
   levels: StateLevels[];
   currentLevel: number;
   gameResults: GameResults;
+  isPrintingSelector: boolean = false;
   AppViewer: AppViewer;
 
   constructor(levels: StateLevels[], currentLevel: number, gameResults: GameResults) {
@@ -23,6 +24,7 @@ export default class GameController {
       }
     } else {
       const levelResultObj = { [level]: { result: levelResult } };
+      this.gameResults = levelResultObj;
       localStorage.setItem("_gameLevelResults", JSON.stringify(levelResultObj));
     }
   };
@@ -50,61 +52,80 @@ export default class GameController {
   };
 
   private handleChangeLevel = (type: SidebarActionType, level?: string): void => {
-    switch (type) {
-      case SidebarActionType.PREV:
-        if (this.currentLevel !== 0) {
-          this.currentLevel -= 1;
-          this.createNewGame();
+    if (!this.isPrintingSelector) {
+      switch (type) {
+        case SidebarActionType.PREV:
+          if (this.currentLevel !== 0) {
+            this.currentLevel -= 1;
+            this.createNewGame();
+          }
+          break;
+        case SidebarActionType.NEXT: {
+          if (this.currentLevel < this.levels.length - 1) {
+            this.currentLevel += 1;
+            this.createNewGame();
+          }
+          break;
         }
-        break;
-      case SidebarActionType.NEXT: {
-        if (this.currentLevel < this.levels.length - 1) {
-          this.currentLevel += 1;
+        case SidebarActionType.LIST: {
+          this.currentLevel = Number(level);
           this.createNewGame();
+          break;
         }
-        break;
       }
-      case SidebarActionType.LIST: {
-        this.currentLevel = Number(level);
-        this.createNewGame();
-        break;
-      }
-    }
 
-    localStorage.setItem("_currentLevel", JSON.stringify(this.currentLevel));
+      localStorage.setItem("_currentLevel", JSON.stringify(this.currentLevel));
+    }
   };
 
-  private handleCheckSubmit = (value: string) => {
-    if (value === this.levels[this.currentLevel].cssSelector) {
-      this.AppViewer.AppMain.phone.querySelectorAll("*").forEach((item) => {
-        if (item.nodeType === 1) {
-          if (item.closest(this.levels[this.currentLevel].cssSelector)) {
-            item.classList.add("fading");
-          }
+  private handleShowHelpSelector = (): void => {
+    if (!this.isPrintingSelector) {
+      this.isPrintingSelector = true;
+
+      this.AppViewer.AppMain.handlePrintSelector(this.levels[this.currentLevel].cssSelector, (res: string) => {
+        if (res && res === "done") {
+          this.isPrintingSelector = false;
+          this.handleCheckSubmit(this.levels[this.currentLevel].cssSelector, GameLevelResult.HELP);
         }
       });
-      setTimeout(() => {
-        this.handleChangeStorage(this.currentLevel, GameLevelResult.DONE);
-        this.currentLevel++;
-        localStorage.setItem("_currentLevel", JSON.stringify(this.currentLevel));
-        this.createNewGame();
-      }, 1000);
-    } else {
-      const editor = document.querySelector(".editor");
-      if (editor) {
-        editor.classList.add("shaking");
+    }
+  };
+
+  private handleCheckSubmit = (value: string, type: GameLevelResult) => {
+    if (!this.isPrintingSelector) {
+      if (value === this.levels[this.currentLevel].cssSelector) {
+        this.AppViewer.AppMain.phone.querySelectorAll("*").forEach((item) => {
+          if (item.nodeType === 1) {
+            if (item.closest(this.levels[this.currentLevel].cssSelector)) {
+              item.classList.add("fading");
+            }
+          }
+        });
         setTimeout(() => {
-          editor.classList.remove("shaking");
+          this.handleChangeStorage(this.currentLevel, type);
+          this.currentLevel++;
+          localStorage.setItem("_currentLevel", JSON.stringify(this.currentLevel));
+          this.createNewGame();
         }, 1000);
+      } else {
+        const editor = document.querySelector(".editor");
+        if (editor) {
+          editor.classList.add("shaking");
+          setTimeout(() => {
+            editor.classList.remove("shaking");
+          }, 1000);
+        }
       }
     }
   };
 
   private resetGameLevels = () => {
-    this.currentLevel = 0;
-    this.gameResults = null;
-    localStorage.clear();
-    this.createNewGame();
+    if (!this.isPrintingSelector) {
+      this.currentLevel = 0;
+      this.gameResults = null;
+      localStorage.clear();
+      this.createNewGame();
+    }
   };
 
   private createNewGame = () => {
@@ -116,6 +137,6 @@ export default class GameController {
     this.AppViewer.createDom();
     this.createNewGame();
     this.AppViewer.AppSidebar.setActionsForArrow(this.handleChangeLevel, this.resetGameLevels);
-    this.AppViewer.AppMain.setActions(this.handleShowTooltip, this.handleCheckSubmit);
+    this.AppViewer.AppMain.setActions(this.handleShowTooltip, this.handleCheckSubmit, this.handleShowHelpSelector);
   };
 }

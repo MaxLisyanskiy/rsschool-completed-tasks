@@ -251,7 +251,7 @@ export const LEVELS = [
     sidebarExamples: ["<strong>p *</strong> selects any element inside all <tag>p</tag> elements."],
     cssSelector: "*",
     phoneCode: `
-      <rocket class="emoji bounce"></rocket>
+      <rocket class="emoji bounce small"></rocket>
       <earth class="emoji bounce" id="big">
         <bomb class="emoji small bounce"></bomb>
       </earth>

@@ -142,7 +142,30 @@ export default class AppMain {
     this.editorSection.append(pane, layout);
   }
 
-  public setActions = (handleShowTooltip: Function, handleCheckSubmit: Function): void => {
+  public handlePrintSelector = (cssSelector: string, callback: (argument: string) => void) => {
+    let count: number = 0;
+
+    this.formInput.classList.remove("blinking");
+    this.formInput.value = "";
+
+    const typeWriter = (): void => {
+      if (count < cssSelector.length) {
+        this.formInput.value += cssSelector[count];
+        count++;
+        setTimeout(typeWriter, 500);
+      } else {
+        callback("done");
+      }
+    };
+
+    typeWriter();
+  };
+
+  public setActions = (
+    handleShowTooltip: Function,
+    handleCheckSubmit: Function,
+    handleShowHelpSelector: Function,
+  ): void => {
     this.phone.addEventListener("mouseover", (e: MouseEvent): void => {
       if (e.target instanceof HTMLElement) {
         if (e.target.className !== "table__phone") {
@@ -175,12 +198,14 @@ export default class AppMain {
       handleShowTooltip(e);
     });
 
-    this.form.addEventListener("submit", (e: SubmitEvent) => {
+    this.form.addEventListener("submit", (e: SubmitEvent): void => {
       e.preventDefault();
       if (e.target instanceof HTMLFormElement) {
-        e.target.formInput.value.trim() !== "" && handleCheckSubmit(e.target.formInput.value);
+        e.target.formInput.value.trim() !== "" && handleCheckSubmit(e.target.formInput.value, GameLevelResult.DONE);
       }
     });
+
+    this.formBtnHelp.addEventListener("click", (): void => handleShowHelpSelector());
   };
 
   public loadNewContent(levels: StateLevels[], currentLevel: number, gameResults: GameResults): void {
