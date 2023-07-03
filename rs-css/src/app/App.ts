@@ -1,18 +1,20 @@
-import { StateLevels } from "./types";
+import type { GameResults, StateLevels } from "./types";
 
-import Game from "./Game";
+import GameController from "./components/GameController";
 
 export default class App {
   levels: StateLevels[];
   currentLevel: number;
+  gameResults: GameResults;
 
-  constructor(state: StateLevels[]) {
+  constructor(state: StateLevels[], currentLevel: number, gameResults: GameResults) {
     this.levels = state;
-    this.currentLevel = Number(localStorage.getItem("_currentLevel")) || 0;
+    this.currentLevel = currentLevel;
+    this.gameResults = gameResults;
   }
 
   init = (): void => {
-    const game = new Game(this.levels, this.currentLevel);
+    const game = new GameController(this.levels, this.currentLevel, this.gameResults);
     game.initNewGame();
   };
 }

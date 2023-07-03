@@ -1,4 +1,4 @@
-export const levels = [
+export const LEVELS = [
   {
     title: "<span>Select the dogs</span> 🐶",
     sidebarTitle: "Type Selector",

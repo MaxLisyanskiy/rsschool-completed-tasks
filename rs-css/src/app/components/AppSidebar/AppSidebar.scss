@@ -30,6 +30,7 @@
     & .header-level {
       display: flex;
       align-items: center;
+
       &__title {
         font-size: 16px;
       }
@@ -41,10 +42,25 @@
         margin-left: 10px;
         width: 12px;
         height: 20px;
-        border: 2px solid black;
-        border-width: 0 4px 4px 0;
-        opacity: 0.2;
         transform: rotate(40deg);
+
+        &.todo {
+          border: 2px solid black;
+          border-width: 0 4px 4px 0;
+          opacity: 0.2;
+        }
+
+        &.done {
+          border: 2px solid green;
+          border-width: 0 4px 4px 0;
+          opacity: 0.8;
+        }
+
+        &.help {
+          border: 2px solid orange;
+          border-width: 0 4px 4px 0;
+          opacity: 0.8;
+        }
       }
     }
 
@@ -296,10 +312,25 @@
         margin-left: 10px;
         width: 12px;
         height: 20px;
-        border: 2px solid black;
-        border-width: 0 4px 4px 0;
-        opacity: 0.2;
         transform: rotate(40deg);
+
+        &.todo {
+          border: 2px solid black;
+          border-width: 0 4px 4px 0;
+          opacity: 0.2;
+        }
+
+        &.done {
+          border: 2px solid green;
+          border-width: 0 4px 4px 0;
+          opacity: 0.8;
+        }
+
+        &.help {
+          border: 2px solid orange;
+          border-width: 0 4px 4px 0;
+          opacity: 0.8;
+        }
       }
 
       &__number {

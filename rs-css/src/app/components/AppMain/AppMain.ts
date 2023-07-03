@@ -1,11 +1,18 @@
 import "./AppMain.scss";
 
-import { StateLevels } from "../../types";
-import { createButtonElement, createElement, createRowNumbers, createTextElement } from "../utils";
+import { GameLevelResult, GameResults, StateLevels } from "../../types";
+import {
+  checkGameLevelResult,
+  createButtonElement,
+  createElement,
+  createRowNumbers,
+  createTextElement,
+} from "../utils";
 
 export default class AppMain {
   levels: StateLevels[];
   currentLevel: number;
+  gameResults: GameResults;
 
   tableSection: HTMLElement = createElement("section", "table");
   phone: HTMLElement = createElement("div", "table__phone");
@@ -18,18 +25,35 @@ export default class AppMain {
 
   htmlViewer: HTMLElement = createElement("div", "layout__html");
 
-  constructor(levels: StateLevels[], currentLevel: number) {
+  constructor(levels: StateLevels[], currentLevel: number, gameResults: GameResults) {
     this.levels = levels;
     this.currentLevel = currentLevel;
+    this.gameResults = gameResults;
   }
 
-  private createForm(): HTMLElement {
+  private createForm(levels: StateLevels[], currentLevel: number, gameResults: GameResults): HTMLElement {
+    const levelResult = checkGameLevelResult(gameResults, currentLevel) === GameLevelResult.TODO;
+    console.log(levelResult);
     this.form.innerHTML = "";
     this.formInput = document.createElement("input");
-    this.formInput.classList.add("form__input", "blinking");
-    this.formInput.type = "text";
-    this.formInput.id = "formInput";
-    this.formInput.placeholder = "Type in a CSS selector";
+
+    if (levelResult) {
+      this.formInput.classList.add("form__input", "blinking");
+      this.formInput.type = "text";
+      this.formInput.id = "formInput";
+      this.formInput.placeholder = "Type in a CSS selector";
+    } else {
+      this.formInput.classList.add("form__input", "done");
+      this.formInput.type = "text";
+      this.formInput.value = levels[currentLevel].cssSelector;
+      this.formInput.disabled = true;
+      this.formInput.id = "formInput";
+
+      this.formBtnEnter.type = "button";
+      this.formBtnEnter.disabled = true;
+      this.formBtnHelp.type = "button";
+      this.formBtnHelp.disabled = true;
+    }
 
     const formInputWrapp = createElement("div", "form__wrapp");
     formInputWrapp.append(this.formInput, this.formBtnEnter, this.formBtnHelp);
@@ -47,7 +71,7 @@ export default class AppMain {
     return this.form;
   }
 
-  createHtmlTags = (element: HTMLElement): HTMLElement => {
+  private createHtmlTags = (element: HTMLElement): HTMLElement => {
     const div = document.createElement("div");
     div.classList.add("wrap");
     const openTag = `&lt${element.nodeName.toLocaleLowerCase()}>`;
@@ -74,14 +98,14 @@ export default class AppMain {
     this.tableSection.append(phoneWrapp);
   }
 
-  private createEditorSection(levels: StateLevels[], currentLevel: number): void {
+  private createEditorSection(levels: StateLevels[], currentLevel: number, gameResults: GameResults): void {
     this.editorSection.innerHTML = "";
 
     const pane = document.createElement("div");
     pane.classList.add("editor__item", "pane");
     const paneHeader = createTextElement("p", "pane__title", "CSS Editor <span>style.css</span>");
     const formWrapper = createElement("div", "pane__wrapp");
-    formWrapper.append(createRowNumbers("pane__numbers"), this.createForm());
+    formWrapper.append(createRowNumbers("pane__numbers"), this.createForm(levels, currentLevel, gameResults));
     pane.append(paneHeader, formWrapper);
 
     const layout = document.createElement("div");
@@ -132,15 +156,15 @@ export default class AppMain {
     });
   };
 
-  public loadNewContent(levels: StateLevels[], currentLevel: number): void {
+  public loadNewContent(levels: StateLevels[], currentLevel: number, gameResults: GameResults): void {
     this.createTableSection(levels, currentLevel);
-    this.createEditorSection(levels, currentLevel);
+    this.createEditorSection(levels, currentLevel, gameResults);
   }
 
   public getHtmlElement = (): HTMLElement => {
     const main = document.createElement("main");
     main.classList.add("main");
-    this.loadNewContent(this.levels, this.currentLevel);
+    this.loadNewContent(this.levels, this.currentLevel, this.gameResults);
     main.append(this.tableSection, this.editorSection);
     return main;
   };

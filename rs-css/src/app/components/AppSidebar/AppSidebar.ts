@@ -1,11 +1,12 @@
 import "./AppSidebar.scss";
 
-import { createElement, createTextElement } from "../utils";
-import { SidebarActionType, StateLevels } from "../../types";
+import { checkGameLevelResult, createElement, createTextElement } from "../utils";
+import { GameResults, SidebarActionType, StateLevels } from "../../types";
 
 export default class AppSidebar {
   levels: StateLevels[];
   currentLevel: number;
+  gameResults: GameResults;
   showList: boolean = false;
   header: HTMLElement = createElement("div", "sidebar-header");
   info: HTMLElement = createElement("div", "sidebar-info");
@@ -15,9 +16,10 @@ export default class AppSidebar {
   prevArrow: HTMLElement = createElement("span", "header-arrow__prev");
   nextArrow: HTMLElement = createElement("span", "header-arrow__next");
 
-  constructor(levels: StateLevels[], currentLevel: number) {
+  constructor(levels: StateLevels[], currentLevel: number, gameResults: GameResults) {
     this.levels = levels;
     this.currentLevel = currentLevel;
+    this.gameResults = gameResults;
   }
 
   private toggleShowMenuList = (): void => {
@@ -26,13 +28,13 @@ export default class AppSidebar {
     this.showList = !this.showList;
   };
 
-  private createSidebarHeader = (levels: StateLevels[], currentLevel: number): void => {
+  private createSidebarHeader = (levels: StateLevels[], currentLevel: number, gameResults: GameResults): void => {
     this.header.innerHTML = ``;
 
     const headerLevel = createElement("div", "header-level");
     headerLevel.innerHTML = `
       <p class="header-level__title">Level ${currentLevel + 1} of ${levels.length}</p>
-      <span class="header-level__check done"></span>
+      <span class="header-level__check ${checkGameLevelResult(gameResults, currentLevel)}"></span>
     `;
 
     const headerArrow = createElement("div", "header-arrow");
@@ -77,7 +79,7 @@ export default class AppSidebar {
     this.info.append(sidebarLeftSide, description, examplesWrapp);
   };
 
-  private createSidebarList = (levels: StateLevels[], currentLevel: number): void => {
+  private createSidebarList = (levels: StateLevels[], currentLevel: number, gameResults: GameResults): void => {
     this.list.innerHTML = "";
     const title = createTextElement("h3", "sidebar-list__title", "Choose a level:");
 
@@ -88,7 +90,7 @@ export default class AppSidebar {
       if (currentLevel === i) level.classList.add("active");
       level.setAttribute("level", String(i));
       level.innerHTML = `
-        <span class="level-list__check"></span>
+        <span class="level-list__check ${checkGameLevelResult(gameResults, i)}"></span>
         <p class="level-list__number">${i + 1}</p>
         <p class="level-list__title">${levels[i].sidebarSyntax}</p>
       `;
@@ -111,16 +113,16 @@ export default class AppSidebar {
     });
   };
 
-  public loadNewContent = (levels: StateLevels[], currentLevel: number) => {
-    this.createSidebarHeader(levels, currentLevel);
-    this.createSidebarList(levels, currentLevel);
+  public loadNewContent = (levels: StateLevels[], currentLevel: number, gameResults: GameResults) => {
+    this.createSidebarHeader(levels, currentLevel, gameResults);
+    this.createSidebarList(levels, currentLevel, gameResults);
     this.createSidebarInfo(levels, currentLevel);
   };
 
   public getHtmlElement = (): HTMLElement => {
     const sidebar = document.createElement("aside");
     sidebar.classList.add("sidebar");
-    this.loadNewContent(this.levels, this.currentLevel);
+    this.loadNewContent(this.levels, this.currentLevel, this.gameResults);
     sidebar.append(this.header, this.info, this.list);
     return sidebar;
   };

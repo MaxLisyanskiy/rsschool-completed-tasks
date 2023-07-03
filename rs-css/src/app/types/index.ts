@@ -24,3 +24,5 @@ export enum GameLevelResult {
 export interface GameLevelResultStorage {
   [level: string]: { result: GameLevelResult };
 }
+
+export type GameResults = GameLevelResultStorage | null;

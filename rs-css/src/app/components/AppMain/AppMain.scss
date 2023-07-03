@@ -126,7 +126,7 @@
 
   &__numbers {
     padding: 10px 5px;
-    line-height: 20px;
+    line-height: 23px;
     text-align: end;
     background: rgba(0, 0, 0, 0.1);
   }
@@ -158,7 +158,7 @@
 
   &__numbers {
     padding: 10px 5px;
-    line-height: 20px;
+    line-height: 23px;
     text-align: end;
     background: rgba(#1a202c, 0.8);
   }
@@ -182,6 +182,17 @@
 
   &__input {
     width: 100%;
+    margin-right: 10px;
+    padding: 5px;
+    color: #000;
+    font-weight: 700;
+    border-radius: 8px;
+    background: rgba(153, 178, 198, 0.5);
+
+    &.done {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
     &.blinking {
       background: linear-gradient(135deg, rgba(red, 0.3), rgba(62, 203, 255, 0.3));
@@ -195,6 +206,10 @@
     color: #fff;
     border-radius: 6px;
     background: #3a36db;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
   &__help {
@@ -202,11 +217,16 @@
     border-radius: 6px;
     background: #afbac2;
     color: #06152b;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
   &__descr {
+    margin-top: 21px;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 22px;
     font-style: italic;
     color: #aaa;
     & span {

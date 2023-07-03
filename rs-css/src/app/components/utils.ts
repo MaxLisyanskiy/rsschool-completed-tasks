@@ -1,3 +1,5 @@
+import { GameLevelResult, GameResults } from "../types";
+
 export function createElement(elem: string, className: string, func?: () => void): HTMLElement {
   const element = document.createElement(elem);
   element.classList.add(className);
@@ -31,4 +33,12 @@ export function createRowNumbers(className: string): HTMLElement {
     numbers.innerHTML += `${i}<br>`;
   }
   return numbers;
+}
+
+export function checkGameLevelResult(gameResults: GameResults, currentLevel: number) {
+  if (gameResults && gameResults[`${currentLevel}`]) {
+    return gameResults[`${currentLevel}`].result;
+  }
+
+  return GameLevelResult.TODO;
 }

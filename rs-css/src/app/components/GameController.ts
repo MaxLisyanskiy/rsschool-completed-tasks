@@ -1,25 +1,24 @@
-import { GameLevelResult, GameLevelResultStorage, SidebarActionType, StateLevels } from "./types";
+import AppViewer from "./AppViewer";
+import { GameLevelResult, GameResults, SidebarActionType, StateLevels } from "../types";
 
-import AppViewer from "./components/AppViewer/AppViewer";
-
-export default class Game {
+export default class GameController {
   levels: StateLevels[];
   currentLevel: number;
+  gameResults: GameResults;
   AppViewer: AppViewer;
 
-  constructor(levels: StateLevels[], currentLevel: number) {
+  constructor(levels: StateLevels[], currentLevel: number, gameResults: GameResults) {
     this.levels = levels;
     this.currentLevel = currentLevel;
-    this.AppViewer = new AppViewer(this.levels, this.currentLevel);
+    this.gameResults = gameResults;
+    this.AppViewer = new AppViewer(levels, currentLevel, gameResults);
   }
 
   private handleChangeStorage = (level: number, levelResult: GameLevelResult): void => {
-    const storage: string | null = localStorage.getItem("_gameLevelResults");
-
-    if (storage) {
-      const parsingObj: GameLevelResultStorage = JSON.parse(storage);
-      if (!parsingObj[`${level}`] || parsingObj[`${level}`]?.result !== levelResult) {
-        const result = { ...parsingObj, [level]: { result: levelResult } };
+    if (this.gameResults) {
+      if (!this.gameResults[`${level}`] || this.gameResults[`${level}`]?.result !== levelResult) {
+        const result = { ...this.gameResults, [level]: { result: levelResult } };
+        this.gameResults = result;
         localStorage.setItem("_gameLevelResults", JSON.stringify(result));
       }
     } else {
@@ -94,8 +93,7 @@ export default class Game {
   };
 
   private createNewGame = () => {
-    console.log("hi", this.currentLevel);
-    this.AppViewer.createGameView(this.levels, this.currentLevel);
+    this.AppViewer.createGameView(this.levels, this.currentLevel, this.gameResults);
     this.AppViewer.AppSidebar.setActionsForList(this.handleChangeLevel);
   };
 
