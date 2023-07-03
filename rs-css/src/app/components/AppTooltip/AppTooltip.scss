@@ -10,4 +10,9 @@
   outline: solid 1px transparent;
   word-wrap: nowrap;
   white-space: nowrap;
+
+  @media (max-width: 600px) {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
 }

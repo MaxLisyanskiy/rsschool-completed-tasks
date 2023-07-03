@@ -7,6 +7,7 @@ import {
   createElement,
   createRowNumbers,
   createTextElement,
+  getTagAttributes,
 } from "../utils";
 
 export default class AppMain {
@@ -82,17 +83,17 @@ export default class AppMain {
 
   private createHtmlTags = (element: HTMLElement): HTMLElement => {
     const div = document.createElement("div");
-    div.classList.add("wrap");
-    const openTag = `&lt${element.nodeName.toLocaleLowerCase()}>`;
+    div.classList.add("code");
+    const openTag = `&lt${element.nodeName.toLocaleLowerCase()}${getTagAttributes(element)}>`;
     const closedTag = `&lt;/${element.nodeName.toLocaleLowerCase()}>`;
     if (element.children.length > 0) {
-      div.append(createTextElement("span", "code", `${openTag}`));
+      div.append(createTextElement("span", "code__item", `${openTag}`));
       for (let i = 0; i < element.children.length; i += 1) {
         div.append(this.createHtmlTags(element.children[i].cloneNode(true) as HTMLElement));
       }
-      div.append(createTextElement("span", "code", `${closedTag}`));
+      div.append(createTextElement("span", "code__item", `${closedTag}`));
     } else {
-      div.append(createTextElement("span", "code", `${openTag}${closedTag}`));
+      div.append(createTextElement("span", "code__item", `${openTag}${closedTag}`));
     }
     return div;
   };
@@ -103,7 +104,7 @@ export default class AppMain {
     const phoneWrapp = createElement("div", "table__wrapp");
     const title = createTextElement("h1", "table__title", levels[currentLevel].title);
     phoneWrapp.append(title, this.phone);
-    this.phone.innerHTML = levels[currentLevel].code;
+    this.phone.innerHTML = levels[currentLevel].phoneCode;
     this.tableSection.append(phoneWrapp);
   }
 
@@ -125,10 +126,12 @@ export default class AppMain {
     this.htmlViewer.innerHTML = "";
 
     const container = document.createElement("div");
-    container.innerHTML = levels[currentLevel].code;
+    container.innerHTML = levels[currentLevel].viewerCode;
     const arrCode = document.createDocumentFragment();
     container.childNodes.forEach((item) => {
-      if (item.nodeType === 1) arrCode.append(this.createHtmlTags(item as HTMLElement));
+      if (item.nodeType === 1) {
+        arrCode.append(this.createHtmlTags(item as HTMLElement));
+      }
     });
     this.htmlViewer.append(arrCode);
 
@@ -143,7 +146,6 @@ export default class AppMain {
     this.phone.addEventListener("mouseover", (e: MouseEvent): void => {
       if (e.target instanceof HTMLElement) {
         if (e.target.className !== "table__phone") {
-          e.target.classList.add("outline");
           handleShowTooltip(e);
         }
       }
@@ -151,10 +153,26 @@ export default class AppMain {
     this.phone.addEventListener("mouseout", (e: MouseEvent): void => {
       if (e.target instanceof HTMLElement) {
         if (e.target.className !== "table__phone") {
-          e.target.classList.remove("outline");
           handleShowTooltip(e);
         }
       }
+    });
+
+    this.htmlViewer.addEventListener("mouseover", (e: MouseEvent): void => {
+      if (e.target instanceof HTMLElement) {
+        if (e.target.className === "code") {
+          handleShowTooltip(e);
+        }
+      }
+      handleShowTooltip(e);
+    });
+    this.htmlViewer.addEventListener("mouseout", (e: MouseEvent): void => {
+      if (e.target instanceof HTMLElement) {
+        if (e.target.className === "code") {
+          handleShowTooltip(e);
+        }
+      }
+      handleShowTooltip(e);
     });
 
     this.form.addEventListener("submit", (e: SubmitEvent) => {

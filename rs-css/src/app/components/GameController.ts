@@ -28,16 +28,23 @@ export default class GameController {
   };
 
   private handleShowTooltip = (e: MouseEvent): void => {
-    const elementsTable: HTMLElement[] = Array.from(this.AppViewer.AppMain.phone.querySelectorAll("*"));
+    const phoneNodes: HTMLElement[] = Array.from(this.AppViewer.AppMain.phone.querySelectorAll(".emoji"));
+    const viewerNodes: HTMLElement[] = Array.from(this.AppViewer.AppMain.htmlViewer.querySelectorAll(".code"));
 
     if (e.target instanceof HTMLElement) {
-      const index = elementsTable.indexOf(e.target);
+      const index = e.target.closest(".emoji")
+        ? phoneNodes.indexOf(e.target)
+        : viewerNodes.indexOf(e.target.closest(".code") as HTMLElement);
 
-      if (e.type === "mouseover") {
-        this.AppViewer.AppTooltip.onShowTooltip("block", elementsTable[index]);
+      if (index !== -1 && e.type === "mouseover") {
+        phoneNodes[index].classList.add("outline");
+        viewerNodes[index].classList.add("highlite");
+        this.AppViewer.AppTooltip.onShowTooltip("block", phoneNodes[index]);
       }
-      if (e.type === "mouseout") {
-        this.AppViewer.AppTooltip.onShowTooltip("none", elementsTable[index]);
+      if (index !== -1 && e.type === "mouseout") {
+        phoneNodes[index].classList.remove("outline");
+        viewerNodes[index].classList.remove("highlite");
+        this.AppViewer.AppTooltip.onShowTooltip("none", phoneNodes[index]);
       }
     }
   };

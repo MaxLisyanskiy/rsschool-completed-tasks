@@ -29,7 +29,7 @@ export function createButtonElement(
 
 export function createRowNumbers(className: string): HTMLElement {
   const numbers = createElement("div", className);
-  for (let i = 1; i < 20; i++) {
+  for (let i = 1; i < 11; i++) {
     numbers.innerHTML += `${i}<br>`;
   }
   return numbers;
@@ -41,4 +41,24 @@ export function checkGameLevelResult(gameResults: GameResults, currentLevel: num
   }
 
   return GameLevelResult.TODO;
+}
+
+export function getTagAttributes(elem: HTMLElement): string {
+  let elemClass: string | null = null;
+  let elemClassValues: string | null = elem.getAttribute("class");
+
+  elemClass =
+    elemClassValues !== null
+      ? elemClassValues
+          .split(" ")
+          .filter((value) => value === "small")
+          .join("")
+      : null;
+
+  const elemId: Attr | null = elem.attributes.getNamedItem("id");
+  const attributes: string = `${elemClass ? ` class="${elemClass}"` : ""}${
+    elemId && elemId.value ? ` id="${elemId.value}"` : ""
+  }`;
+
+  return attributes;
 }

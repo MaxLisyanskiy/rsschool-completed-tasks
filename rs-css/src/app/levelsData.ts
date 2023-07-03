@@ -11,9 +11,13 @@ export const LEVELS = [
       "<strong>p</strong> selects all <tag>p</tag> elements.",
     ],
     cssSelector: "dog",
-    code: `
+    phoneCode: `
       <dog class="emoji bounce"></dog>
       <dog class="emoji bounce"></dog>
+    `,
+    viewerCode: `
+      <dog></dog>
+      <dog></dog>
     `,
   },
   {
@@ -28,10 +32,15 @@ export const LEVELS = [
       "<strong>p</strong> selects all <tag>p</tag> elements.",
     ],
     cssSelector: "lion",
-    code: `
+    phoneCode: `
       <dog class="emoji"></dog>
       <lion class="emoji bounce"></lion>
       <pig class="emoji"></pig>
+    `,
+    viewerCode: `
+      <dog></dog>
+      <lion></lion>
+      <pig></pig>
     `,
   },
   {
@@ -46,10 +55,15 @@ export const LEVELS = [
       '<strong>ul#long</strong> selects <tag>ul id="long"</tag>',
     ],
     cssSelector: "#rainy",
-    code: `
+    phoneCode: `
       <cloud id="rainy" class="emoji bounce"></cloud>
       <cloud class="emoji"></cloud>
       <sun class="emoji"></sun>
+    `,
+    viewerCode: `
+      <cloud id="rainy"></cloud>
+      <cloud></cloud>
+      <sun></sun>
     `,
   },
   {
@@ -64,12 +78,19 @@ export const LEVELS = [
       '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
     ],
     cssSelector: "plate donut",
-    code: `
+    phoneCode: `
       <lollipop class="emoji"></lollipop>
       <plate class="emoji">
         <donut class="emoji bounce"></donut>
       </plate>
       <cookie class="emoji"></cookie>
+    `,
+    viewerCode: `
+      <lollipop></lollipop>
+      <plate>
+        <donut></donut>
+      </plate>
+      <cookie></cookie>
     `,
   },
   {
@@ -82,7 +103,7 @@ export const LEVELS = [
       '<strong>#cool&nbsp;span</strong> selects all <tag>span</tag> elements that are inside of elements with <strong>id="cool"</strong>',
     ],
     cssSelector: "#rainy rocket",
-    code: `
+    phoneCode: `
       <cloud class="emoji">
         <rocket class="emoji"></rocket>
       </cloud>
@@ -91,6 +112,17 @@ export const LEVELS = [
       </sun>
       <cloud id="rainy" class="emoji">
         <rocket class="emoji bounce"></rocket>
+      </cloud>
+    `,
+    viewerCode: `
+      <cloud>
+        <rocket></rocket>
+      </cloud>
+      <sun>
+        <rocket></rocket>
+      </sun>
+      <cloud id="rainy">
+        <rocket></rocket>
       </cloud>
     `,
   },
@@ -103,12 +135,19 @@ export const LEVELS = [
       "The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.",
     sidebarExamples: ['<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>'],
     cssSelector: ".small",
-    code: `
+    phoneCode: `
       <bomb class="emoji"></bomb>
       <earth class="emoji">
         <bomb class="emoji small bounce"></bomb>
       </earth>
       <bomb class="emoji small bounce"></bomb>
+    `,
+    viewerCode: `
+      <bomb></bomb>
+      <earth>
+        <bomb class="small"></bomb>
+      </earth>
+      <bomb class="small"></bomb>
     `,
   },
   {
@@ -122,13 +161,22 @@ export const LEVELS = [
       '<strong>#big.wide</strong> selects all elements with <strong>id="big"</strong> that also have <strong>class="wide"</strong>',
     ],
     cssSelector: "plane.small",
-    code: `
+    phoneCode: `
       <earth class="emoji">
         <plane class="emoji small bounce"></plane>
       </earth>
       <plane class="emoji"></plane>
       <cloud class="emoji">
         <plane class="emoji small bounce"></plane>
+      </cloud>
+    `,
+    viewerCode: `
+      <earth>
+        <plane class="small"></plane>
+      </earth>
+      <plane></plane>
+      <cloud>
+        <plane class="small"></plane>
       </cloud>
     `,
   },
@@ -140,7 +188,7 @@ export const LEVELS = [
     sidebarDescr: "Combine what you learned in the last few levels to solve this one!",
     sidebarExamples: [],
     cssSelector: "plate burger.small",
-    code: `
+    phoneCode: `
       <plate class="emoji">
         <burger class="emoji small bounce"></burger>
       </plate>
@@ -150,6 +198,18 @@ export const LEVELS = [
       <burger class="emoji small"></burger>
       <plate class="emoji">
         <burger class="emoji small bounce"></burger>
+      </plate>
+    `,
+    viewerCode: `
+      <plate>
+        <burger class="small"></burger>
+      </plate>
+      <plate>
+        <donut class="small"></donut>
+      </plate>
+      <burger class="small"></burger>
+      <plate>
+        <burger class="small"></burger>
       </plate>
     `,
   },
@@ -165,13 +225,21 @@ export const LEVELS = [
       "<strong>a, p, div</strong> selects all <tag>a</tag>, <tag>p</tag> and <tag>div</tag> elements",
     ],
     cssSelector: "monkey,fish",
-    code: `
+    phoneCode: `
       <monkey class="emoji bounce"></monkey>
       <pig class="emoji"></pig>
       <plate class="emoji">
         <fish class="emoji small bounce"></fish>
       </plate>
       <fish class="emoji small bounce"></fish>
+    `,
+    viewerCode: `
+      <monkey></monkey>
+      <pig></pig>
+      <plate>
+        <fish class="small"></fish>
+      </plate>
+      <fish class="small"></fish>
     `,
   },
   {
@@ -182,13 +250,21 @@ export const LEVELS = [
     sidebarDescr: "You can select all elements with the universal selector!",
     sidebarExamples: ["<strong>p *</strong> selects any element inside all <tag>p</tag> elements."],
     cssSelector: "*",
-    code: `
+    phoneCode: `
       <rocket class="emoji bounce"></rocket>
-      <earth class="emoji bounce">
+      <earth class="emoji bounce" id="big">
         <bomb class="emoji small bounce"></bomb>
       </earth>
       <plane class="emoji small bounce"></plane>
       <dog class="emoji bounce"></dog>
+    `,
+    viewerCode: `
+      <rocket class="small"></rocket>
+      <earth id="big">
+        <bomb class="small"></bomb>
+      </earth>
+      <plane class="small"></plane>
+      <dog></dog>
     `,
   },
 ];

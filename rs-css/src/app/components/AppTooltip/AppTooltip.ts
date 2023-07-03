@@ -1,6 +1,6 @@
 import "./AppTooltip.scss";
 
-import { createElement } from "../utils";
+import { createElement, getTagAttributes } from "../utils";
 
 export default class AppTooltip {
   tooltip: HTMLElement = createElement("div", "tooltip");
@@ -9,8 +9,12 @@ export default class AppTooltip {
     this.tooltip.style.display = display;
 
     if (display === "block") {
+      const tagName = elem.tagName.toLocaleLowerCase();
+
       this.tooltip.innerHTML = `
-      &lt;${elem.tagName.toLocaleLowerCase()}&gt;&lt;/${elem.tagName.toLocaleLowerCase()}&gt;`;
+        &lt;${tagName}${getTagAttributes(elem)}&gt;&lt;/${tagName}&gt;
+      `;
+
       this.tooltip.style.left = `${elem.getClientRects()[0].x}px`;
       this.tooltip.style.top = `${elem.getClientRects()[0].y - 30}px`;
     }

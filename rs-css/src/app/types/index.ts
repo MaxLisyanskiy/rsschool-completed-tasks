@@ -6,7 +6,8 @@ export interface StateLevels {
   sidebarDescr: string;
   sidebarExamples: string[];
   cssSelector: string;
-  code: string;
+  phoneCode: string;
+  viewerCode: string;
 }
 
 export enum SidebarActionType {

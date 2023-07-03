@@ -1,7 +1,7 @@
 .sidebar {
   position: relative;
-  width: 35%;
-  height: 814px;
+  width: 32%;
+  height: 578px;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -161,7 +161,7 @@
   }
 
   &-info {
-    padding: 20px 15px;
+    padding: 10px 15px;
 
     @media (max-width: 800px) {
       display: grid;
@@ -171,11 +171,10 @@
     @media (max-width: 400px) {
       display: flex;
       flex-direction: column;
-      padding: 10px 15px;
     }
 
     &__title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
       margin-bottom: 10px;
 
@@ -186,17 +185,16 @@
     }
 
     &__subtitle {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       @media (max-width: 400px) {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
       }
     }
 
     &__syntax {
       display: inline-block;
-      padding: 15px;
-      margin-bottom: 15px;
-      font-size: 20px;
+      padding: 8px;
+      margin-bottom: 10px;
       border-radius: 8px;
       background: rgba(153, 178, 198, 0.5);
       border-bottom: 3px solid #3a36db;
@@ -209,8 +207,9 @@
     }
 
     &__description {
-      line-height: 28px;
-      margin-bottom: 30px;
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 15px;
 
       @media (max-width: 800px) {
         margin: 0;
@@ -232,22 +231,19 @@
     }
 
     & .sidebar-example {
-      padding: 15px;
+      padding: 10px;
       background: #f0f0f0;
       border-radius: 8px;
       height: fit-content;
 
       &__title {
         font-weight: bold;
-        margin-bottom: 10px;
-        @media (max-width: 800px) {
-          margin: 0;
-        }
       }
 
       &__option {
-        padding: 15px 5px;
-        line-height: 24px;
+        font-size: 14px;
+        padding: 10px 5px;
+        line-height: 22px;
         border-bottom: 1px solid #000;
 
         @media (max-width: 800px) {
