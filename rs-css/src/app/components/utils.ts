@@ -24,6 +24,7 @@ export function createButtonElement(
   btn.classList.add(className);
   btn.innerHTML = text;
   btn.type = type;
+  if (func) btn.addEventListener("click", func);
   return btn;
 }
 

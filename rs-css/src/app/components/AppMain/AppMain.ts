@@ -38,26 +38,35 @@ export default class AppMain {
     this.form.innerHTML = "";
     this.formInput = document.createElement("input");
 
-    if (levelResult) {
-      this.formInput.classList.add("form__input", "blinking");
-      this.formInput.type = "text";
-      this.formInput.id = "formInput";
-      this.formInput.placeholder = "Type in a CSS selector";
+    this.formInput.classList.add("form__input", "blinking");
+    this.formInput.type = "text";
+    this.formInput.id = "formInput";
+    this.formInput.placeholder = "Type in a CSS selector";
 
-      this.formBtnEnter.type = "submit";
-      this.formBtnEnter.disabled = false;
-      this.formBtnHelp.disabled = false;
-    } else {
-      this.formInput.classList.add("form__input", "done");
-      this.formInput.type = "text";
-      this.formInput.value = levels[currentLevel].cssSelector;
-      this.formInput.disabled = true;
-      this.formInput.id = "formInput";
+    this.formBtnEnter.type = "submit";
+    this.formBtnEnter.disabled = false;
+    this.formBtnHelp.disabled = false;
 
-      this.formBtnEnter.type = "button";
-      this.formBtnEnter.disabled = true;
-      this.formBtnHelp.disabled = true;
-    }
+    // if (levelResult) {
+    //   this.formInput.classList.add("form__input", "blinking");
+    //   this.formInput.type = "text";
+    //   this.formInput.id = "formInput";
+    //   this.formInput.placeholder = "Type in a CSS selector";
+
+    //   this.formBtnEnter.type = "submit";
+    //   this.formBtnEnter.disabled = false;
+    //   this.formBtnHelp.disabled = false;
+    // } else {
+    //   this.formInput.classList.add("form__input", "done");
+    //   this.formInput.type = "text";
+    //   this.formInput.value = levels[currentLevel].cssSelector;
+    //   this.formInput.disabled = true;
+    //   this.formInput.id = "formInput";
+
+    //   this.formBtnEnter.type = "button";
+    //   this.formBtnEnter.disabled = true;
+    //   this.formBtnHelp.disabled = true;
+    // }
 
     this.formInput.addEventListener("input", () => {
       return this.formInput.value.length === 0

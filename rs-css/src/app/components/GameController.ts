@@ -103,8 +103,11 @@ export default class GameController {
         });
         setTimeout(() => {
           this.handleChangeStorage(this.currentLevel, type);
-          this.currentLevel++;
-          localStorage.setItem("_currentLevel", JSON.stringify(this.currentLevel));
+          this.currentLevel += 1;
+          localStorage.setItem(
+            "_currentLevel",
+            JSON.stringify(this.currentLevel < this.levels.length ? this.currentLevel : this.currentLevel - 1),
+          );
           this.createNewGame();
         }, 1000);
       } else {
@@ -129,6 +132,11 @@ export default class GameController {
   };
 
   private createNewGame = () => {
+    if (this.currentLevel >= this.levels.length) {
+      this.currentLevel -= 1;
+      this.AppViewer.AppPopup.showPopup(this.gameResults);
+    }
+
     this.AppViewer.createGameView(this.levels, this.currentLevel, this.gameResults);
     this.AppViewer.AppSidebar.setActionsForList(this.handleChangeLevel);
   };
@@ -138,5 +146,6 @@ export default class GameController {
     this.createNewGame();
     this.AppViewer.AppSidebar.setActionsForArrow(this.handleChangeLevel, this.resetGameLevels);
     this.AppViewer.AppMain.setActions(this.handleShowTooltip, this.handleCheckSubmit, this.handleShowHelpSelector);
+    this.AppViewer.AppPopup.setActionsReset(this.resetGameLevels);
   };
 }
