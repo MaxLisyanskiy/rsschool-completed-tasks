@@ -16,7 +16,7 @@ export default class AppFooter {
     const footer = createElement("footer", "footer");
     const footerWrapp = createElement("div", "footer__wrapp");
     footerWrapp.append(
-      this.createLink("footer__school", "https://rs.school/", ""),
+      this.createLink("footer__school", "https://rs.school/js/", ""),
       this.createLink(
         "footer__task",
         "https://github.com/rolling-scopes-school/tasks/blob/master/tasks/rs-css.md",
