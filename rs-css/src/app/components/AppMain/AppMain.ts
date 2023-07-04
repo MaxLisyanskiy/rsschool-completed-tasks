@@ -47,27 +47,6 @@ export default class AppMain {
     this.formBtnEnter.disabled = false;
     this.formBtnHelp.disabled = false;
 
-    // if (levelResult) {
-    //   this.formInput.classList.add("form__input", "blinking");
-    //   this.formInput.type = "text";
-    //   this.formInput.id = "formInput";
-    //   this.formInput.placeholder = "Type in a CSS selector";
-
-    //   this.formBtnEnter.type = "submit";
-    //   this.formBtnEnter.disabled = false;
-    //   this.formBtnHelp.disabled = false;
-    // } else {
-    //   this.formInput.classList.add("form__input", "done");
-    //   this.formInput.type = "text";
-    //   this.formInput.value = levels[currentLevel].cssSelector;
-    //   this.formInput.disabled = true;
-    //   this.formInput.id = "formInput";
-
-    //   this.formBtnEnter.type = "button";
-    //   this.formBtnEnter.disabled = true;
-    //   this.formBtnHelp.disabled = true;
-    // }
-
     this.formInput.addEventListener("input", () => {
       return this.formInput.value.length === 0
         ? this.formInput.classList.add("blinking")

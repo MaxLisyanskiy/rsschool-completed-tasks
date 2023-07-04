@@ -7,6 +7,11 @@ import AppPopup from "./AppPopup/AppPopup";
 import { createElement } from "./utils";
 import type { GameResults, StateLevels } from "../types";
 
+import hljs from "highlight.js/lib/core";
+import "highlight.js/styles/atom-one-dark.css";
+import xml from "highlight.js/lib/languages/xml";
+hljs.registerLanguage("html", xml);
+
 export default class AppViewer {
   levels: StateLevels[];
   currentLevel: number;
@@ -33,6 +38,9 @@ export default class AppViewer {
     this.currentLevel = currentLevel;
     this.AppSidebar.loadNewContent(levels, currentLevel, gameResults);
     this.AppMain.loadNewContent(levels, currentLevel, gameResults);
+    document.querySelectorAll(".code__item").forEach((block) => {
+      hljs.highlightElement(block as HTMLElement);
+    });
   }
 
   public createDom = (): void => {
