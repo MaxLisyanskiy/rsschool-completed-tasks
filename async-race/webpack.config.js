@@ -13,7 +13,6 @@ const devServer = (isDev) =>
           open: true,
           hot: true,
           port: 8080,
-          contentBase: path.join(__dirname, "public"),
         },
       };
 
@@ -56,16 +55,16 @@ module.exports = ({ development }) => ({
       },
     ],
   },
-  //   plugins: [
-  //     ...esLintPlugin(development),
-  //     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
-  //     new HtmlWebpackPlugin({
-  //       template: "./src/index.html",
-  //     }),
-  //     new CopyPlugin({
-  //       patterns: [{ from: "src/assets/" }],
-  //     }),
-  //     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-  //   ],
+  plugins: [
+    ...esLintPlugin(development),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+    new CopyPlugin({
+      patterns: [{ from: "src/assets/" }],
+    }),
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+  ],
   ...devServer(development),
 });
