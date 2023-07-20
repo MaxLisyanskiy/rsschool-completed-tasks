@@ -1,14 +1,21 @@
-import AppHeader from "./components/AppHeader/AppHeader";
+import { createElement } from "../utils/createFunctions";
+import AppNav from "./components/AppNav/AppNav";
+import Winners from "./pages/winners/winners";
 
 export default class App {
-  private AppHeader: AppHeader;
+  private main: HTMLElement;
+  private AppNav: AppNav;
+  private Winners: Winners;
 
   constructor() {
-    this.AppHeader = new AppHeader();
+    this.main = createElement("main", ["container"]);
+    this.AppNav = new AppNav();
+    this.Winners = new Winners();
   }
 
   init = (): void => {
-    document.body.prepend(this.AppHeader.header);
+    this.main.append(this.AppNav.nav, this.Winners.page);
+    document.body.append(this.main);
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);

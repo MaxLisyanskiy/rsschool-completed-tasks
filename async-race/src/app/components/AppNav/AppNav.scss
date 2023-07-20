@@ -1,0 +1,20 @@
+.nav {
+  border-radius: 5px;
+  border: 1px solid #282828;
+  background: #1c1c1c;
+  padding: 16px 100px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  &__link {
+    color: #c7e143;
+    font-size: 24px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
