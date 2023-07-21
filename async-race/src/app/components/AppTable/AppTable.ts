@@ -1,5 +1,6 @@
 import "./AppTable.scss";
-import { createElement } from "../../../utils/createFunctions";
+import { createElement, createTableCarSvg } from "../../../utils/createFunctions";
+import { IWinner, IWinnerCarInfo, IWinnersTableData } from "../../types/winnerTypes";
 
 export default class AppTable {
   public table: HTMLElement;
@@ -23,12 +24,39 @@ export default class AppTable {
     const car = createElement("th", ["table-head__item"], "Car");
     const model = createElement("th", ["table-head__item"], "Model");
     this.headWins = createElement("th", ["table-head__item"], "Wins ↕️", this.sortTableByWins);
-    this.headTime = createElement("th", ["table-head__item"], "Best time ↕️");
+    this.headTime = createElement("th", ["table-head__item"], "Best time ↕️", this.sortTableByTime);
 
     trWrapp.append(num, car, model, this.headWins, this.headTime);
 
     this.head.append(trWrapp);
   };
 
-  private sortTableByWins = () => {};
+  private createTableBodyRow = (index: number, winnerData: IWinner, carData: IWinnerCarInfo): void => {
+    const trWrapp = createElement("tr", ["table-body__wrapp"]);
+    const num = createElement("td", ["table-body__item"], `${index}`);
+    const car = createElement("td", ["table-body__item"], "");
+    const model = createElement("td", ["table-body__item"], `${carData.name}`);
+    const wins = createElement("td", ["table-body__item"], `${winnerData.wins}`);
+    const time = createElement("td", ["table-body__item"], `${winnerData.time}`);
+
+    car.append(createTableCarSvg(carData.color));
+    trWrapp.append(num, car, model, wins, time);
+    this.body.append(trWrapp);
+  };
+
+  private sortTableByWins = (): void => {};
+  private sortTableByTime = (): void => {};
+
+  public updateTableBody = (tableData: IWinnersTableData[]): void => {
+    this.body.innerHTML = "";
+
+    if (tableData.length > 0) {
+      tableData.forEach((item, index) => {
+        const { winnerData, carData } = item;
+        this.createTableBodyRow(index, winnerData, carData);
+      });
+    } else {
+      this.body.innerHTML = "Not found winner";
+    }
+  };
 }

@@ -10,8 +10,8 @@ export default class AppNav {
   constructor() {
     this.nav = createElement("nav", ["nav"]);
 
-    this.garageLink = new AppLink("Garage", "#/garage", ["nav__link"]);
-    this.winnersLink = new AppLink("Winners", "#/winner", ["nav__link"]);
+    this.garageLink = new AppLink("Garage", "#garage", ["nav__link"]);
+    this.winnersLink = new AppLink("Winners", "#winners", ["nav__link"]);
 
     this.nav.append(this.garageLink.link, this.winnersLink.link);
   }
