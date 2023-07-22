@@ -28,6 +28,7 @@ export default class ApiController {
   async getWinnerCarInfo(id: number): Promise<CarInfo> {
     const res = await fetch(`${this.garage}/${id}`);
     const carInfo = await res.json();
+
     return carInfo;
   }
 
@@ -35,7 +36,19 @@ export default class ApiController {
     const res = await fetch(`${this.garage}?_page=${page}&_limit=${limit}`);
     const items = await res.json();
     const count = res.headers.get("X-Total-Count");
-    console.log(items);
+
     return { items, count };
+  }
+
+  async createCar(name: string, color: string): Promise<CarInfo> {
+    const res = await fetch(this.garage, {
+      method: "POST",
+      body: JSON.stringify({ name, color }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return res.json();
   }
 }

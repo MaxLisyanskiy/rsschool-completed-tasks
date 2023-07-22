@@ -11,6 +11,8 @@ export default class AppForm {
   private currentCarColor: HTMLInputElement;
   private currentCarBtn: HTMLButtonElement;
 
+  public onCreateCar!: (name: string, color: string) => void;
+
   constructor() {
     this.form = createElement("div", ["form"], "");
 
@@ -51,5 +53,12 @@ export default class AppForm {
     currentCarWrapp.append(this.currentCarInput, this.currentCarColor, this.currentCarBtn);
 
     this.form.append(newCarWrapp, currentCarWrapp);
+
+    newCarWrapp.addEventListener("submit", (e: SubmitEvent): void => {
+      e.preventDefault();
+      if (this.newCarInput.value.trim() !== "") {
+        this.onCreateCar(this.newCarInput.value, this.newCarColor.value);
+      }
+    });
   }
 }

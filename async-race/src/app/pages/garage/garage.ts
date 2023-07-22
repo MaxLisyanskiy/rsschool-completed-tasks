@@ -25,7 +25,14 @@ export default class GaragePage extends ApiController {
     this.actionBtns = new AppActionBtns();
     this.carsTable = new AppCarsTable();
 
+    this.form.onCreateCar = (name: string, color: string) => this.handleCreateCar(name, color);
+
     this.page.append(this.title, this.subtitle, this.form.form, this.actionBtns.buttons, this.carsTable.cars);
+  }
+
+  private async handleCreateCar(name: string, color: string) {
+    await this.createCar(name, color);
+    await this.updateGaragePage();
   }
 
   public async updateGaragePage() {
