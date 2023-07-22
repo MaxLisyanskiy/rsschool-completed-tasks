@@ -1,4 +1,6 @@
 .form {
+  margin-bottom: 15px;
+
   &__wrapp {
     display: flex;
     align-items: center;
@@ -20,6 +22,11 @@
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 
   &__btn {
@@ -30,9 +37,18 @@
     font-weight: 600;
     font-size: 15px;
     text-transform: uppercase;
+    transition: all 0.3s ease;
+
     &:disabled {
       opacity: 0.5;
       cursor: default;
+    }
+
+    &:hover {
+      transform: scale(1.07);
+      &:disabled {
+        transform: scale(1);
+      }
     }
   }
 }

@@ -3,13 +3,13 @@ import { createBtnElement, createElement, createInputElement } from "../../../ut
 
 export default class AppForm {
   public form: HTMLElement;
-  public newCarInput: HTMLInputElement;
-  public newCarColor: HTMLInputElement;
-  public newCarBtn: HTMLButtonElement;
+  private newCarInput: HTMLInputElement;
+  private newCarColor: HTMLInputElement;
+  private newCarBtn: HTMLButtonElement;
 
-  public currentCarInput: HTMLInputElement;
-  public currentCarColor: HTMLInputElement;
-  public currentCarBtn: HTMLButtonElement;
+  private currentCarInput: HTMLInputElement;
+  private currentCarColor: HTMLInputElement;
+  private currentCarBtn: HTMLButtonElement;
 
   constructor() {
     this.form = createElement("div", ["form"], "");
