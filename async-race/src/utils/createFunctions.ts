@@ -50,6 +50,15 @@ export function createBtnElement(
   return element;
 }
 
+export function createLinkElement(text: string, href: string, className: string[] = []): HTMLAnchorElement {
+  const element = document.createElement("a");
+  element.innerHTML = text;
+  element.setAttribute("href", href);
+  element.classList.add(...className);
+
+  return element;
+}
+
 export function createCarSvg(color: string, className: string): HTMLElement {
   const carSvg = document.createElement("div");
   carSvg.classList.add(className);

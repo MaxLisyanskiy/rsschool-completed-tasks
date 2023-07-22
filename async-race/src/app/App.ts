@@ -17,6 +17,8 @@ export default class App {
     this.AppNav = new AppNav();
     this.WinnersPage = new WinnersPage();
     this.GaragePage = new GaragePage();
+
+    window.addEventListener("hashchange", () => this.checkHash());
   }
 
   private showPage = (page = Pages.GARAGE): void => {
@@ -29,13 +31,19 @@ export default class App {
       this.currentPage.innerHTML = "";
       this.currentPage.append(this.GaragePage.page);
     }
+
+    this.AppNav.onChangeActiveNav(page);
+  };
+
+  private checkHash = (): void => {
+    const urlHash = window.location.hash.split("#")[1];
+    urlHash ? this.showPage(urlHash as Pages) : this.showPage();
   };
 
   public init = (): void => {
     this.main.append(this.AppNav.nav, this.currentPage);
     document.body.append(this.main);
 
-    const urlHash = window.location.hash.split("#")[1];
-    urlHash ? this.showPage(urlHash as Pages) : this.showPage();
+    this.checkHash();
   };
 }

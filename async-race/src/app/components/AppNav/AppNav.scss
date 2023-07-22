@@ -13,7 +13,15 @@
     margin: 0 10px;
     transition: all 0.3s ease;
 
+    &.active {
+      color: rgba(#c7e143, 0.2);
+      cursor: default;
+    }
+
     &:hover {
+      &.active {
+        transform: scale(1);
+      }
       transform: scale(1.1);
     }
   }
