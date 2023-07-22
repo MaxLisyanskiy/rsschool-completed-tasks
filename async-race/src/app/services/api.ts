@@ -1,9 +1,11 @@
-import { IWinnerCarInfo, IWinnersData, WinnersOrder, WinnersSort } from "../types/winnerTypes";
+import { CarInfo, CarsData, IWinnersData, WinnersOrder, WinnersSort } from "../types/apiTypes";
 
 export default class ApiController {
   baseApiUrl: string;
   winners: string;
   garage: string;
+  basePage: number = 1;
+  baseLimit: number = 10;
 
   constructor() {
     this.baseApiUrl = "http://localhost:3000";
@@ -12,8 +14,8 @@ export default class ApiController {
   }
 
   async getWinners(
-    page: number = 1,
-    limit: number = 10,
+    page: number = this.basePage,
+    limit: number = this.baseLimit,
     sort: WinnersSort = WinnersSort.WINS,
     order: WinnersOrder = WinnersOrder.DESC,
   ): Promise<IWinnersData> {
@@ -23,9 +25,17 @@ export default class ApiController {
     return { items, count };
   }
 
-  async getWinnerCarInfo(id: number): Promise<IWinnerCarInfo> {
+  async getWinnerCarInfo(id: number): Promise<CarInfo> {
     const res = await fetch(`${this.garage}/${id}`);
     const carInfo = await res.json();
     return carInfo;
+  }
+
+  async getCars(page = this.basePage, limit: number = this.baseLimit): Promise<CarsData> {
+    const res = await fetch(`${this.garage}?_page=${page}&_limit=${limit}`);
+    const items = await res.json();
+    const count = res.headers.get("X-Total-Count");
+    console.log(items);
+    return { items, count };
   }
 }

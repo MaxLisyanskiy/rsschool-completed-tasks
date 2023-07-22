@@ -25,6 +25,7 @@ export default class App {
       this.currentPage.innerHTML = "";
       this.currentPage.append(this.WinnersPage.page);
     } else {
+      this.GaragePage.updateGaragePage();
       this.currentPage.innerHTML = "";
       this.currentPage.append(this.GaragePage.page);
     }

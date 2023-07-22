@@ -1,5 +1,6 @@
 import { createElement, createTextElement } from "../../../utils/createFunctions";
 import AppActionBtns from "../../components/AppActionBtns/AppActionBtns";
+import AppCarsTable from "../../components/AppCars/AppCars";
 import AppForm from "../../components/AppForm/AppForm";
 import ApiController from "../../services/api";
 
@@ -9,6 +10,7 @@ export default class GaragePage extends ApiController {
   private subtitle: HTMLElement;
   private form: AppForm;
   private actionBtns: AppActionBtns;
+  private carsTable: AppCarsTable;
   //   private paginations: HTMLElement;
   private pageNum: number = 1;
   private itemsLimit: number = 10;
@@ -21,25 +23,28 @@ export default class GaragePage extends ApiController {
 
     this.form = new AppForm();
     this.actionBtns = new AppActionBtns();
+    this.carsTable = new AppCarsTable();
 
-    this.page.append(this.title, this.subtitle, this.form.form, this.actionBtns.buttons);
+    this.page.append(this.title, this.subtitle, this.form.form, this.actionBtns.buttons, this.carsTable.cars);
   }
 
-  //   public async updateWinnersPage() {
-  //     const { items, count } = await this.getWinners();
+  public async updateGaragePage() {
+    const { items, count } = await this.getCars();
 
-  //     this.title.innerHTML = `Winners (${count})`;
-  //     this.subtitle.innerHTML = `Page #${this.pageNum}`;
+    this.title.innerHTML = `Garage (${count})`;
+    this.subtitle.innerHTML = `Page #${this.pageNum}`;
 
-  //     const tableData: IWinnersTableData[] = [];
+    this.carsTable.updateCarsTable(items);
 
-  //     items.forEach(async (winnerData: IWinner, index: number) => {
-  //       const carData = await this.getWinnerCarInfo(winnerData.id);
-  //       tableData.push({ winnerData, carData });
+    // const tableData: IWinnersTableData[] = [];
 
-  //       if (index === items.length - 1) {
-  //         this.table.updateTableBody(tableData);
-  //       }
-  //     });
-  //   }
+    // items.forEach(async (winnerData: IWinner, index: number) => {
+    //   const carData = await this.getWinnerCarInfo(winnerData.id);
+    //   tableData.push({ winnerData, carData });
+
+    //   if (index === items.length - 1) {
+    //     this.table.updateTableBody(tableData);
+    //   }
+    // });
+  }
 }

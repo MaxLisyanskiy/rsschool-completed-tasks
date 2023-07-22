@@ -1,3 +1,14 @@
+export interface CarInfo {
+  name: string;
+  color: string;
+  id: number;
+}
+
+export interface CarsData {
+  items: CarInfo[];
+  count: string | null;
+}
+
 export interface IWinner {
   id: number;
   wins: number;
@@ -20,13 +31,7 @@ export enum WinnersOrder {
   DESC = "DESC",
 }
 
-export interface IWinnerCarInfo {
-  name: string;
-  color: string;
-  id: number;
-}
-
 export interface IWinnersTableData {
   winnerData: IWinner;
-  carData: IWinnerCarInfo;
+  carData: CarInfo;
 }

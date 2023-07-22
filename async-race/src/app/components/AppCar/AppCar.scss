@@ -1,0 +1,86 @@
+.car {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  &-btns {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      margin-right: 10px;
+      background: #c7e143;
+      border-radius: 4px;
+      padding: 4px 8px;
+      color: black;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+
+      &:hover {
+        transform: scale(1.07);
+        &:disabled {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &-road {
+    display: flex;
+    width: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 13px;
+      width: 100%;
+      border-bottom: 3px solid #fff;
+      border-bottom-style: dashed;
+    }
+  }
+
+  &-engine {
+    display: flex;
+    align-items: center;
+
+    & button {
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      background: none;
+      margin-right: 10px;
+    }
+
+    &__start {
+      border: 2px solid green;
+      color: green;
+    }
+
+    &__stop {
+      border: 2px solid red;
+      color: red;
+    }
+  }
+
+  &__image {
+    transform: translateY(10px);
+
+    & svg {
+      width: 100px;
+      height: 80px;
+    }
+  }
+}

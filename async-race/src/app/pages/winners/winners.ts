@@ -2,7 +2,7 @@ import "./winners.scss";
 import { createElement, createTextElement } from "../../../utils/createFunctions";
 import AppTable from "../../components/AppTable/AppTable";
 import ApiController from "../../services/api";
-import { IWinner, IWinnersTableData, WinnersOrder, WinnersSort } from "../../types/winnerTypes";
+import { IWinner, IWinnersTableData, WinnersOrder, WinnersSort } from "../../types/apiTypes";
 
 export default class WinnersPage extends ApiController {
   public page: HTMLElement;

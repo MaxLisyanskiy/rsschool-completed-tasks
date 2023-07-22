@@ -1,6 +1,6 @@
 import "./AppTable.scss";
-import { createElement, createTableCarSvg } from "../../../utils/createFunctions";
-import { IWinner, IWinnerCarInfo, IWinnersTableData } from "../../types/winnerTypes";
+import { createElement, createCarSvg } from "../../../utils/createFunctions";
+import { IWinner, CarInfo, IWinnersTableData } from "../../types/apiTypes";
 
 export default class AppTable {
   public table: HTMLElement;
@@ -31,7 +31,7 @@ export default class AppTable {
     this.head.append(trWrapp);
   };
 
-  private createTableBodyRow = (index: number, winnerData: IWinner, carData: IWinnerCarInfo): void => {
+  private createTableBodyRow = (index: number, winnerData: IWinner, carData: CarInfo): void => {
     const trWrapp = createElement("tr", ["table-body__wrapp"]);
     const num = createElement("td", ["table-body__item"], `${index}`);
     const car = createElement("td", ["table-body__item"], "");
@@ -39,7 +39,7 @@ export default class AppTable {
     const wins = createElement("td", ["table-body__item"], `${winnerData.wins}`);
     const time = createElement("td", ["table-body__item"], `${winnerData.time}`);
 
-    car.append(createTableCarSvg(carData.color));
+    car.append(createCarSvg(carData.color, "table-body__item-img"));
     trWrapp.append(num, car, model, wins, time);
     this.body.append(trWrapp);
   };
