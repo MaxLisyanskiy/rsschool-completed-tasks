@@ -1,0 +1,38 @@
+.form {
+  &__wrapp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 6px;
+    background: #1c1c1c;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    padding: 6px;
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 6px;
+  }
+
+  &__color {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  &__btn {
+    background: #ff3e17;
+    border-radius: 4px;
+    padding: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+}

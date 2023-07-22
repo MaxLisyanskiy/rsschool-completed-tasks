@@ -2,7 +2,7 @@ import "./winners.scss";
 import { createElement, createTextElement } from "../../../utils/createFunctions";
 import AppTable from "../../components/AppTable/AppTable";
 import ApiController from "../../services/api";
-import { IWinner, IWinnerCarInfo, IWinnersTableData, WinnersOrder, WinnersSort } from "../../types/winnerTypes";
+import { IWinner, IWinnersTableData, WinnersOrder, WinnersSort } from "../../types/winnerTypes";
 
 export default class WinnersPage extends ApiController {
   public page: HTMLElement;
@@ -17,9 +17,9 @@ export default class WinnersPage extends ApiController {
 
   constructor() {
     super();
-    this.page = createElement("section", ["winners"]);
-    this.title = createTextElement("h2", "winners__title", "Winners");
-    this.subtitle = createTextElement("h3", "winners__subtitle", "Page");
+    this.page = createElement("section", ["page", "winners"]);
+    this.title = createTextElement("h2", "page__title", "Winners");
+    this.subtitle = createTextElement("h3", "page__subtitle", "Page");
     this.table = new AppTable();
 
     this.page.append(this.title, this.subtitle, this.table.table);
