@@ -51,4 +51,14 @@ export default class ApiController {
 
     return res.json();
   }
+
+  async deleteCar(id: number): Promise<void> {
+    const res = await fetch(`${this.garage}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  }
 }

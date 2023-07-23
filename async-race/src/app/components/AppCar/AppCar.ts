@@ -12,6 +12,8 @@ export default class AppCar {
   private id: number;
   private image: HTMLElement;
 
+  public onDeleteCar!: (id: number) => void;
+
   constructor(name: string, color: string, id: number) {
     this.id = id;
 
@@ -21,6 +23,7 @@ export default class AppCar {
     const actionBtns = createElement("div", ["car-btns"]);
     this.selectBtn = createBtnElement(["car-btns__item"], "button", "Select", false);
     this.removeBtn = createBtnElement(["car-btns__item"], "button", "Remove", false);
+    this.removeBtn.onclick = () => this.onDeleteCar(id);
     actionBtns.append(this.selectBtn, this.removeBtn);
 
     const road = createElement("div", ["car-road"]);

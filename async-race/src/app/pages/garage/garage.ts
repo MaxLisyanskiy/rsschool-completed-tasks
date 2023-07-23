@@ -26,13 +26,15 @@ export default class GaragePage extends ApiController {
     this.actionBtns = new AppActionBtns();
     this.carsTable = new AppCarsTable();
 
-    this.form.onCreateCar = (name: string, color: string) => this.handleCreateCar(name, color);
+    this.form.onCreateCar = (name: string, color: string) => this.handleCreateNewCar(name, color);
     this.actionBtns.onGenerateNewCars = () => this.handleGenerateNewCars();
+
+    this.carsTable.onDeleteCar = (id: number) => this.handleDeleteCar(id);
 
     this.page.append(this.title, this.subtitle, this.form.form, this.actionBtns.buttons, this.carsTable.cars);
   }
 
-  private async handleCreateCar(name: string, color: string) {
+  private async handleCreateNewCar(name: string, color: string) {
     await this.createCar(name, color);
     await this.updateGaragePage();
   }
@@ -40,10 +42,15 @@ export default class GaragePage extends ApiController {
   private async handleGenerateNewCars() {
     this.actionBtns.onGenerateLoading(true);
     for (let i = 0; i < 100; i++) {
-      const { newCarColor, newCarName }: CreateRandomCar = createArrayWithNewRandomCars();
-      await this.createCar(newCarColor, newCarName);
+      const { newCarName, newCarColor }: CreateRandomCar = createArrayWithNewRandomCars();
+      await this.createCar(newCarName, newCarColor);
     }
     this.actionBtns.onGenerateLoading(false);
+    await this.updateGaragePage();
+  }
+
+  private async handleDeleteCar(id: number) {
+    await this.deleteCar(id);
     await this.updateGaragePage();
   }
 
