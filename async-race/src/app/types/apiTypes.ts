@@ -6,7 +6,7 @@ export interface CarInfo {
 
 export interface CarsData {
   items: CarInfo[];
-  count: string | null;
+  count: string;
 }
 
 export interface IWinner {

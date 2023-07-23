@@ -32,10 +32,10 @@ export default class ApiController {
     return carInfo;
   }
 
-  async getCars(page = this.basePage, limit: number = this.baseLimit): Promise<CarsData> {
+  async getCars(page: number = this.basePage, limit: number = this.baseLimit): Promise<CarsData> {
     const res = await fetch(`${this.garage}?_page=${page}&_limit=${limit}`);
     const items = await res.json();
-    const count = res.headers.get("X-Total-Count");
+    const count = res.headers.get("X-Total-Count") || "1";
 
     return { items, count };
   }

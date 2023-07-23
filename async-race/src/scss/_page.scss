@@ -1,15 +1,4 @@
 .page {
-  max-width: 500px;
-  height: auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  border-radius: 5px;
-  border: 1px solid #282828;
-  background: #3e3e3e;
-
   &__title {
     font-size: 30px;
     margin-bottom: 10px;
