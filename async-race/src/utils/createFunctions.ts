@@ -1,3 +1,6 @@
+import type { CreateRandomCar } from "../app/types";
+import { NEW_CAR_MODELS, NEW_CAR_NAMES } from "./cars-constants";
+
 export function createElement(elem: string, className: string[] = [], text?: string, func?: () => void): HTMLElement {
   const element = document.createElement(elem);
   element.classList.add(...className);
@@ -57,6 +60,16 @@ export function createLinkElement(text: string, href: string, className: string[
   element.classList.add(...className);
 
   return element;
+}
+
+export function createArrayWithNewRandomCars(): CreateRandomCar {
+  const randomName: string = NEW_CAR_NAMES[Math.floor(Math.random() * NEW_CAR_NAMES.length)];
+  const randomModel: string = NEW_CAR_MODELS[Math.floor(Math.random() * NEW_CAR_MODELS.length)];
+
+  const newCarName = `${randomName} ${randomModel}`;
+  const newCarColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+  return { newCarName, newCarColor };
 }
 
 export function createCarSvg(color: string, className: string): HTMLElement {

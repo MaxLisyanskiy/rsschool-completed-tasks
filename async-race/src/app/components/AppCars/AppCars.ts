@@ -11,6 +11,8 @@ export default class AppCars {
   }
 
   public updateCarsTable = (carsData: CarInfo[]): void => {
+    this.cars.innerHTML = "";
+
     if (carsData.length > 0) {
       carsData.forEach(({ name, color, id }) => {
         const car = new AppCar(name, color, id);

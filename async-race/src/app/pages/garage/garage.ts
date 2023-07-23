@@ -1,8 +1,9 @@
-import { createElement, createTextElement } from "../../../utils/createFunctions";
+import { createArrayWithNewRandomCars, createElement, createTextElement } from "../../../utils/createFunctions";
 import AppActionBtns from "../../components/AppActionBtns/AppActionBtns";
 import AppCarsTable from "../../components/AppCars/AppCars";
 import AppForm from "../../components/AppForm/AppForm";
 import ApiController from "../../services/api";
+import { CreateRandomCar } from "../../types";
 
 export default class GaragePage extends ApiController {
   public page: HTMLElement;
@@ -26,12 +27,23 @@ export default class GaragePage extends ApiController {
     this.carsTable = new AppCarsTable();
 
     this.form.onCreateCar = (name: string, color: string) => this.handleCreateCar(name, color);
+    this.actionBtns.onGenerateNewCars = () => this.handleGenerateNewCars();
 
     this.page.append(this.title, this.subtitle, this.form.form, this.actionBtns.buttons, this.carsTable.cars);
   }
 
   private async handleCreateCar(name: string, color: string) {
     await this.createCar(name, color);
+    await this.updateGaragePage();
+  }
+
+  private async handleGenerateNewCars() {
+    this.actionBtns.onGenerateLoading(true);
+    for (let i = 0; i < 100; i++) {
+      const { newCarColor, newCarName }: CreateRandomCar = createArrayWithNewRandomCars();
+      await this.createCar(newCarColor, newCarName);
+    }
+    this.actionBtns.onGenerateLoading(false);
     await this.updateGaragePage();
   }
 
@@ -42,16 +54,5 @@ export default class GaragePage extends ApiController {
     this.subtitle.innerHTML = `Page #${this.pageNum}`;
 
     this.carsTable.updateCarsTable(items);
-
-    // const tableData: IWinnersTableData[] = [];
-
-    // items.forEach(async (winnerData: IWinner, index: number) => {
-    //   const carData = await this.getWinnerCarInfo(winnerData.id);
-    //   tableData.push({ winnerData, carData });
-
-    //   if (index === items.length - 1) {
-    //     this.table.updateTableBody(tableData);
-    //   }
-    // });
   }
 }
