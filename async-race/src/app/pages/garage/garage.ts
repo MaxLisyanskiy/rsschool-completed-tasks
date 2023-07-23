@@ -30,6 +30,7 @@ export default class GaragePage extends ApiController {
     this.actionBtns.onGenerateNewCars = () => this.handleGenerateNewCars();
 
     this.carsTable.onDeleteCar = (id: number) => this.handleDeleteCar(id);
+    this.carsTable.onSelectCar = (id: number, name: string, color: string) => this.handleSelectCar(id, name, color);
 
     this.page.append(this.title, this.subtitle, this.form.form, this.actionBtns.buttons, this.carsTable.cars);
   }
@@ -52,6 +53,15 @@ export default class GaragePage extends ApiController {
   private async handleDeleteCar(id: number) {
     await this.deleteCar(id);
     await this.updateGaragePage();
+  }
+
+  private handleUpdateCar = async (id: number, name: string, color: string) => {
+    await this.updateCar(id, name, color);
+    await this.updateGaragePage();
+  };
+
+  private async handleSelectCar(id: number, name: string, color: string) {
+    this.form.addSelectedCarData(id, name, color, this.handleUpdateCar);
   }
 
   public async updateGaragePage() {

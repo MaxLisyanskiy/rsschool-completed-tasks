@@ -3,10 +3,13 @@ import { createBtnElement, createElement, createInputElement } from "../../../ut
 
 export default class AppForm {
   public form: HTMLElement;
+
+  private newCarWrapp: HTMLElement;
   private newCarInput: HTMLInputElement;
   private newCarColor: HTMLInputElement;
   private newCarBtn: HTMLButtonElement;
 
+  private currentCarWrapp: HTMLElement;
   private currentCarInput: HTMLInputElement;
   private currentCarColor: HTMLInputElement;
   private currentCarBtn: HTMLButtonElement;
@@ -16,7 +19,7 @@ export default class AppForm {
   constructor() {
     this.form = createElement("div", ["form"], "");
 
-    const newCarWrapp = createElement("form", ["form__wrapp"], "");
+    this.newCarWrapp = createElement("form", ["form__wrapp"], "");
     this.newCarInput = createInputElement(["form__input"], "new-car-input", "new-car-input", "text", "", true, false);
     this.newCarColor = createInputElement(
       ["form__color"],
@@ -28,9 +31,9 @@ export default class AppForm {
       false,
     );
     this.newCarBtn = createBtnElement(["form__btn"], "submit", "Create", false);
-    newCarWrapp.append(this.newCarInput, this.newCarColor, this.newCarBtn);
+    this.newCarWrapp.append(this.newCarInput, this.newCarColor, this.newCarBtn);
 
-    const currentCarWrapp = createElement("form", ["form__wrapp"], "");
+    this.currentCarWrapp = createElement("form", ["form__wrapp"], "");
     this.currentCarInput = createInputElement(
       ["form__input"],
       "new-car-input",
@@ -50,15 +53,42 @@ export default class AppForm {
       true,
     );
     this.currentCarBtn = createBtnElement(["form__btn"], "submit", "Update", true);
-    currentCarWrapp.append(this.currentCarInput, this.currentCarColor, this.currentCarBtn);
+    this.currentCarWrapp.append(this.currentCarInput, this.currentCarColor, this.currentCarBtn);
 
-    this.form.append(newCarWrapp, currentCarWrapp);
+    this.form.append(this.newCarWrapp, this.currentCarWrapp);
 
-    newCarWrapp.addEventListener("submit", (e: SubmitEvent): void => {
+    this.newCarWrapp.addEventListener("submit", (e: SubmitEvent): void => {
       e.preventDefault();
       if (this.newCarInput.value.trim() !== "") {
         this.onCreateCar(this.newCarInput.value, this.newCarColor.value);
+        this.newCarInput.value = "";
+        this.newCarColor.value = "#fff";
       }
     });
   }
+
+  private toggleShowSelectedData = (show: boolean, name: string, color: string) => {
+    this.currentCarInput.value = show ? name : "";
+    this.currentCarColor.value = show ? color : "#fff";
+    this.currentCarInput.disabled = show ? false : true;
+    this.currentCarColor.disabled = show ? false : true;
+    this.currentCarBtn.disabled = show ? false : true;
+  };
+
+  public addSelectedCarData = (
+    id: number,
+    name: string,
+    color: string,
+    onUpdateCar: (id: number, name: string, color: string) => void,
+  ): void => {
+    this.toggleShowSelectedData(true, name, color);
+
+    this.currentCarWrapp.addEventListener("submit", (e: SubmitEvent): void => {
+      e.preventDefault();
+      if (this.currentCarInput.value.trim() !== "") {
+        onUpdateCar(id, this.currentCarInput.value, this.currentCarColor.value);
+        this.toggleShowSelectedData(false, "", "");
+      }
+    });
+  };
 }

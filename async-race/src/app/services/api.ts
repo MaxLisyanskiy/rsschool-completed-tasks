@@ -61,4 +61,15 @@ export default class ApiController {
     });
     return res.json();
   }
+
+  async updateCar(id: number, name: string, color: string): Promise<CarInfo> {
+    const res = await fetch(`${this.garage}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({ name, color }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  }
 }
