@@ -1,3 +1,4 @@
+/****** Car ******/
 export interface CarInfo {
   name: string;
   color: string;
@@ -9,6 +10,7 @@ export interface CarsData {
   count: string;
 }
 
+/****** Winner ******/
 export interface IWinner {
   id: number;
   wins: number;
@@ -17,11 +19,10 @@ export interface IWinner {
 
 export interface IWinnersData {
   items: IWinner[] | [];
-  count: string | null;
+  count: string;
 }
 
 export enum WinnersSort {
-  ID = "id",
   WINS = "wins",
   TIME = "time",
 }

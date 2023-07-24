@@ -23,3 +23,5 @@ export const NEW_CAR_MODELS: string[] = [
   "Rio",
   "Model Y",
 ];
+
+export const ITEMS_LIMIT: number = 10;

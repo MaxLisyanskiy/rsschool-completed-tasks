@@ -1,6 +1,6 @@
 import "./AppTable.scss";
 import { createElement, createCarSvg } from "../../../utils/createFunctions";
-import { IWinner, CarInfo, IWinnersTableData } from "../../types/apiTypes";
+import { IWinner, CarInfo, IWinnersTableData, WinnersSort, WinnersOrder } from "../../types/apiTypes";
 
 export default class AppTable {
   public table: HTMLElement;
@@ -8,6 +8,8 @@ export default class AppTable {
   private headWins!: HTMLElement;
   private headTime!: HTMLElement;
   private body: HTMLElement;
+
+  onChangeSort!: (nameSort: WinnersSort) => void;
 
   constructor() {
     this.table = createElement("table", ["table"]);
@@ -23,8 +25,12 @@ export default class AppTable {
     const num = createElement("th", ["table-head__item"], "№");
     const car = createElement("th", ["table-head__item"], "Car");
     const model = createElement("th", ["table-head__item"], "Model");
-    this.headWins = createElement("th", ["table-head__item"], "Wins ↕️", this.sortTableByWins);
-    this.headTime = createElement("th", ["table-head__item"], "Best time ↕️", this.sortTableByTime);
+    this.headWins = createElement("th", ["table-head__item", "table-sort"], "Wins <span>↕️</span>", () =>
+      this.onChangeSort(WinnersSort.WINS),
+    );
+    this.headTime = createElement("th", ["table-head__item", "table-sort"], "Best time (sec) <span>↕️</span>", () =>
+      this.onChangeSort(WinnersSort.TIME),
+    );
 
     trWrapp.append(num, car, model, this.headWins, this.headTime);
 
@@ -33,7 +39,7 @@ export default class AppTable {
 
   private createTableBodyRow = (index: number, winnerData: IWinner, carData: CarInfo): void => {
     const trWrapp = createElement("tr", ["table-body__wrapp"]);
-    const num = createElement("td", ["table-body__item"], `${index}`);
+    const num = createElement("td", ["table-body__item"], `${index + 1}`);
     const car = createElement("td", ["table-body__item"], "");
     const model = createElement("td", ["table-body__item"], `${carData.name}`);
     const wins = createElement("td", ["table-body__item"], `${winnerData.wins}`);
@@ -44,8 +50,15 @@ export default class AppTable {
     this.body.append(trWrapp);
   };
 
-  private sortTableByWins = (): void => {};
-  private sortTableByTime = (): void => {};
+  public updateSortingBtns = (sort: WinnersSort, order: WinnersOrder): void => {
+    if (sort === WinnersSort.WINS) {
+      this.headWins.innerHTML = `Wins <span>${order === WinnersOrder.ASC ? "⮝" : "⮟"}</span>`;
+      this.headTime.innerHTML = "Best time (sec)";
+    } else {
+      this.headTime.innerHTML = `Best time (sec) <span>${order === WinnersOrder.ASC ? "⮝" : "⮟"}</span>`;
+      this.headWins.innerHTML = "Wins";
+    }
+  };
 
   public updateTableBody = (tableData: IWinnersTableData[]): void => {
     this.body.innerHTML = "";

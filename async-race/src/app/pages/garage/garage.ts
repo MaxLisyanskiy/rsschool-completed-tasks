@@ -20,7 +20,6 @@ export default class GaragePage extends ApiController {
   private carsTable: AppCarsTable;
   private paginations: AppPagination;
   private pageNum: number = 1;
-  private itemsLimit: number = 10;
 
   constructor() {
     super();
@@ -113,12 +112,12 @@ export default class GaragePage extends ApiController {
 
   public async updateGaragePage(): Promise<void> {
     if (AppState.isRacing) this.handleResetRacing();
-    const { items, count } = await this.getCars(this.pageNum, this.itemsLimit);
+    const { items, count } = await this.getCars(this.pageNum);
 
     this.title.innerHTML = `Garage (${count})`;
     this.subtitle.innerHTML = `Page #${this.pageNum}`;
 
     this.carsTable.updateCarsTable(items);
-    this.paginations.updatePaginations(this.pageNum, this.itemsLimit, count);
+    this.paginations.updatePaginations(this.pageNum, count);
   }
 }

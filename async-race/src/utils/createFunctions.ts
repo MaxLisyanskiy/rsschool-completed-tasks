@@ -1,5 +1,5 @@
 import type { CreateRandomCar } from "../app/types";
-import { NEW_CAR_MODELS, NEW_CAR_NAMES } from "./cars-constants";
+import { NEW_CAR_MODELS, NEW_CAR_NAMES } from "./constants";
 
 export function createElement(elem: string, className: string[] = [], text?: string, func?: () => void): HTMLElement {
   const element = document.createElement(elem);

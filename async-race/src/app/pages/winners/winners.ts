@@ -1,7 +1,10 @@
 import "./winners.scss";
-import { createElement, createTextElement } from "../../../utils/createFunctions";
-import AppTable from "../../components/AppTable/AppTable";
+
 import ApiController from "../../services/api";
+import AppTable from "../../components/AppTable/AppTable";
+import AppPagination from "../../components/AppPagination/AppPagination";
+
+import { createElement, createTextElement } from "../../../utils/createFunctions";
 import { IWinner, IWinnersTableData, WinnersOrder, WinnersSort } from "../../types/apiTypes";
 
 export default class WinnersPage extends ApiController {
@@ -9,24 +12,46 @@ export default class WinnersPage extends ApiController {
   private title: HTMLElement;
   private subtitle: HTMLElement;
   private table: AppTable;
-  //   private paginations: HTMLElement;
+  private paginations: AppPagination;
+
   private pageNum: number = 1;
-  private itemsLimit: number = 10;
-  private sort: WinnersSort = WinnersSort.WINS;
-  private order: WinnersOrder = WinnersOrder.DESC;
+  private sort: WinnersSort;
+  private order: WinnersOrder;
 
   constructor() {
     super();
+    this.sort = WinnersSort.WINS;
+    this.order = WinnersOrder.DESC;
+
     this.page = createElement("section", ["page", "winners"]);
     this.title = createTextElement("h2", "page__title", "Winners");
     this.subtitle = createTextElement("h3", "page__subtitle", "Page");
     this.table = new AppTable();
+    this.table.onChangeSort = (nameSort: WinnersSort) => this.handleChangeSort(nameSort);
+    this.paginations = new AppPagination();
+    this.paginations.onChangePage = (pageNum: number) => this.handleChangePage(pageNum);
 
-    this.page.append(this.title, this.subtitle, this.table.table);
+    this.page.append(this.title, this.subtitle, this.table.table, this.paginations.paginations);
   }
 
-  public async updateWinnersPage() {
-    const { items, count } = await this.getWinners();
+  private handleChangePage = async (pageNum: number): Promise<void> => {
+    this.pageNum = pageNum;
+    await this.updateWinnersPage();
+  };
+
+  private handleChangeSort = async (nameSort: WinnersSort): Promise<void> => {
+    if (nameSort === this.sort) {
+      this.order = this.order === WinnersOrder.ASC ? WinnersOrder.DESC : WinnersOrder.ASC;
+    } else {
+      this.sort = nameSort;
+      this.order = WinnersOrder.DESC;
+    }
+
+    this.updateWinnersPage();
+  };
+
+  public async updateWinnersPage(): Promise<void> {
+    const { items, count } = await this.getWinners(this.pageNum, this.sort, this.order);
 
     this.title.innerHTML = `Winners (${count})`;
     this.subtitle.innerHTML = `Page #${this.pageNum}`;
@@ -41,5 +66,8 @@ export default class WinnersPage extends ApiController {
         this.table.updateTableBody(tableData);
       }
     });
+
+    this.table.updateSortingBtns(this.sort, this.order);
+    this.paginations.updatePaginations(this.pageNum, count);
   }
 }
