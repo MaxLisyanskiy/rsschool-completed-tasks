@@ -9,7 +9,7 @@
     "start": "webpack serve --env development",
     "lint": "eslint src",
     "fix": "eslint --fix --ext .js,.jsx .",
-    "deploy": "npm run build && npx gh-pages -d dist -e rs-css"
+    "deploy": "npm run build && npx gh-pages -d dist -e async-race"
   },
   "repository": {
     "type": "git",
