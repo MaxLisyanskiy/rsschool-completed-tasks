@@ -1,5 +1,5 @@
 import "./AppTable.scss";
-import { createElement, createCarSvg } from "../../../utils/createFunctions";
+import { createElement, createCarSvg } from "../../utils/createFunctions";
 import { IWinner, CarInfo, IWinnersTableData, WinnersSort, WinnersOrder } from "../../types/apiTypes";
 
 export default class AppTable {

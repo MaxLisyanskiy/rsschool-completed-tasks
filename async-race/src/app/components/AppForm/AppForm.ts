@@ -1,5 +1,5 @@
 import "./AppForm.scss";
-import { createBtnElement, createElement, createInputElement } from "../../../utils/createFunctions";
+import { createBtnElement, createElement, createInputElement } from "../../utils/createFunctions";
 
 export default class AppForm {
   public form: HTMLElement;

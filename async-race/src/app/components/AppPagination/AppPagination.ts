@@ -1,6 +1,6 @@
 import "./AppPagination.scss";
-import { createBtnElement, createElement } from "../../../utils/createFunctions";
-import { ITEMS_LIMIT } from "../../../utils/constants";
+import { createBtnElement, createElement } from "../../utils/createFunctions";
+import { ITEMS_LIMIT } from "../../utils/constants";
 
 export default class AppPagination {
   public paginations: HTMLElement;

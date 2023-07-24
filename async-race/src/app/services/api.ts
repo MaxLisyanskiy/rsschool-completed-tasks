@@ -8,7 +8,7 @@ import {
   WinnersOrder,
   WinnersSort,
 } from "../types/apiTypes";
-import { ITEMS_LIMIT } from "../../utils/constants";
+import { ITEMS_LIMIT } from "../utils/constants";
 
 export default class ApiController {
   baseApiUrl: string;

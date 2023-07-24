@@ -8,7 +8,7 @@ import AppCarsTable from "../../components/AppCars/AppCars";
 import AppPagination from "../../components/AppPagination/AppPagination";
 
 import { CreateRandomCar } from "../../types";
-import { createArrayWithNewRandomCars, createElement, createTextElement } from "../../../utils/createFunctions";
+import { createArrayWithNewRandomCars, createElement, createTextElement } from "../../utils/createFunctions";
 
 export default class GaragePage extends ApiController {
   public page: HTMLElement;

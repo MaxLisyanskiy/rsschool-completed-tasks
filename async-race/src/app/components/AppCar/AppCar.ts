@@ -1,6 +1,6 @@
 import "./AppCar.scss";
 import ApiController from "../../services/api";
-import { createBtnElement, createElement, createCarSvg } from "../../../utils/createFunctions";
+import { createBtnElement, createElement, createCarSvg } from "../../utils/createFunctions";
 import { AppState } from "../AppState";
 
 export default class AppCar extends ApiController {

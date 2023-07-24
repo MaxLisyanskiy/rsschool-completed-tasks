@@ -4,7 +4,7 @@ import ApiController from "../../services/api";
 import AppTable from "../../components/AppTable/AppTable";
 import AppPagination from "../../components/AppPagination/AppPagination";
 
-import { createElement, createTextElement } from "../../../utils/createFunctions";
+import { createElement, createTextElement } from "../../utils/createFunctions";
 import { IWinner, IWinnersTableData, WinnersOrder, WinnersSort } from "../../types/apiTypes";
 
 export default class WinnersPage extends ApiController {

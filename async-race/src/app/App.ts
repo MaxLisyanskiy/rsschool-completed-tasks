@@ -1,4 +1,4 @@
-import { createElement } from "../utils/createFunctions";
+import { createElement } from "./utils/createFunctions";
 import AppNav from "./components/AppNav/AppNav";
 import GaragePage from "./pages/garage/garage";
 import WinnersPage from "./pages/winners/winners";

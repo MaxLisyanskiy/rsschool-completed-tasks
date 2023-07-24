@@ -1,5 +1,5 @@
 import "./AppActionBtns.scss";
-import { createBtnElement, createElement, createInputElement } from "../../../utils/createFunctions";
+import { createBtnElement, createElement, createInputElement } from "../../utils/createFunctions";
 
 export default class AppActionBtns {
   public buttons: HTMLElement;

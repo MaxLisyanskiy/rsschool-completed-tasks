@@ -1,5 +1,5 @@
 import "./AppNav.scss";
-import { createElement, createLinkElement } from "../../../utils/createFunctions";
+import { createElement, createLinkElement } from "../../utils/createFunctions";
 import { Pages } from "../../types";
 
 export default class AppNav {

@@ -1,5 +1,5 @@
 import "./AppCars.scss";
-import { createElement } from "../../../utils/createFunctions";
+import { createElement } from "../../utils/createFunctions";
 import { CarInfo } from "../../types/apiTypes";
 import AppCar from "../AppCar/AppCar";
 
