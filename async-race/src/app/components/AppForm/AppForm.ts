@@ -26,7 +26,7 @@ export default class AppForm {
       "new-car-color",
       "new-car-color",
       "color",
-      "#fff",
+      "#ffffff",
       false,
       false,
     );
@@ -48,7 +48,7 @@ export default class AppForm {
       "new-car-color",
       "new-car-color",
       "color",
-      "#fff",
+      "#ffffff",
       false,
       true,
     );
@@ -62,14 +62,14 @@ export default class AppForm {
       if (this.newCarInput.value.trim() !== "") {
         this.onCreateCar(this.newCarInput.value, this.newCarColor.value);
         this.newCarInput.value = "";
-        this.newCarColor.value = "#fff";
+        this.newCarColor.value = "#ffffff";
       }
     });
   }
 
   private toggleShowSelectedData = (show: boolean, name: string, color: string) => {
     this.currentCarInput.value = show ? name : "";
-    this.currentCarColor.value = show ? color : "#fff";
+    this.currentCarColor.value = show ? color : "#ffffff";
     this.currentCarInput.disabled = show ? false : true;
     this.currentCarColor.disabled = show ? false : true;
     this.currentCarBtn.disabled = show ? false : true;

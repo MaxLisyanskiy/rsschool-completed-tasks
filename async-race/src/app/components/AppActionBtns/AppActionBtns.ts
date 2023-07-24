@@ -3,10 +3,12 @@ import { createBtnElement, createElement, createInputElement } from "../../../ut
 
 export default class AppActionBtns {
   public buttons: HTMLElement;
-  private raceBtn: HTMLButtonElement;
-  private resetBtn: HTMLButtonElement;
+  public raceBtn: HTMLButtonElement;
+  public resetBtn: HTMLButtonElement;
   private generateBtn: HTMLButtonElement;
 
+  public onStartRacing!: () => void;
+  public onResetRacing!: () => void;
   public onGenerateNewCars!: () => void;
 
   constructor() {
@@ -16,12 +18,14 @@ export default class AppActionBtns {
     this.resetBtn = createBtnElement(["actions__btn"], "button", "Reset", true);
     this.generateBtn = createBtnElement(["actions__btn"], "button", "Generate", false);
 
-    this.buttons.append(this.raceBtn, this.resetBtn, this.generateBtn);
-
+    this.raceBtn.onclick = () => this.onStartRacing();
+    this.resetBtn.onclick = () => this.onResetRacing();
     this.generateBtn.addEventListener("click", (e: MouseEvent): void => {
       e.preventDefault();
       this.onGenerateNewCars();
     });
+
+    this.buttons.append(this.raceBtn, this.resetBtn, this.generateBtn);
   }
 
   public onGenerateLoading = (disabled: boolean): void => {

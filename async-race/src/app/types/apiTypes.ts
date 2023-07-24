@@ -35,3 +35,13 @@ export interface IWinnersTableData {
   winnerData: IWinner;
   carData: CarInfo;
 }
+
+/****** Engine ******/
+export interface EngineMeasure {
+  velocity: number;
+  distance: number;
+}
+
+export interface EngineSuccess {
+  success: boolean;
+}

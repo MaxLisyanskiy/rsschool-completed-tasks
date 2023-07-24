@@ -8,4 +8,20 @@
     font-size: 24px;
     margin-bottom: 15px;
   }
+
+  &__won-title {
+    position: absolute;
+    padding: 20px 30px;
+    text-align: center;
+    font-size: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    box-shadow: 0px 0px 100px 1px rgba(199, 225, 67, 0.9);
+
+    &.hidden {
+      display: none;
+    }
+  }
 }
