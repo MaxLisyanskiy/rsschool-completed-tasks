@@ -6,6 +6,7 @@ import AppPagination from "../../components/AppPagination/AppPagination";
 
 import { createElement, createTextElement } from "../../utils/createFunctions";
 import { IWinner, IWinnersTableData, WinnersOrder, WinnersSort } from "../../types/apiTypes";
+import { WINNERS_LIMIT } from "../../utils/constants";
 
 export default class WinnersPage extends ApiController {
   public page: HTMLElement;
@@ -68,6 +69,6 @@ export default class WinnersPage extends ApiController {
     });
 
     this.table.updateSortingBtns(this.sort, this.order);
-    this.paginations.updatePaginations(this.pageNum, count);
+    this.paginations.updatePaginations(this.pageNum, count, WINNERS_LIMIT);
   }
 }

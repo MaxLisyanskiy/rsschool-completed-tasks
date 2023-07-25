@@ -1,6 +1,5 @@
 import "./AppPagination.scss";
 import { createBtnElement, createElement } from "../../utils/createFunctions";
-import { ITEMS_LIMIT } from "../../utils/constants";
 
 export default class AppPagination {
   public paginations: HTMLElement;
@@ -23,9 +22,9 @@ export default class AppPagination {
     this.paginations.append(this.prevBtn, this.nextBtn);
   }
 
-  public updatePaginations = (pageNum: number, count: string) => {
+  public updatePaginations = (pageNum: number, count: string, limit: number) => {
     this.currentPage = pageNum;
-    this.totalPages = Math.ceil(Number(count) / ITEMS_LIMIT);
+    this.totalPages = Math.ceil(Number(count) / limit);
 
     this.prevBtn.disabled = this.currentPage === 1 ? true : false;
     this.nextBtn.disabled = this.totalPages === this.currentPage ? true : false;

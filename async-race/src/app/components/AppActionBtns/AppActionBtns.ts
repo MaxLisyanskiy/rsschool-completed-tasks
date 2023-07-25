@@ -31,7 +31,7 @@ export default class AppActionBtns {
   public onGenerateLoading = (disabled: boolean): void => {
     if (disabled) {
       this.generateBtn.disabled = true;
-      this.generateBtn.innerHTML = `<image src="/loader.gif">`;
+      this.generateBtn.innerHTML = `<image src="loader.gif">`;
     } else {
       this.generateBtn.disabled = false;
       this.generateBtn.innerHTML = `Generate`;

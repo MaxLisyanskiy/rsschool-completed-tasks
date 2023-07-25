@@ -9,6 +9,7 @@ import AppPagination from "../../components/AppPagination/AppPagination";
 
 import { CreateRandomCar } from "../../types";
 import { createArrayWithNewRandomCars, createElement, createTextElement } from "../../utils/createFunctions";
+import { CARS_LIMIT } from "../../utils/constants";
 
 export default class GaragePage extends ApiController {
   public page: HTMLElement;
@@ -118,6 +119,6 @@ export default class GaragePage extends ApiController {
     this.subtitle.innerHTML = `Page #${this.pageNum}`;
 
     this.carsTable.updateCarsTable(items);
-    this.paginations.updatePaginations(this.pageNum, count);
+    this.paginations.updatePaginations(this.pageNum, count, CARS_LIMIT);
   }
 }

@@ -8,7 +8,7 @@ import {
   WinnersOrder,
   WinnersSort,
 } from "../types/apiTypes";
-import { ITEMS_LIMIT } from "../utils/constants";
+import { WINNERS_LIMIT, CARS_LIMIT } from "../utils/constants";
 
 export default class ApiController {
   baseApiUrl: string;
@@ -30,7 +30,7 @@ export default class ApiController {
     sort: WinnersSort = WinnersSort.WINS,
     order: WinnersOrder = WinnersOrder.DESC,
   ): Promise<IWinnersData> {
-    const res = await fetch(`${this.winners}?_page=${page}&_limit=${ITEMS_LIMIT}&_sort=${sort}&_order=${order}`);
+    const res = await fetch(`${this.winners}?_page=${page}&_limit=${WINNERS_LIMIT}&_sort=${sort}&_order=${order}`);
     const items = await res.json();
     const count = res.headers.get("X-Total-Count") || "1";
     return { items, count };
@@ -83,7 +83,7 @@ export default class ApiController {
 
   /****** Garage ******/
   async getCars(page: number = this.basePage): Promise<CarsData> {
-    const res = await fetch(`${this.garage}?_page=${page}&_limit=${ITEMS_LIMIT}`);
+    const res = await fetch(`${this.garage}?_page=${page}&_limit=${CARS_LIMIT}`);
     const items = await res.json();
     const count = res.headers.get("X-Total-Count") || "1";
 

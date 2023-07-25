@@ -24,4 +24,5 @@ export const NEW_CAR_MODELS: string[] = [
   "Model Y",
 ];
 
-export const ITEMS_LIMIT: number = 10;
+export const CARS_LIMIT: number = 7;
+export const WINNERS_LIMIT: number = 10;
