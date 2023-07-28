@@ -1,40 +1,216 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/night.css" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="slide1">
+          <h2>Computer Vision 👀</h2>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+          <div>
+            <p>
+              Presented by
+              <a href="https://github.com/MaxLisyanskiy" target="_blank"
+                >@MaxLisyanskiy</a
+              >
+            </p>
+            <a
+              class="slide1__rs-link"
+              href="https://github.com/rolling-scopes-school/tasks/blob/master/tasks/presentation-recorded.md"
+              target="_blank"
+              >© 2023 RS-PRESENTATION-TASK</a
+            >
+          </div>
+        </section>
+        <section class="slide2">
+          <h3>What is Computer Vision?</h3>
+          <div class="slide2__info">
+            <p>Computer Vision in general:</p>
+            <p class="slide2__descr">
+              Image(s),Video => Some description of the scene
+            </p>
+          </div>
+          <div class="slide2__bottom">
+            <img src="./assets/slide2-family.png" alt="slide2-family" />
+            <div>
+              <p class="slide2__example1">Example</p>
+              <p class="slide2__example2">Input: Image</p>
+              <p>Output: Face locations</p>
+            </div>
+          </div>
+        </section>
+        <section class="slide3">
+          <h3>What is C.V. purpose?</h3>
+          <ul>
+            <li>getting a description of the image of objects</li>
+            <li>selection of individual elements</li>
+            <li>image classification in general</li>
+          </ul>
+          <img src="./assets/slide3.jpg" alt="C.V. purpose" />
+        </section>
+        <section>
+          <section class="slide4">
+            <h3>Scope of computer vision</h3>
+            <div>
+              <p class="slide4__descr">
+                Computer Vision has a massive impact on companies across
+                industries, from <span>retail</span> to <span>security</span>,
+                <span>healthcare</span>, <span>construction</span>,
+                <span>automotive</span>, <span>manufacturing</span>,
+                <span>logistics</span>, and <span>agriculture</span>.
+              </p>
+              <img src="./assets/slide4-scope.png" alt="C.V. scope" />
+            </div>
+          </section>
+          <section class="slide4-2">
+            <h4>AI Security Systems</h4>
+            <div class="slide4-2__wrapp">
+              <div>
+                <img src="./assets/slide4-2-1.webp" alt="Weapon detection" />
+                <p>
+                  Weapon detection with deep learning, using training data from
+                  movie scenes.
+                </p>
+              </div>
+              <div>
+                <img src="./assets/slide4-2-2.webp" alt="ROI" />
+                <p>Virtual fence with a region of interest (ROI)</p>
+              </div>
+              <div>
+                <img
+                  src="./assets/slide4-2-3.webp"
+                  alt="Abandoned Object Detection"
+                />
+                <p>
+                  Security application for Abandoned Object Detection – Viso
+                  Suite
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="slide4-3">
+            <h4>Computer Vision in Healthcare</h4>
+            <div class="slide4-2__wrapp">
+              <div>
+                <img src="./assets/slide4-3.jpeg" alt="X-Ray analysis" />
+                <p>X-Ray analysis</p>
+              </div>
+              <div>
+                <img src="./assets/slide4-3.gif" alt="CT and MRI" />
+                <p>CT and MRI</p>
+              </div>
+              <div>
+                <img src="./assets/slide4-3-3.webp" alt="Mask Detection" />
+                <p>Mask Detection</p>
+              </div>
+            </div>
+          </section>
+          <section class="slide4-4">
+            <h4>Computer Vision in Retail</h4>
+            <div class="slide4-2__wrapp">
+              <div>
+                <img src="./assets/slide4-4-1.png" alt="Self-checkout" />
+                <p>Self-checkout</p>
+              </div>
+              <div>
+                <img
+                  src="./assets/slide4-4-2.png"
+                  alt="Automatic replenishment"
+                />
+                <p>Automatic replenishment</p>
+              </div>
+              <div>
+                <img
+                  src="./assets/slide4-4-3.png"
+                  alt="Foot traffic and people counting"
+                />
+                <p>Foot traffic and people counting</p>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="slide5">
+          <h3>Image processing and analysis</h3>
+          <div class="slide5__wrapp">
+            <div>
+              <img
+                src="./assets/slide5-1.jpg"
+                alt="how the program sees textures"
+              />
+              <p>An example of how the program sees textures</p>
+            </div>
+            <div>
+              <img src="./assets/slide5-2.jpg" alt="Image analysis" />
+              <p>Analysis by vectors</p>
+            </div>
+            <div>
+              <img src="./assets/slide5-3.jpg" alt="Color analyzed" />
+              <p>Color analyzed</p>
+            </div>
+          </div>
+        </section>
+        <section class="slide6">
+          <h3>➕Advantages of computer vision</h3>
+          <ul>
+            <li>Security 👮‍♂️</li>
+            <li>Performance 💯</li>
+            <li>Help people 🤝</li>
+            <li>Dynamically developing direction 👨‍💻</li>
+          </ul>
+        </section>
+        <section class="slide7">
+          <h3>➖Cons of computer vision</h3>
+          <ul>
+            <li>Expensive equipment and electricity 💲</li>
+            <li>
+              It is difficult for the program to determine what is in the
+              picture 😵
+            </li>
+          </ul>
+        </section>
+        <section class="slide8">
+          <h3>Conclusion</h3>
+          <p>➕ > ➖</p>
+          <p>
+            Therefore, in the future it will be very well developed and more and
+            more used in practice.👍
+          </p>
+        </section>
+        <section class="slide9">
+          <h3>🤝Thanks For Watching🤝</h3>
+        </section>
+      </div>
+    </div>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
