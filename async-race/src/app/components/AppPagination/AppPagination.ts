@@ -26,7 +26,7 @@ export default class AppPagination {
     this.currentPage = pageNum;
     this.totalPages = Math.ceil(Number(count) / limit);
 
-    this.prevBtn.disabled = this.currentPage === 1 ? true : false;
-    this.nextBtn.disabled = this.totalPages === this.currentPage ? true : false;
+    this.prevBtn.disabled = this.currentPage === 1;
+    this.nextBtn.disabled = this.totalPages === this.currentPage;
   };
 }

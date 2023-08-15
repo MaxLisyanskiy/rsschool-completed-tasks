@@ -17,12 +17,8 @@ export default class AppNav {
   }
 
   public onChangeActiveNav = (page: Pages): void => {
-    if (page === Pages.GARAGE) {
-      this.garageLink.classList.add("active");
-      this.winnersLink.classList.remove("active");
-    } else {
-      this.garageLink.classList.remove("active");
-      this.winnersLink.classList.add("active");
-    }
+    const isGaragePage = page === Pages.GARAGE;
+    this.garageLink.classList.toggle("active", isGaragePage);
+    this.winnersLink.classList.toggle("active", !isGaragePage);
   };
 }

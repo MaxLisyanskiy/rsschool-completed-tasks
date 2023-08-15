@@ -2,6 +2,8 @@ import "./AppCar.scss";
 import ApiController from "../../services/api";
 import { createBtnElement, createElement, createCarSvg } from "../../utils/createFunctions";
 import { AppState } from "../AppState";
+import { ANIMATION_DURATION, ANIMATION_FRAME, ANIMATION_STEP } from "../../utils/constants";
+import { convertMsToSeconds } from "../../utils/animation-helpers";
 
 export default class AppCar extends ApiController {
   public car: HTMLElement;
@@ -56,19 +58,15 @@ export default class AppCar extends ApiController {
   }
 
   private handleToggleShowingEngineBtns = (type: string): void => {
-    if (type === "start") {
-      this.engineStartBtn.disabled = true;
-      this.engineStopBtn.disabled = false;
-    } else {
-      this.engineStartBtn.disabled = false;
-      this.engineStopBtn.disabled = true;
-    }
+    const isStarted = type === "start";
+    this.engineStartBtn.disabled = isStarted;
+    this.engineStopBtn.disabled = !isStarted;
   };
 
   private handleAnimatedDriving = (id: number, roadDistance: number, duration: number): void => {
-    let currentDistance = this.image.offsetLeft - 80;
-    const framesCount = (duration / 1000) * 60;
-    const transfer = (roadDistance - this.image.offsetLeft - 80) / framesCount;
+    let currentDistance = this.image.offsetLeft - ANIMATION_STEP;
+    const framesCount = (duration / ANIMATION_DURATION) * ANIMATION_FRAME;
+    const transfer = (roadDistance - currentDistance) / framesCount;
 
     const animationMoving = async (): Promise<void> => {
       currentDistance += transfer;
@@ -77,18 +75,16 @@ export default class AppCar extends ApiController {
       if (currentDistance < roadDistance) {
         AppState.stateAnimations[id] = requestAnimationFrame(animationMoving);
       } else {
-        if (AppState.isRacing) {
-          if (AppState.winnerId === 0) {
-            AppState.winnerId = id;
-            AppState.winnerTime = Number((duration / 1000).toFixed(2));
-            await this.saveWinner(AppState.winnerId, AppState.winnerTime).then(() => {
-              const wonRacing = new CustomEvent("wonRacing", {
-                bubbles: true,
-                detail: { id: this.id, name: this.name, time: AppState.winnerTime },
-              });
-              this.car.dispatchEvent(wonRacing);
+        if (AppState.isRacing && AppState.winnerId === 0) {
+          AppState.winnerId = id;
+          AppState.winnerTime = convertMsToSeconds(duration);
+          await this.saveWinner(AppState.winnerId, AppState.winnerTime).then(() => {
+            const wonRacing = new CustomEvent("wonRacing", {
+              bubbles: true,
+              detail: { id: this.id, name: this.name, time: AppState.winnerTime },
             });
-          }
+            this.car.dispatchEvent(wonRacing);
+          });
         }
       }
     };
@@ -119,7 +115,7 @@ export default class AppCar extends ApiController {
   public handleStopDrive = async (): Promise<void> => {
     this.handleToggleShowingEngineBtns("stop");
 
-    this.image.style.transform = `translateX(0)`;
+    this.image.style.transform = "translateX(0)";
 
     if (AppState.stateAnimations[this.id]) {
       cancelAnimationFrame(AppState.stateAnimations[this.id]);

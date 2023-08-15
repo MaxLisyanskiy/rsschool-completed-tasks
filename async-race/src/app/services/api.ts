@@ -8,7 +8,7 @@ import {
   WinnersOrder,
   WinnersSort,
 } from "../types/apiTypes";
-import { WINNERS_LIMIT, CARS_LIMIT } from "../utils/constants";
+import { WINNERS_LIMIT, WINNER_COUNT, CARS_LIMIT } from "../utils/constants";
 
 export default class ApiController {
   baseApiUrl: string;
@@ -75,9 +75,9 @@ export default class ApiController {
 
     if (Object.keys(winner).length !== 0) {
       const newTime = time < winner.time ? time : winner.time;
-      await this.updateWinner(id, winner.wins + 1, newTime);
+      await this.updateWinner(id, winner.wins + WINNER_COUNT, newTime);
     } else {
-      await this.createWinner(id, 1, time);
+      await this.createWinner(id, WINNER_COUNT, time);
     }
   }
 

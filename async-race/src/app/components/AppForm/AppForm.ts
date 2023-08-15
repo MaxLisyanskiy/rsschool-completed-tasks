@@ -70,9 +70,9 @@ export default class AppForm {
   private toggleShowSelectedData = (show: boolean, name: string, color: string) => {
     this.currentCarInput.value = show ? name : "";
     this.currentCarColor.value = show ? color : "#ffffff";
-    this.currentCarInput.disabled = show ? false : true;
-    this.currentCarColor.disabled = show ? false : true;
-    this.currentCarBtn.disabled = show ? false : true;
+    this.currentCarInput.disabled = !show;
+    this.currentCarColor.disabled = !show;
+    this.currentCarBtn.disabled = !show;
   };
 
   public addSelectedCarData = (

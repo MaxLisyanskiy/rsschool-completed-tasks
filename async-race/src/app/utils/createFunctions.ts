@@ -22,18 +22,27 @@ export function createInputElement(
   name: string,
   type: string,
   value: string,
-  required: Boolean = false,
-  disabled: Boolean = false,
+  required: boolean = false,
+  disabled: boolean = false,
 ): HTMLInputElement {
   const attributes: string[] = ["id", "name", "type", "value", "required", "disabled"];
 
   const element = document.createElement("input");
   element.classList.add(...className);
   attributes.forEach((attr, i) => {
-    if (Boolean(arguments[i + 1]) !== false) {
+    if (arguments[i + 1]) {
       element.setAttribute(attr, arguments[i + 1]);
     }
   });
+
+  return element;
+}
+
+export function createActionBtnElement(text: string, disabled: boolean = false): HTMLButtonElement {
+  const element = document.createElement("button");
+  element.classList.add("actions__btn");
+  element.innerHTML = text;
+  if (disabled) element.setAttribute("disabled", "true");
 
   return element;
 }

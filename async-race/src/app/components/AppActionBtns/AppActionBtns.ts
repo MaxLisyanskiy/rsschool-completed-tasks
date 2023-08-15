@@ -1,5 +1,5 @@
 import "./AppActionBtns.scss";
-import { createBtnElement, createElement, createInputElement } from "../../utils/createFunctions";
+import { createActionBtnElement, createElement } from "../../utils/createFunctions";
 
 export default class AppActionBtns {
   public buttons: HTMLElement;
@@ -12,11 +12,11 @@ export default class AppActionBtns {
   public onGenerateNewCars!: () => void;
 
   constructor() {
-    this.buttons = createElement("div", ["actions"], "");
+    this.buttons = createElement("div", ["actions"]);
 
-    this.raceBtn = createBtnElement(["actions__btn"], "button", "Race", false);
-    this.resetBtn = createBtnElement(["actions__btn"], "button", "Reset", true);
-    this.generateBtn = createBtnElement(["actions__btn"], "button", "Generate", false);
+    this.raceBtn = createActionBtnElement("Race");
+    this.resetBtn = createActionBtnElement("Reset", true);
+    this.generateBtn = createActionBtnElement("Generate");
 
     this.raceBtn.onclick = () => this.onStartRacing();
     this.resetBtn.onclick = () => this.onResetRacing();
@@ -29,12 +29,12 @@ export default class AppActionBtns {
   }
 
   public onGenerateLoading = (disabled: boolean): void => {
+    this.generateBtn.disabled = disabled;
+
     if (disabled) {
-      this.generateBtn.disabled = true;
-      this.generateBtn.innerHTML = `<image src="loader.gif">`;
+      this.generateBtn.innerHTML = '<image src="loader.gif">';
     } else {
-      this.generateBtn.disabled = false;
-      this.generateBtn.innerHTML = `Generate`;
+      this.generateBtn.innerHTML = "Generate";
     }
   };
 }

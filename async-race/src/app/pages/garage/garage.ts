@@ -63,8 +63,8 @@ export default class GaragePage extends ApiController {
   };
 
   private changeActionsBtnAndAppStore(value: boolean): void {
-    this.actionBtns.raceBtn.disabled = value ? true : false;
-    this.actionBtns.resetBtn.disabled = value ? false : true;
+    this.actionBtns.raceBtn.disabled = value;
+    this.actionBtns.resetBtn.disabled = value;
 
     AppState.isRacing = true;
     AppState.winnerId = 0;

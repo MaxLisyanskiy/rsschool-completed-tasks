@@ -25,4 +25,10 @@ export const NEW_CAR_MODELS: string[] = [
 ];
 
 export const CARS_LIMIT: number = 7;
+
+export const WINNER_COUNT: number = 1;
 export const WINNERS_LIMIT: number = 10;
+
+export const ANIMATION_STEP: number = 80;
+export const ANIMATION_FRAME: number = 60;
+export const ANIMATION_DURATION: number = 1000;
