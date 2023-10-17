@@ -1,0 +1,14 @@
+{
+	"title": "JSON schema for the TypeScript compiler's configuration file",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	
+	"compilerOptions": {
+		"target": "es2016",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true, // Task: В конфигурационном файле TypeScript стоят флаги: "strict": true
+		"noImplicitAny": true, // В конфигурационном файле TypeScript стоят флаги: "noImplicitAny": true
+		"skipLibCheck": true
+	}
+}

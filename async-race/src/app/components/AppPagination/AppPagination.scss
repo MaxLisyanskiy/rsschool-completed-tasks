@@ -1,0 +1,35 @@
+.paginations {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #282828;
+  background: #1a202c;
+  margin-bottom: 15px;
+
+  &__btn {
+    margin: 0 5px;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 8px;
+    border: 1px solid #282828;
+    background: #364153;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.07);
+      &:disabled {
+        transform: scale(1);
+      }
+    }
+
+    & span {
+      color: #ff3e17;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+}

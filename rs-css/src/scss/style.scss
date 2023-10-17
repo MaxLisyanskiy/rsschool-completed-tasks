@@ -1,0 +1,53 @@
+@import "reset.css";
+@import "_emoji.scss";
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../assets/fonts/Ubuntu-Regular.ttf") format("truetype"),
+    url("../assets/fonts/Ubuntu-Regular.woff") format("woff"),
+    url("../assets/fonts/Ubuntu-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../assets/fonts/Ubuntu-Bold.ttf") format("truetype"), url("../assets/fonts/Ubuntu-Bold.woff") format("woff"),
+    url("../assets/fonts/Ubuntu-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: bold;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Ubuntu";
+  font-weight: normal;
+  font-style: normal;
+  background: #f1f4fa;
+}
+
+.container {
+  max-width: 1280px;
+  height: auto;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.hljs {
+  background: none !important;
+}

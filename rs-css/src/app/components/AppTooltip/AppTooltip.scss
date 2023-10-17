@@ -1,0 +1,18 @@
+.tooltip {
+  display: none;
+  position: absolute;
+  background: #3a36db;
+  padding: 8px 12px;
+  border-radius: 8px;
+  z-index: 1000;
+  font-size: 14px;
+  color: #fff;
+  outline: solid 1px transparent;
+  word-wrap: nowrap;
+  white-space: nowrap;
+
+  @media (max-width: 600px) {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+}

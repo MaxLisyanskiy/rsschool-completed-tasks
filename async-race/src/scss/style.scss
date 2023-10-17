@@ -1,0 +1,57 @@
+@import "reset.css";
+@import "_page.scss";
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../assets/fonts/Ubuntu-Regular.ttf") format("truetype"),
+    url("../assets/fonts/Ubuntu-Regular.woff") format("woff"),
+    url("../assets/fonts/Ubuntu-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../assets/fonts/Ubuntu-Bold.ttf") format("truetype"), url("../assets/fonts/Ubuntu-Bold.woff") format("woff"),
+    url("../assets/fonts/Ubuntu-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: bold;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #000000;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Ubuntu";
+  font-weight: normal;
+  font-style: normal;
+  color: #f1f4fa;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+    url("../assets/asf.jpg") center center no-repeat fixed;
+  background-size: cover;
+}
+
+.container {
+  max-width: 1280px;
+  height: auto;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
