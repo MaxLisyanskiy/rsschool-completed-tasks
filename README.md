@@ -1,5 +1,4 @@
-**Shelter task**  
-https://github.com/rolling-scopes-school/tasks/blob/master/tasks/shelter/shelter.md
+# All RSSchool Completed Tasks | MaxLisyanskiy
 
-**Shelter demo link:**  
-https://rolling-scopes-school.github.io/maxlisyanskiy-JSFE2023Q1/shelter/
+1. 📝 Presentation (Computer Vision)  
+   [Task](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/presentation-recorded.md) | [Demo](https://maxlisyanskiy.github.io/rsschool-completed-tasks/presentation/)
