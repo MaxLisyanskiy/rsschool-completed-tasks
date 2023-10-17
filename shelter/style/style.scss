@@ -1,0 +1,21 @@
+@import "config/_fonts.scss";
+@import "config/_variables.scss";
+@import "config/_mixins.scss";
+@import "config/_main.scss";
+
+// blocks
+@import "blocks/_start-screen.scss";
+@import "blocks/_head.scss";
+@import "blocks/_about.scss";
+@import "blocks/_our-friends.scss";
+@import "blocks/_slider.scss";
+@import "blocks/_help.scss";
+@import "blocks/_donation.scss";
+@import "blocks/_header.scss";
+@import "blocks/_pets.scss";
+@import "blocks/_paginations.scss";
+@import "blocks/_footer.scss";
+
+//ui
+@import "ui/_drawer.scss";
+@import "ui/_popup.scss";
