@@ -1,0 +1,168 @@
+.emoji {
+  display: block;
+  margin: 0 10px 25px 10px;
+  width: 70px;
+  height: 100px;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+
+  @media (max-width: 400px) {
+    width: 50px;
+    height: 50px;
+  }
+
+  &.small {
+    width: 35px !important;
+    height: 35px !important;
+    margin: 0 !important;
+
+    @media (max-width: 400px) {
+      width: 25px !important;
+      height: 25px !important;
+    }
+  }
+
+  &.fading {
+    animation: fade 1.5s ease-in-out 0s forwards;
+  }
+}
+
+dog {
+  background: url("../assets/emoji/dog.png") center/contain no-repeat;
+}
+
+lion {
+  background: url("../assets/emoji/lion.png") center/contain no-repeat;
+}
+
+pig {
+  background: url("../assets/emoji/pig.png") center/contain no-repeat;
+}
+
+cloud {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/cloud.png") center/contain no-repeat;
+
+  &#rainy {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: url("../assets/emoji/rainy-cloud.png") center/contain no-repeat;
+  }
+}
+
+sun {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/sun.png") center/contain no-repeat;
+}
+
+lollipop {
+  background: url("../assets/emoji/lollipop.png") center/contain no-repeat;
+}
+
+plate {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/plate.png") center/contain no-repeat;
+}
+
+donut {
+  width: 35px !important;
+  height: 35px !important;
+  margin: 0 !important;
+  background: url("../assets/emoji/donut.png") center/contain no-repeat;
+  @media (max-width: 400px) {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
+cookie {
+  background: url("../assets/emoji/cookie.png") center/contain no-repeat;
+}
+
+rocket {
+  width: 35px !important;
+  height: 35px !important;
+  margin: 0 !important;
+  background: url("../assets/emoji/rocket.png") center/contain no-repeat;
+  @media (max-width: 400px) {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
+bomb {
+  background: url("../assets/emoji/bomb.png") center/contain no-repeat;
+}
+
+earth {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/emoji/earth.png") center/contain no-repeat;
+}
+
+plane {
+  background: url("../assets/emoji/plane.png") center/contain no-repeat;
+}
+
+burger {
+  background: url("../assets/emoji/burger.png") center/contain no-repeat;
+}
+
+monkey {
+  background: url("../assets/emoji/monkey.png") center/contain no-repeat;
+}
+
+fish {
+  background: url("../assets/emoji/fish.png") center/contain no-repeat;
+}
+
+.bounce {
+  animation-name: bounce-animation;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.outline {
+  filter: drop-shadow(5px 0 0 #3a36db) drop-shadow(0 5px 0 #3a36db) drop-shadow(-5px 0 0 #3a36db)
+    drop-shadow(0 -5px 0 #3a36db);
+}
+
+@keyframes bounce-animation {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-10px);
+  }
+  50% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes fade {
+  0% {
+    transform: translateY(0px) scale(0.9, 0.9);
+  }
+  30% {
+    transform: translateY(-150px) scale(0.4, 0.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-600px) scale(0.5, 0.5);
+  }
+}

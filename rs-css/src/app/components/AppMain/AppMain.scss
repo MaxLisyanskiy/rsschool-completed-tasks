@@ -1,0 +1,290 @@
+.main {
+  width: 68%;
+  margin: 10px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.table {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__wrapp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 3px 14px 1px rgba(14, 15, 22, 0.1);
+    overflow: hidden;
+
+    @media (max-width: 800px) {
+      margin: 10px 0;
+    }
+
+    @media (max-width: 400px) {
+      padding: 10px;
+    }
+  }
+
+  &__title {
+    margin: 10px;
+    font-size: 22px;
+
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
+
+    & span {
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-image: linear-gradient(135deg, red, #3a36db);
+    }
+  }
+
+  &__phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    background: url("../../../assets/iphone.png") center/contain no-repeat;
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }
+}
+
+.editor {
+  display: flex;
+  width: 100%;
+  margin: 30px auto;
+  border: 5px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+
+  &.shaking {
+    animation: horizontal-shaking 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  @media (max-width: 800px) {
+    margin: 10px 0 0 0;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  &__item {
+    width: 50%;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}
+
+.pane {
+  background: #fff;
+
+  @media (max-width: 600px) {
+    height: 175px;
+    overflow: hidden;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    border-right: 0.25px solid rgb(53, 53, 53);
+    & span {
+      font-size: 14px;
+      color: rgb(219, 216, 216);
+    }
+
+    @media (max-width: 600px) {
+      border-right: none;
+    }
+  }
+
+  &__wrapp {
+    display: flex;
+  }
+
+  &__numbers {
+    padding: 10px 5px;
+    line-height: 21px;
+    text-align: end;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.layout {
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    border-left: 0.25px solid rgb(53, 53, 53);
+
+    @media (max-width: 600px) {
+      border-left: none;
+    }
+
+    & span {
+      font-size: 14px;
+      color: rgb(219, 216, 216);
+    }
+  }
+
+  &__wrapp {
+    display: flex;
+  }
+
+  &__numbers {
+    padding: 10px 5px;
+    line-height: 21px;
+    text-align: end;
+    background: rgba(#1a202c, 0.8);
+  }
+
+  &__html {
+    width: 100%;
+    height: auto;
+    padding: 7px 5px;
+    background: rgba(#1a202c, 0.9);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 5px;
+
+  &__wrapp {
+    display: flex;
+  }
+
+  &__input {
+    width: 100%;
+    margin-right: 10px;
+    padding: 5px;
+    color: #000;
+    font-weight: 700;
+    border-radius: 8px;
+    background: rgba(153, 178, 198, 0.5);
+
+    &.done {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &.blinking {
+      background: linear-gradient(135deg, rgba(red, 0.3), rgba(62, 203, 255, 0.3));
+      animation: blink 1.1s infinite;
+    }
+  }
+
+  &__enter {
+    margin-right: 5px;
+    padding: 3px 8px;
+    color: #fff;
+    border-radius: 6px;
+    background: #3a36db;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__help {
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #afbac2;
+    color: #06152b;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__descr {
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 20px;
+    font-style: italic;
+    color: #aaa;
+    & span {
+      margin-left: 10px;
+    }
+  }
+}
+
+.code {
+  margin: 5px 0 5px 5px;
+  cursor: pointer;
+
+  &.highlite {
+    & .code__item {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  &__item {
+    height: 15px;
+    font-size: 14px;
+    color: #aaa;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+
+    @media (max-width: 900px) {
+      font-size: 13px;
+    }
+  }
+}
+
+@keyframes blink {
+  50% {
+    background: none;
+  }
+}
+
+@keyframes horizontal-shaking {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
