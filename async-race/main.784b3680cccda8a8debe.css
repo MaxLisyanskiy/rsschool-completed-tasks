@@ -1,0 +1,79 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+aside,
+nav,
+footer,
+header,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.page__title{font-size:30px;margin-bottom:10px}.page__subtitle{font-size:24px;margin-bottom:15px}.page__won-title{position:absolute;padding:20px 30px;text-align:center;font-size:40px;top:50%;left:50%;transform:translate(-50%, -50%);background-color:green;box-shadow:0px 0px 100px 1px rgba(199,225,67,.9)}.page__won-title.hidden{display:none}@font-face{font-family:"Ubuntu";src:url(assets/a6767dc546b61fb075f2.ttf) format("truetype"),url(assets/6fbf2c88158fe3e31976.woff) format("woff"),url(assets/67b85bb16997f62047d9.woff2) format("woff2");font-weight:normal;font-style:normal}@font-face{font-family:"Ubuntu";src:url(assets/995358969571c1c37362.ttf) format("truetype"),url(assets/77d0ab5bf84301cd00e4.woff) format("woff"),url(assets/22007240a03479878437.woff2) format("woff2");font-weight:bold;font-style:bold}html,body{margin:0;padding:0;overflow-x:hidden;background:#000;height:100%;width:100%}body{font-family:"Ubuntu";font-weight:normal;font-style:normal;color:#f1f4fa;background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),url(assets/10ff2857ca3b55e3a966.jpg) center center no-repeat fixed;background-size:cover}.container{max-width:1280px;height:auto;margin:0 auto;padding:15px;display:flex;flex-direction:column;align-items:center;justify-content:space-between}.main{width:100%;display:flex;flex-direction:column;align-items:center}
+.nav{border-radius:5px;border:1px solid #282828;background:#1c1c1c;padding:16px 100px;display:flex;justify-content:center;margin-bottom:50px}.nav__link{color:#c7e143;font-size:24px;margin:0 10px;transition:all .3s ease}.nav__link.active{color:rgba(199,225,67,.2);cursor:default}.nav__link:hover{transform:scale(1.1)}.nav__link:hover.active{transform:scale(1)}
+.garage{width:100%;display:flex;flex-direction:column;align-items:center}.garage-tools{max-width:500px;height:auto;width:100%;margin-bottom:30px;display:flex;flex-direction:column;align-items:center;padding:16px;border-radius:8px;border:1px solid #282828;background:#3e3e3e}
+.form{margin-bottom:15px}.form__wrapp{display:flex;align-items:center;justify-content:space-between;padding:8px;border-radius:6px;background:#1c1c1c;margin-bottom:8px}.form__input{padding:6px;font-size:16px;margin-right:10px;border-radius:6px}.form__color{width:30px;height:30px;margin-right:10px;cursor:pointer}.form__color:disabled{opacity:.5;cursor:default}.form__btn{background:#ff3e17;border-radius:4px;padding:8px;color:#fff;font-weight:600;font-size:15px;text-transform:uppercase;transition:all .3s ease}.form__btn:disabled{opacity:.5;cursor:default}.form__btn:hover{transform:scale(1.07)}.form__btn:hover:disabled{transform:scale(1)}
+.actions{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.actions__btn{margin:0 15px;background:#ee2d24;border-radius:4px;padding:8px;color:#fff;font-weight:600;font-size:15px;text-transform:uppercase;transition:all .3s ease}.actions__btn:disabled{opacity:.3;cursor:default}.actions__btn:hover{transform:scale(1.07)}.actions__btn:hover:disabled{transform:scale(1)}.actions__btn img{width:30px}
+.cars{padding:20px;width:100%;display:flex;flex-direction:column;gap:10px;border-radius:5px;border:1px solid #282828;background:#10121a}
+.car{display:flex;flex-direction:column;margin:10px 0}.car__title{font-size:20px;margin-bottom:10px}.car-btns{display:flex;align-items:center}.car-btns__item{margin-right:10px;background:#c7e143;border-radius:4px;padding:4px 8px;color:#000;font-weight:600;font-size:12px;text-transform:uppercase;transition:all .3s ease}.car-btns__item:disabled{opacity:.3;cursor:default}.car-btns__item:hover{transform:scale(1.07)}.car-btns__item:hover:disabled{transform:scale(1)}.car-road{display:flex;width:100%;position:relative}.car-road::after{content:"";position:absolute;bottom:3px;width:100%;border-bottom:3px solid #fff;border-bottom-style:dashed}.car-engine{display:flex;align-items:center}.car-engine button{padding:6px 8px;border-radius:4px;font-size:16px;font-weight:600;background:none;margin-right:10px;transition:all .3s ease}.car-engine button:disabled{opacity:.1;cursor:default}.car-engine button:hover{transform:scale(1.1)}.car-engine button:hover:disabled{transform:scale(1)}.car-engine__start{border:2px solid green;color:green}.car-engine__stop{border:2px solid red;color:red}.car__image{transform:translateX(0px);width:80px;height:60px}.car__image svg{width:80px;height:60px;position:absolute;bottom:-12px}.car-finish{position:absolute;right:50px;bottom:10px}.car-finish img{width:30px;height:30px}
+.paginations{padding:10px;border-radius:8px;border:1px solid #282828;background:#1a202c;margin-bottom:15px}.paginations__btn{margin:0 5px;padding:6px 12px;font-size:16px;font-weight:600;color:#fff;border-radius:8px;border:1px solid #282828;background:#364153;transition:all .3s ease}.paginations__btn:hover{transform:scale(1.07)}.paginations__btn:hover:disabled{transform:scale(1)}.paginations__btn span{color:#ff3e17}.paginations__btn:disabled{opacity:.3;cursor:default}
+.winners{max-width:500px;height:auto;width:100%;display:flex;flex-direction:column;align-items:center;padding:16px;border-radius:8px;border:1px solid #282828;background:#3e3e3e}
+.table{width:100%;border:none;margin-bottom:20px}.table thead th{font-weight:bold;text-align:left;border:none;padding:10px 15px;background:#525992;font-size:14px}.table thead tr th:first-child{border-radius:8px 0 0 8px}.table thead tr th:last-child{border-radius:0 8px 8px 0}.table tbody td{text-align:center;border:none;padding:10px 15px;font-size:14px;vertical-align:middle}.table tbody tr:nth-child(even){background:#1d202a}.table tbody tr td:first-child{border-radius:8px 0 0 8px}.table tbody tr td:last-child{border-radius:0 8px 8px 0}.table-sort{cursor:pointer}.table-sort span{font-size:16px;font-weight:600;color:#40ff00}
